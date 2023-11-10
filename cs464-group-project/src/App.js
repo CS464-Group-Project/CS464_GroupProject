@@ -1,28 +1,21 @@
-import { Home } from "./pages/Home";
-import { Team } from "./pages/Team";
-
-import { Link, Route, Routes } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { Team } from './pages/Team';
+import NavBar from './components/navigationBar/NavBar';
 
 function App() {
-  return (
-    <>
-      <nav className='navbar'>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/team'>Team</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/team' element={<Team />} />
-      </Routes>
-    </>
-  );
+    return (
+        <Router>
+            <div className='App'>
+                <NavBar />
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/team' element={<Team />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
