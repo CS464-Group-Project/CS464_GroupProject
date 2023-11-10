@@ -1,35 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import thesportsdb from 'thesportsdb';
+import axios from 'axios';
 
-const Api = () => {
-    const [data, setData] = useState(null);
+const url =
+    'https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=English%20Premier%20League';
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await thesportsdb.getLeagueList();
-                setData(response.data);
-            } catch (error) {
-                console.error('Error fetching data: ', error);
-            }
-        };
-        fetchData();
-    }, []);
-
-    if (!data) {
-        return <div>Loading...</div>;
+async function fetchData() {
+    try {
+        const response = await axios.get(url);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching data from API');
+        throw error;
     }
+}
 
-    return (
-        <div>
-            <h1>API data</h1>
-            <ul>
-                {data.map((league) => (
-                    <li key={league.idLeague}>{league.strLeague}</li>
-                ))}
-            </ul>
-        </div>
-    );
-};
-
-export default Api;
+export { fetchData };
