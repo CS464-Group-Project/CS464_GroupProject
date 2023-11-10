@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchData } from '../components/api/Api';
+import { fetchData } from '../components/Api/ApiRequest';
 
 export function Team() {
     const [displayTeams, setDisplayTeams] = useState([]);
