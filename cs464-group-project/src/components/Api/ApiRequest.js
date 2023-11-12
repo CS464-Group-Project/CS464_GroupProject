@@ -14,4 +14,12 @@ async function fetchData() {
     }
 }
 
-export { fetchData };
+// testing sports database library
+const theSportsDB = require('thesportsdb');
+theSportsDB.setApiKey(3);
+
+async function getAllPlayersByTeam(teamName) {
+    return await theSportsDB.getAllPlayersByTeam(teamName);
+}
+
+export { fetchData, getAllPlayersByTeam };
