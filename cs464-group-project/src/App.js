@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Team } from './pages/Team';
 import { Player } from './pages/Player';
+import { IndividualPlayer } from './pages/IndividualPlayer';
 import NavBar from './components/navigationBar/NavBar';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/team" element={<Team />} />
           <Route path="/player" element={<Player />} />
+          <Route path="/IndividualPlayer/:id" element={<IndividualPlayer />} />
         </Routes>
       </div>
     </Router>

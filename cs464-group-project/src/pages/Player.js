@@ -1,32 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { fetchData } from '../components/Api/ApiRequest';
-
+import { Link } from 'react-router-dom';
+/*
 async function getTeamNames() {
-  try {
-    const data = await fetchData();
-    const teams = data.teams;
+try {
+  const data = await fetchData();
+  const teams = data.teams;
 
-    if (teams && teams.length > 0) {
-      const teamNames = teams.map((team) => team.strTeam);
-      console.log('Team Names:', teamNames);
-      return teamNames;
-    } else {
-      console.log('No teams found in the API response');
-      return [];
-    }
-  } catch (error) {
-    console.error('Error getting team names:', error.message);
-    throw error;
+  if (teams && teams.length > 0) {
+    const teamNames = teams.map((team) => team.strTeam);
+    console.log('Team Names:', teamNames);
+    return teamNames;
+  } else {
+    console.log('No teams found in the API response');
+    return [];
   }
+} catch (error) {
+  console.error('Error getting team names:', error.message);
+  throw error;
 }
-
+}
+*/
 export function Player() {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
     async function fetchPlayers() {
       try {
-        const teamNames = await getTeamNames();
+        //const teamNames = await getTeamNames();
+        const teamNames = ['Arsenal']; //For testing purposes
 
         // Loop through each team and fetch players
         for (const teamName of teamNames) {
@@ -74,14 +76,16 @@ export function Player() {
                 textAlign: 'center',
               }}
             >
-              <img
-                src={player.strThumb}
-                alt={`${player.strPlayer}`}
-                style={{
-                  width: '100%',
-                  maxWidth: '100px',
-                }}
-              />
+              <Link to={`/IndividualPlayer/${player.idPlayer}`}>
+                <img
+                  src={player.strThumb}
+                  alt={`${player.strPlayer}`}
+                  style={{
+                    width: '100%',
+                    maxWidth: '100px',
+                  }}
+                />
+              </Link>
               <p>
                 <strong>{player.strPlayer}</strong>
               </p>
