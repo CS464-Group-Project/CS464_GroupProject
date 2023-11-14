@@ -7,22 +7,19 @@ import { IndividualTeam } from './pages/Team/IndividualTeam';
 import NavBar from './components/navigationBar/NavBar';
 
 function App() {
-    return (
-        <Router>
-            <div className='App'>
-                <NavBar />
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/teamsmainpage' element={<Team />} />
-                    <Route path='/player' element={<Player />} />
-                    <Route
-                        path='/individualteam'
-                        element={<IndividualTeam />}
-                    />
-                </Routes>
-            </div>
-        </Router>
-    );
+  return (
+    <Router>
+      <div className='App'>
+        <NavBar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/teamsmainpage' element={<Team />} />
+          <Route path='/player' element={<Player />} />
+          <Route path='/individualteam' element={<IndividualTeam />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
