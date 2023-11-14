@@ -11,7 +11,7 @@ function NavBar() {
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
                 <Nav className='me-auto'>
-                    <Nav.Link href='/team'>Team</Nav.Link>
+                    <Nav.Link href='/teamsmainpage'>Team</Nav.Link>
                     <Nav.Link href='/player'>Player</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
