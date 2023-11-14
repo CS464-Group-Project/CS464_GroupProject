@@ -1,11 +1,3 @@
-:root {
-    --black: #020202;
-    --white: #ffffff;
-    --blue: #00425c;
-    --hover: #5dade2;
-    --purple: #6a1b9a;
-}
-
 body {
     background-color: var(--purple);
 }
@@ -31,4 +23,20 @@ h1 {
 
 .league-logo {
     width: 300px;
+}
+
+.container-md {
+    background-color: var(--white);
+    border: var(--black);
+    border-radius: 5px;
+}
+
+[class^='col'] {
+    border: 2px solid var(--black);
+    padding: 1rem;
+}
+
+.player-info {
+    display: flex;
+    justify-content: space-between;
 }

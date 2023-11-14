@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home';
-import { Team } from './pages/Team';
+import { Team } from './pages/Team/TeamsMainPage';
+import { IndividualTeam } from './pages/Team/IndividualTeam';
 import NavBar from './components/navigationBar/NavBar';
 
 function App() {
@@ -11,7 +12,11 @@ function App() {
                 <NavBar />
                 <Routes>
                     <Route path='/' element={<Home />} />
-                    <Route path='/team' element={<Team />} />
+                    <Route path='/teamsmainpage' element={<Team />} />
+                    <Route
+                        path='/individualteam'
+                        element={<IndividualTeam />}
+                    />
                 </Routes>
             </div>
         </Router>

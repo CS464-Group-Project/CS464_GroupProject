@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { fetchData } from '../components/Api/ApiRequest';
-import '../style/Team.css';
+import { useNavigate } from 'react-router-dom';
+import { fetchData } from '../../components/Api/ApiRequest';
+import '../../style/Team.css';
 
 export function Team() {
+    const navigate = useNavigate();
+
     const [displayTeams, setDisplayTeams] = useState([]);
 
     useEffect(() => {
@@ -14,6 +17,11 @@ export function Team() {
                 console.error('Error fetching teams: ', error);
             });
     }, []);
+
+    const handleTeamClick = (team) => {
+        console.log('Team: ', team);
+        navigate(`/individualteam`, { state: { team } });
+    };
 
     return (
         <div className='background'>
@@ -28,7 +36,11 @@ export function Team() {
             <div className='flex container text-center'>
                 <div className='row row-cols-1 row-cols-md-2 row-cols-lg-4'>
                     {displayTeams.map((team) => (
-                        <div key={team.idTeam} className='card col'>
+                        <div
+                            key={team.idTeam}
+                            className='card col'
+                            onClick={() => handleTeamClick(team)}
+                        >
                             <img
                                 className='mx-auto image-fluid'
                                 src={team.strTeamLogo}

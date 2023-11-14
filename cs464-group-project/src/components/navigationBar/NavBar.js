@@ -18,7 +18,7 @@ function NavBar() {
                     <NavItem>
                         <NavLink
                             className='nav-link text-dark fw-bold fs-4'
-                            href='/team'
+                            href='/teamsmainpage'
                         >
                             Team
                         </NavLink>
