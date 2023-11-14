@@ -13,6 +13,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/teamsmainpage' element={<Team />} />
+                    <Route path='/player' element={<Player />} />
                     <Route
                         path='/individualteam'
                         element={<IndividualTeam />}
