@@ -2,18 +2,13 @@
   background-color: #b1c5e5;
 }
 
-.navbar-nav a {
-  padding: 5px;
-  font-size: 20px;
-  border-radius: 15px;
-}
-
 .navbar-brand {
   font-size: 30px;
   margin-left: 20px;
 }
 
 .nav-link {
+  font-size: 20px;
   padding: 1px !important;
   margin-right: 5px;
   margin-left: 5px;
@@ -22,11 +17,9 @@
 /*Using a underline hover effect 
 https://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 */
-
 .nav-link {
   position: relative;
   color: #000;
-  text-decoration: none;
 }
 
 .nav-link:hover {
@@ -49,4 +42,11 @@ https://tobiasahlin.com/blog/css-trick-animating-link-underlines/
 
 .nav-link:hover::before {
   transform: scaleX(1);
+}
+
+@media (max-width: 992px) {
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+  }
 }
