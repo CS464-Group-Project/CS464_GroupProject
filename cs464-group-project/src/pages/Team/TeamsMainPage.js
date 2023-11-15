@@ -35,12 +35,12 @@ export function Team() {
         />
         Welcome to the Premier League
       </h1>
-      <div className='flex container text-center'>
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-4'>
+      <div className='flex container overflow-hidden text-center'>
+        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-4 g-1 gx-1'>
           {displayTeams.map((team) => (
             <div
               key={team.idTeam}
-              className='card col'
+              className='card col p-2'
               onClick={() => handleTeamClick(team)}
             >
               <img
