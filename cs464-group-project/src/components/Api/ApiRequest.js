@@ -1,17 +1,18 @@
-import axios from 'axios';
+// API key
+const apiKey = process.env.REACT_APP_API_KEY;
+const theSportsDB = require('thesportsdb');
 
-const url =
-    'https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=English%20Premier%20League';
+theSportsDB.setApiKey(apiKey);
 
-async function fetchData() {
-    try {
-        const response = await axios.get(url);
-        console.log(response.data);
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching data from API');
-        throw error;
-    }
+// To look up API calls, Go to node_modules/thesportdb/index.js
+// or https://github.com/gpsanant/theSportsDB/blob/master/index.js
+
+async function getAllPlayersByTeam(teamName) {
+  return await theSportsDB.getAllPlayersByTeam(teamName);
 }
 
-export { fetchData };
+async function getTeamsByLeagueName(leagueName) {
+  return await theSportsDB.getTeamsByLeagueName(leagueName);
+}
+
+export { getAllPlayersByTeam, getTeamsByLeagueName };
