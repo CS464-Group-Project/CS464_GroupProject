@@ -22,22 +22,29 @@ export function IndividualPlayer() {
   }, [id]);
 
   return (
-    <div>
-      <h2>Individual Player</h2>
+    <div style={{ display: 'flex', margin: '20px' }}>
       {playerData ? (
-        <div>
-          <img
-            src={playerData.strThumb}
-            alt={`${playerData.strPlayer}`}
-            style={{
-              width: '100%',
-              maxWidth: '100px',
-            }}
-          />
-          <p>Player ID: {id}</p>
-          <p>Name: {playerData.strPlayer}</p>
-          {/* Other content */}
-        </div>
+        <>
+          {/* Left side with player image */}
+          <div style={{ flex: 1, marginRight: '20px' }}>
+            <img
+              src={playerData.strThumb}
+              alt={`${playerData.strPlayer}`}
+              style={{
+                width: '100%',
+                maxWidth: '100%',
+              }}
+            />
+          </div>
+
+          {/* Right side with player details */}
+          <div style={{ flex: 1 }}>
+            <h2>{playerData.strPlayer}</h2>
+            <p>Team: {playerData.strTeam}</p>
+            <p>Country: {playerData.strNationality}</p>
+            <p>Position: {playerData.strPosition}</p>
+          </div>
+        </>
       ) : (
         <p>Loading...</p>
       )}

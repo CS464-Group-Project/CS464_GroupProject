@@ -1,34 +1,38 @@
-:root {
-    --black: #020202;
-    --white: #ffffff;
-    --blue: #00425c;
-    --hover: #5dade2;
-    --purple: #6a1b9a;
-}
-
 body {
-    background-color: var(--purple);
+  background-color: var(--purple);
 }
 
 h1 {
-    text-align: left;
-    color: var(--white);
+  text-align: left;
+  color: var(--white);
 }
 
 .team-name {
-    color: var(--black);
-    font-weight: bold;
-}
-
-.card {
-    margin: 2px;
+  color: var(--black);
+  font-weight: bold;
 }
 
 .card:hover {
-    background-color: var(--hover);
-    transition: background-color 0.3s ease;
+  background-color: var(--hover);
+  transition: background-color 0.3s ease;
 }
 
 .league-logo {
-    width: 300px;
+  width: 300px;
+}
+
+.container-md {
+  background-color: var(--white);
+  border: var(--black);
+  border-radius: 5px;
+}
+
+[class^='col'] {
+  border: 2px solid var(--black);
+  padding: 1rem;
+}
+
+.player-info {
+  display: flex;
+  justify-content: space-between;
 }
