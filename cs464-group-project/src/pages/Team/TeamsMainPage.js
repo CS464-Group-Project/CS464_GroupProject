@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getTeamsByLeagueName } from '../../components/Api/ApiRequest';
+import { getAllTeamNames } from '../../components/Api/ApiRequest';
 import '../../style/Team.css';
 
 export function Team() {
@@ -10,9 +10,7 @@ export function Team() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Just using one league for now, can be changed later to search for more leagues
-        const leagueName = 'English Premier League';
-        const getLeagueInfo = await getTeamsByLeagueName(leagueName);
+        const getLeagueInfo = await getAllTeamNames();
         setDisplayTeams(getLeagueInfo.teams);
       } catch (err) {
         console.error('Error getting League information', err);
