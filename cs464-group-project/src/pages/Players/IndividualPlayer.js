@@ -12,7 +12,7 @@ export function IndividualPlayer() {
         const response = await axios.get(
           `https://www.thesportsdb.com/api/v1/json/3/lookupplayer.php?id=${id}`
         );
-        setPlayerData(response.data.players[0]); // Assuming the response has a 'players' array
+        setPlayerData(response.data.players[0]);
       } catch (error) {
         console.error('Error fetching player data:', error);
       }

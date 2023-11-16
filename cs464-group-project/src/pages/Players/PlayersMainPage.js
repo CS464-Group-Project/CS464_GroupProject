@@ -29,9 +29,13 @@ export function Player() {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
+    setPlayers([]);
     async function fetchPlayers() {
       try {
+        setPlayers([]); // Clear players before fetching new ones
+
         const teamNames = await getAllTeamNames();
+        let uniquePlayers = new Set(); // Use Set to store unique players
 
         for (const teamName of teamNames) {
           const response = await fetch(
@@ -40,11 +44,18 @@ export function Player() {
 
           if (response.ok) {
             const data = await response.json();
-            setPlayers((prevPlayers) => [...prevPlayers, ...data.player]);
+
+            // Add new players to the Set
+            data.player.forEach((newPlayer) => {
+              uniquePlayers.add(newPlayer);
+            });
           } else {
             console.error(`Failed to fetch player data for team ${teamName}`);
           }
         }
+
+        // Convert Set back to an array and set the state
+        setPlayers([...uniquePlayers]);
       } catch (error) {
         console.error('An error occurred:', error);
       }
@@ -70,11 +81,6 @@ export function Player() {
       <div id="players" style={{ display: 'flex', flexWrap: 'wrap' }}>
         {filteredPlayers.map((player) => {
           const key = `${player.strPosition}-${player.strTeam}-${player.idPlayer}`;
-          if (document.querySelectorAll(`[data-key="${key}"]`).length > 0) {
-            console.error(
-              `Duplicate key found for player: ${player.strPlayer}`
-            );
-          }
 
           return (
             <div
