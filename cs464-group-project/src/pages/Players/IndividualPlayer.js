@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { getPlayerDetails } from '../../components/Api/ApiRequest';
 
 export function IndividualPlayer() {
   const { id } = useParams();
@@ -9,10 +9,8 @@ export function IndividualPlayer() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://www.thesportsdb.com/api/v1/json/3/lookupplayer.php?id=${id}`
-        );
-        setPlayerData(response.data.players[0]);
+        const response = await getPlayerDetails(id);
+        setPlayerData(response.players[0]);
       } catch (error) {
         console.error('Error fetching player data:', error);
       }
