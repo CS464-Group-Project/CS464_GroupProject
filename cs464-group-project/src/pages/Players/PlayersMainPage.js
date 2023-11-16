@@ -69,34 +69,34 @@ export function Player() {
   const renderedPlayers = searchTerm ? filteredPlayers : players;
 
   return (
-    <div className="container">
-      <h1 className="mt-3">Players</h1>
+    <div className='container'>
+      <h1 className='mt-3'>Players</h1>
 
-      <div className="input-group mb-3">
+      <div className='input-group mb-3'>
         <input
-          type="text"
-          className="form-control"
-          placeholder="Search players..."
+          type='text'
+          className='form-control'
+          placeholder='Search players...'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <div className="input-group-append">
-          <span className="input-group-text" id="basic-addon2">
+        <div className='input-group-append'>
+          <span className='input-group-text' id='basic-addon2'>
             Search
           </span>
         </div>
       </div>
-      <div className="d-flex flex-wrap">
+      <div className='d-flex flex-wrap'>
         {renderedPlayers.map((player) => {
           const key = `${player.strPosition}-${player.strTeam}-${player.idPlayer}`;
 
           return (
-            <div key={key} data-key={key} className="col-md-3 mb-3">
+            <div key={key} data-key={key} className='col-md-3 mb-3'>
               <Link to={`/IndividualPlayer/${player.idPlayer}`}>
                 <img
                   src={player.strThumb}
                   alt={`${player.strPlayer}`}
-                  className="img-fluid"
+                  className='img-fluid'
                 />
               </Link>
               <p>

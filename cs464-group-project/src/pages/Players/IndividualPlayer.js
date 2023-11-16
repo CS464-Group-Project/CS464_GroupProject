@@ -20,20 +20,20 @@ export function IndividualPlayer() {
   }, [id]);
 
   return (
-    <div className="container-mt4">
+    <div className='container-mt4'>
       {playerData ? (
-        <div className="row">
+        <div className='row'>
           {/* Left side with player image */}
-          <div className="col-md-6">
+          <div className='col-md-6'>
             <img
               src={playerData.strThumb}
               alt={`${playerData.strPlayer}`}
-              className="img-fluid"
+              className='img-fluid'
             />
           </div>
 
           {/* Right side with player details */}
-          <div className="col-md-6">
+          <div className='col-md-6'>
             <h2>{playerData.strPlayer}</h2>
             <p>Team: {playerData.strTeam}</p>
             <p>Country: {playerData.strNationality}</p>
