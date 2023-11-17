@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 export function Player() {
   const [players, setPlayers] = useState([]);
+  const [allPlayers, setAllPlayers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -37,50 +38,65 @@ export function Player() {
         }
 
         // Convert Set back to an array and set the state
-        setPlayers([...uniquePlayers]);
+        setAllPlayers([...uniquePlayers]);
+
+        //Randomize and select 20 players to be initially rendered
+        const randomPlayers = randomize([...uniquePlayers]);
+        const selectedPlayers = randomPlayers.slice(0, 20);
+
+        setPlayers(selectedPlayers);
       } catch (error) {
         console.error('An error occurred:', error);
       }
     }
+
+    //Helper function to randomize the array of players
+    function randomize(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
     fetchPlayers();
   }, []);
 
-  const filteredPlayers = players.filter((player) =>
-    player.strPlayer.toLowerCase().includes(searchTerm.toLowerCase()),
+  const filteredPlayers = allPlayers.filter((player) =>
+    player.strPlayer.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const renderedPlayers = searchTerm ? filteredPlayers : players;
+
   return (
-    <div>
-      <h1>Players</h1>
-      <input
-        type='text'
-        placeholder='Search players...'
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ margin: '10px', padding: '5px' }}
-      />
-      <div id='players' style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {filteredPlayers.map((player) => {
+    <div className='container'>
+      <h1 className='mt-3'>Players</h1>
+
+      <div className='input-group mb-3'>
+        <input
+          type='text'
+          className='form-control'
+          placeholder='Search players...'
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <div className='input-group-append'>
+          <span className='input-group-text' id='basic-addon2'>
+            Search
+          </span>
+        </div>
+      </div>
+      <div className='d-flex flex-wrap'>
+        {renderedPlayers.map((player) => {
           const key = `${player.strPosition}-${player.strTeam}-${player.idPlayer}`;
 
           return (
-            <div
-              key={key}
-              data-key={key}
-              style={{
-                flex: '0 0 calc(25% - 16px)',
-                margin: '8px',
-                textAlign: 'center',
-              }}
-            >
+            <div key={key} data-key={key} className='col-md-3 mb-3'>
               <Link to={`/IndividualPlayer/${player.idPlayer}`}>
                 <img
                   src={player.strThumb}
                   alt={`${player.strPlayer}`}
-                  style={{
-                    width: '100%',
-                    maxWidth: '150px',
-                  }}
+                  className='img-fluid'
                 />
               </Link>
               <p>

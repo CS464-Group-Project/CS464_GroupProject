@@ -20,29 +20,26 @@ export function IndividualPlayer() {
   }, [id]);
 
   return (
-    <div style={{ display: 'flex', margin: '20px' }}>
+    <div className='container-mt4'>
       {playerData ? (
-        <>
+        <div className='row'>
           {/* Left side with player image */}
-          <div style={{ flex: 1, marginRight: '20px' }}>
+          <div className='col-md-6'>
             <img
               src={playerData.strThumb}
               alt={`${playerData.strPlayer}`}
-              style={{
-                width: '100%',
-                maxWidth: '100%',
-              }}
+              className='img-fluid'
             />
           </div>
 
           {/* Right side with player details */}
-          <div style={{ flex: 1 }}>
+          <div className='col-md-6'>
             <h2>{playerData.strPlayer}</h2>
             <p>Team: {playerData.strTeam}</p>
             <p>Country: {playerData.strNationality}</p>
             <p>Position: {playerData.strPosition}</p>
           </div>
-        </>
+        </div>
       ) : (
         <p>Loading...</p>
       )}
