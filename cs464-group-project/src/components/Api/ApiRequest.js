@@ -28,3 +28,13 @@ export async function getAllTeamNames() {
     throw error;
   }
 }
+
+export async function getPLTeamDetails() {
+  const leagueName = 'English Premier League';
+  try {
+    return await getTeamsByLeagueName(leagueName);
+  } catch (error) {
+    console.error('Error getting team names', error.message);
+    throw error;
+  }
+}
