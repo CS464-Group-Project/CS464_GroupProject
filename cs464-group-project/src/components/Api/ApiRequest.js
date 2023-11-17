@@ -11,12 +11,19 @@ export async function getAllPlayersByTeam(teamName) {
   return await theSportsDB.getAllPlayersByTeam(teamName);
 }
 
-async function getTeamsByLeagueName(leagueName) {
-  return await theSportsDB.getTeamsByLeagueName(leagueName);
-}
-
 export async function getPlayerDetails(playerId) {
   return await theSportsDB.getPlayerDetailsById(playerId);
+}
+
+export async function getLeagueDetails(leagueId) {
+  return await theSportsDB.getLeagueDetailsById(leagueId);
+}
+
+export async function getLookUpTable(id, season) {
+  return await theSportsDB.getLookupTableByLeagueIdAndSeason(id, season);
+}
+async function getTeamsByLeagueName(leagueName) {
+  return await theSportsDB.getTeamsByLeagueName(leagueName);
 }
 
 export async function getAllTeamNames() {

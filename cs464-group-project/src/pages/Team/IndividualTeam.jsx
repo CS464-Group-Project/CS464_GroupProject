@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../../style/Team.css';
 import { getAllPlayersByTeam } from '../../components/Api/ApiRequest';
+import { TeamStats } from '../../components/team/TeamStats';
 
 export function IndividualTeam() {
   const location = useLocation();
@@ -22,6 +23,8 @@ export function IndividualTeam() {
     };
     fetchData();
   }, [location.state]);
+
+  // console.log('Team Info: ', team);
 
   return (
     <>
@@ -45,7 +48,11 @@ export function IndividualTeam() {
           </div>
         </div>
         <div className='row'>
-          <div className='col'>Chart</div>
+          <div className='col'>
+            <div className='chart'>
+              <TeamStats teamID={team.idTeam} />
+            </div>
+          </div>
           <div className='col-sm-4'>
             <ul>
               {players.map((player) => (
