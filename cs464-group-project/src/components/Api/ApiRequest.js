@@ -37,3 +37,12 @@ export async function getPLTeamDetails(teamId) {
     throw error;
   }
 }
+
+export async function getSeasonStats(leagueId, year) {
+  try {
+    return await theSportsDB.getLookupTableByLeagueIdAndSeason(leagueId, year);
+  } catch (error) {
+    console.error('Error getting team names:', error.message);
+    throw error;
+  }
+}
