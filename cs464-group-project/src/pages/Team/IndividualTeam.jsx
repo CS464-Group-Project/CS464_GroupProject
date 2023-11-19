@@ -2,13 +2,12 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../../style/Team.css';
-import { getAllPlayersByTeam } from '../../components/Api/ApiRequest';
 import { TeamStats } from '../../components/team/TeamStats';
 import { TeamsSchedule } from '../../components/team/TeamsSchedule';
+import { TeamPlayers } from '../../components/team/TeamPlayers';
 
 export function IndividualTeam() {
   const location = useLocation();
-  const [players, setPlayers] = useState([]);
   const [team, setTeam] = useState({});
 
   useEffect(() => {
@@ -16,16 +15,12 @@ export function IndividualTeam() {
       try {
         const { team } = location.state;
         setTeam(team);
-        const playerInfo = await getAllPlayersByTeam(team.strTeam);
-        setPlayers(playerInfo.player);
       } catch (err) {
         console.error('Error getting player information', err);
       }
     };
     fetchData();
   }, [location.state]);
-
-  console.log('Player Info: ', players);
 
   return (
     <>
@@ -57,17 +52,10 @@ export function IndividualTeam() {
               <TeamsSchedule teamID={team.idTeam} />
             </div>
           </div>
-          <div className='col-sm-4'>
-            <ul>
-              {players.map((player) => (
-                <li key={player.idPlayer} style={{ listStyleType: 'none' }}>
-                  <p className='player-info'>
-                    <span>{player.strPlayer}</span>
-                    <span>{player.strPosition}</span>
-                  </p>
-                </li>
-              ))}
-            </ul>
+          <div className='col'>
+            <div className='team-players'>
+              <TeamPlayers teamName={team.strTeam} />
+            </div>
           </div>
         </div>
       </div>
