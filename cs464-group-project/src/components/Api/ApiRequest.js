@@ -22,6 +22,12 @@ export async function getLeagueDetails(leagueId) {
 export async function getLookUpTable(id, season) {
   return await theSportsDB.getLookupTableByLeagueIdAndSeason(id, season);
 }
+
+// Retrieve teams upcoming schedules
+export async function getUpcomingSchedule(teamId) {
+  return await theSportsDB.getNext5EventsByTeamId(teamId);
+}
+
 async function getTeamsByLeagueName(leagueName) {
   return await theSportsDB.getTeamsByLeagueName(leagueName);
 }

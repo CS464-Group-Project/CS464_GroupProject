@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import '../../style/Team.css';
 import { getAllPlayersByTeam } from '../../components/Api/ApiRequest';
 import { TeamStats } from '../../components/team/TeamStats';
+import { TeamsSchedule } from '../../components/team/TeamsSchedule';
 
 export function IndividualTeam() {
   const location = useLocation();
@@ -24,7 +25,7 @@ export function IndividualTeam() {
     fetchData();
   }, [location.state]);
 
-  // console.log('Team Info: ', team);
+  console.log('Player Info: ', players);
 
   return (
     <>
@@ -51,6 +52,9 @@ export function IndividualTeam() {
           <div className='col'>
             <div className='chart'>
               <TeamStats teamID={team.idTeam} />
+            </div>
+            <div className='team-schedule'>
+              <TeamsSchedule teamID={team.idTeam} />
             </div>
           </div>
           <div className='col-sm-4'>

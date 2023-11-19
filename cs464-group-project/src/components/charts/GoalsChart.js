@@ -4,6 +4,7 @@ import { Pie } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+// Premier League Color Palette
 const backgroundColor = [
   'rgba(4,245,255)',
   'rgba(233,0,82)',

@@ -49,7 +49,7 @@ export function TeamStats({ teamID }) {
       ) : (
         <p>Team information not found or not available</p>
       )}
-      <div className='goals-chart'>
+      <div className='goals-chart w-50'>
         <GoalsChart
           goals={{
             for: teamInfo.intGoalsFor,
