@@ -4,6 +4,7 @@ import {
   getAllPlayersByTeam,
 } from '../../components/Api/ApiRequest';
 import { Link } from 'react-router-dom';
+import '../../style/Player.css';
 
 export function Player() {
   const [players, setPlayers] = useState([]);
@@ -59,7 +60,6 @@ export function Player() {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
       }
-      console.log('randomised');
       return array;
     }
 
@@ -70,13 +70,12 @@ export function Player() {
     setSelectedTeam(event.target.value);
 
     try {
-      if (selectTeam == 'Random') {
+      if (selectTeam === 'Random') {
         setPlayers(randomPlayers);
       } else {
         const response = await getAllPlayersByTeam(selectTeam); // Fetch players for the selected team
 
         if (!response.ok) {
-          const data = response;
           setPlayers(response.player || []);
         } else {
           console.error(`Failed to fetch player data for team ${selectTeam}`);
@@ -94,11 +93,11 @@ export function Player() {
   const renderedPlayers = searchTerm ? filteredPlayers : players;
 
   return (
-    <div className='container'>
+    <div className='background'>
       <h1 className='mt-3'>Players</h1>
       <div className='row'>
         {/*Player Search*/}
-        <div className='col-md-6 mb-3'>
+        <div className='col-md-9 mb-3'>
           <input
             type='text'
             className='form-control'
@@ -108,12 +107,17 @@ export function Player() {
           />
         </div>
         {/*Team Select*/}
-        <div className='col-md-6 mb-3'>
+        <div className='col-md-3 mb-3'>
           <div className='input-group'>
-            <label htmlFor='teamOptions'>Select a team:</label>
-            <select id='teamOptions' onChange={selectTeam} value={selectedTeam}>
+            <label htmlFor='teamOptions'></label>
+            <select
+              id='teamOptions'
+              onChange={selectTeam}
+              value={selectedTeam}
+              style={{ width: '100%' }}
+            >
               <option value='' disabled>
-                Team:
+                Select a team
               </option>
               <option value='Random'>Random</option>
               {teamNames.map((team) => (
@@ -125,24 +129,28 @@ export function Player() {
           </div>
         </div>
 
-        <div className='d-flex flex-wrap'>
+        <div className=' d-flex flex-wrap'>
           {renderedPlayers.map((player) => {
             const key = `${player.strTeam}-${player.idPlayer}`;
 
             return (
               <div key={key} data-key={key} className='col-md-3 mb-3'>
                 <Link to={`/IndividualPlayer/${player.idPlayer}`}>
-                  <img
-                    src={player.strThumb}
-                    alt={`${player.strPlayer}`}
-                    className='img-fluid'
-                  />
+                  <div className='flex container-md card'>
+                    <img
+                      src={player.strThumb}
+                      alt={`${player.strPlayer}`}
+                      className='img-fluid'
+                      style={{ margin: '10px 0' }}
+                    />
+
+                    <p>
+                      <strong>{player.strPlayer}</strong>
+                    </p>
+                    <p>Position: {player.strPosition}</p>
+                    <p>Team: {player.strTeam}</p>
+                  </div>
                 </Link>
-                <p>
-                  <strong>{player.strPlayer}</strong>
-                </p>
-                <p>Position: {player.strPosition}</p>
-                <p>Team: {player.strTeam}</p>
               </div>
             );
           })}

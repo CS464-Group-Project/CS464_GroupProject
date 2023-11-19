@@ -1,0 +1,19 @@
+.container-md {
+  background-color: var(--white);
+  border: var(--black);
+  border-radius: 5px;
+}
+
+.card:hover {
+  background-color: var(--hover);
+  transition: background-color 0.3s ease;
+}
+
+[class*='col-md-'] {
+  border: 0;
+}
+
+select,
+input {
+  height: 35px;
+}
