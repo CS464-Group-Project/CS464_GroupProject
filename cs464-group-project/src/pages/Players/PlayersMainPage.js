@@ -46,9 +46,11 @@ export function Player() {
         setAllPlayers([...uniquePlayers]);
 
         //Randomize and select 20 players to be initially rendered
-        setRandomPlayers(randomize([...allPlayers]).slice(0, 20));
+        const shuffledPlayers = randomize([...uniquePlayers]);
+        const selectedPlayers = shuffledPlayers.slice(0, 20);
 
-        setPlayers(randomPlayers);
+        setPlayers(selectedPlayers);
+        setRandomPlayers(selectedPlayers);
       } catch (error) {
         console.error('An error occurred:', error);
       }
@@ -68,17 +70,18 @@ export function Player() {
 
   async function selectTeam(event) {
     setSelectedTeam(event.target.value);
+    const team = event.target.value;
 
     try {
-      if (selectTeam === 'Random') {
+      if (team === 'Random') {
         setPlayers(randomPlayers);
       } else {
-        const response = await getAllPlayersByTeam(selectTeam); // Fetch players for the selected team
+        const response = await getAllPlayersByTeam(team); // Fetch players for the selected team
 
         if (!response.ok) {
           setPlayers(response.player || []);
         } else {
-          console.error(`Failed to fetch player data for team ${selectTeam}`);
+          console.error(`Failed to fetch player data for team ${team}`);
         }
       }
     } catch (error) {
