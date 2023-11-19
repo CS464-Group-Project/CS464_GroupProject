@@ -26,27 +26,26 @@ export function Player() {
 
         let uniquePlayers = new Set(); // Use Set to store unique players
 
-        for (const team of teams) {
+        const teamPromises = teams.map(async (team) => {
           const teamName = team.strTeam;
           const response = await getAllPlayersByTeam(teamName);
 
           if (!response.ok) {
-            const data = response;
-
-            // Add new players to the Set
-            data.player.forEach((newPlayer) => {
-              uniquePlayers.add(newPlayer);
-            });
+            return response.player || [];
           } else {
             console.error(`Failed to fetch player data for team ${teamName}`);
+            return [];
           }
-        }
+        });
+
+        const teamResponses = await Promise.all(teamPromises);
+        const allPlayers = teamResponses.flat();
 
         // Convert Set back to an array and set the state
-        setAllPlayers([...uniquePlayers]);
+        setAllPlayers([...new Set(allPlayers)]);
 
         //Randomize and select 20 players to be initially rendered
-        const shuffledPlayers = randomize([...uniquePlayers]);
+        const shuffledPlayers = randomize(allPlayers);
         const selectedPlayers = shuffledPlayers.slice(0, 20);
 
         setPlayers(selectedPlayers);
