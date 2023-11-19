@@ -12,7 +12,8 @@ import {
 import { useTheme } from '@table-library/react-table-library/theme';
 
 export const PlayerTable = ({ player }) => {
-  const data = { nodes: player.players.player };
+  console.log('Player Input: ', player);
+  const data = { nodes: player.players };
   const theme = useTheme({
     Table: `height: 100%`,
   });

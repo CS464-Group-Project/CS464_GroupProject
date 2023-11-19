@@ -4,31 +4,35 @@ import { useState, useEffect } from 'react';
 import { PlayerTable } from '../charts/PlayerTable';
 
 export function TeamPlayers({ teamName }) {
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchData = async () => {
       try {
-        const cacheData = localStorage.getItem('playerInfo');
+        const playerInfo = await getAllPlayersByTeam(teamName);
 
-        if (cacheData) {
-          const cacheDataObject = JSON.parse(cacheData);
-          setPlayers(cacheDataObject);
-        } else {
-          const playerInfo = await getAllPlayersByTeam(teamName);
+        if (isMounted) {
           setPlayers(playerInfo.player);
-          const dataString = JSON.stringify(playerInfo);
-          localStorage.setItem('playerInfo', dataString);
+          setLoading(false);
         }
-        setLoading(false);
       } catch (err) {
         console.error('Error getting player information', err);
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
     fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [teamName]);
+
+  console.log('Players: ', players);
 
   if (loading) {
     return <p>Loading...</p>;
