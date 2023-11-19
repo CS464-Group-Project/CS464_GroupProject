@@ -10,9 +10,17 @@ export function TeamPlayers({ teamName }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log('incoming prop: ', teamName);
-        const playerInfo = await getAllPlayersByTeam(teamName);
-        setPlayers(playerInfo.player);
+        const cacheData = localStorage.getItem('playerInfo');
+
+        if (cacheData) {
+          const cacheDataObject = JSON.parse(cacheData);
+          setPlayers(cacheDataObject);
+        } else {
+          const playerInfo = await getAllPlayersByTeam(teamName);
+          setPlayers(playerInfo.player);
+          const dataString = JSON.stringify(playerInfo);
+          localStorage.setItem('playerInfo', dataString);
+        }
         setLoading(false);
       } catch (err) {
         console.error('Error getting player information', err);
@@ -25,15 +33,12 @@ export function TeamPlayers({ teamName }) {
   if (loading) {
     return <p>Loading...</p>;
   }
-  console.log('players22: ', players);
 
   return (
     <>
       <h3>Current Roster</h3>
       <div>
-        {setTimeout(() => {
-          return <PlayerTable player={{ players }} />;
-        }, 5000)}
+        <PlayerTable player={{ players }} />
       </div>
     </>
   );
