@@ -13,7 +13,7 @@ export function Player() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTeam, setSelectedTeam] = useState('');
   const [teamNames, setTeamNames] = useState([]);
-  const teamcache = {};
+  let teamCache = {};
 
   useEffect(() => {
     setPlayers([]);
@@ -74,14 +74,14 @@ export function Player() {
       if (team === 'Random') {
         setPlayers(randomPlayers);
       } else {
-        if (teamcache[team]) {
-          setPlayers(teamcache[team]);
+        if (teamCache[team]) {
+          setPlayers(teamCache[team]);
         } else {
           const response = await getAllPlayersByTeam(team); // Fetch players for the selected team
 
           if (!response.ok) {
             setPlayers(response.player || []);
-            teamcache = response.player;
+            teamCache = response.player;
           } else {
             console.error(`Failed to fetch player data for team ${team}`);
           }
