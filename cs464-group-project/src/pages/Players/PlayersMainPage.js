@@ -4,11 +4,16 @@ import {
   getAllPlayersByTeam,
 } from '../../components/Api/ApiRequest';
 import { Link } from 'react-router-dom';
+import '../../style/Player.css';
 
 export function Player() {
   const [players, setPlayers] = useState([]);
   const [allPlayers, setAllPlayers] = useState([]);
+  const [randomPlayers, setRandomPlayers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedTeam, setSelectedTeam] = useState('');
+  const [teamNames, setTeamNames] = useState([]);
+  let teamCache = {};
 
   useEffect(() => {
     setPlayers([]);
@@ -18,33 +23,32 @@ export function Player() {
 
         const teamNames = await getAllTeamNames();
         const teams = teamNames.teams || [];
+        setTeamNames(teams);
 
-        let uniquePlayers = new Set(); // Use Set to store unique players
-
-        for (const team of teams) {
+        const teamPromises = teams.map(async (team) => {
           const teamName = team.strTeam;
           const response = await getAllPlayersByTeam(teamName);
 
           if (!response.ok) {
-            const data = response;
-
-            // Add new players to the Set
-            data.player.forEach((newPlayer) => {
-              uniquePlayers.add(newPlayer);
-            });
+            return response.player || [];
           } else {
             console.error(`Failed to fetch player data for team ${teamName}`);
+            return [];
           }
-        }
+        });
+
+        const teamResponses = await Promise.all(teamPromises);
+        const allPlayers = teamResponses.flat();
 
         // Convert Set back to an array and set the state
-        setAllPlayers([...uniquePlayers]);
+        setAllPlayers([...new Set(allPlayers)]);
 
         //Randomize and select 20 players to be initially rendered
-        const randomPlayers = randomize([...uniquePlayers]);
-        const selectedPlayers = randomPlayers.slice(0, 20);
+        const shuffledPlayers = randomize(allPlayers);
+        const selectedPlayers = shuffledPlayers.slice(0, 20);
 
         setPlayers(selectedPlayers);
+        setRandomPlayers(selectedPlayers);
       } catch (error) {
         console.error('An error occurred:', error);
       }
@@ -62,6 +66,32 @@ export function Player() {
     fetchPlayers();
   }, []);
 
+  async function selectTeam(event) {
+    setSelectedTeam(event.target.value);
+    const team = event.target.value;
+
+    try {
+      if (team === 'Random') {
+        setPlayers(randomPlayers);
+      } else {
+        if (teamCache[team]) {
+          setPlayers(teamCache[team]);
+        } else {
+          const response = await getAllPlayersByTeam(team); // Fetch players for the selected team
+
+          if (!response.ok) {
+            setPlayers(response.player || []);
+            teamCache = response.player;
+          } else {
+            console.error(`Failed to fetch player data for team ${team}`);
+          }
+        }
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  }
+
   const filteredPlayers = allPlayers.filter((player) =>
     player.strPlayer.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -69,44 +99,68 @@ export function Player() {
   const renderedPlayers = searchTerm ? filteredPlayers : players;
 
   return (
-    <div className='container'>
+    <div className='background'>
       <h1 className='mt-3'>Players</h1>
-
-      <div className='input-group mb-3'>
-        <input
-          type='text'
-          className='form-control'
-          placeholder='Search players...'
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <div className='input-group-append'>
-          <span className='input-group-text' id='basic-addon2'>
-            Search
-          </span>
+      <div className='row'>
+        {/*Player Search*/}
+        <div className='col-md-9 mb-3'>
+          <input
+            type='text'
+            className='form-control'
+            placeholder='Search players...'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
-      </div>
-      <div className='d-flex flex-wrap'>
-        {renderedPlayers.map((player) => {
-          const key = `${player.strPosition}-${player.strTeam}-${player.idPlayer}`;
+        {/*Team Select*/}
+        <div className='col-md-3 mb-3'>
+          <div className='input-group'>
+            <label htmlFor='teamOptions'></label>
+            <select
+              id='teamOptions'
+              onChange={selectTeam}
+              value={selectedTeam}
+              style={{ width: '100%' }}
+            >
+              <option value='' disabled>
+                Select a team
+              </option>
+              <option value='Random'>Random</option>
+              {teamNames.map((team) => (
+                <option key={team.idTeam} value={team.strTeam}>
+                  {team.strTeam}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
 
-          return (
-            <div key={key} data-key={key} className='col-md-3 mb-3'>
-              <Link to={`/IndividualPlayer/${player.idPlayer}`}>
-                <img
-                  src={player.strThumb}
-                  alt={`${player.strPlayer}`}
-                  className='img-fluid'
-                />
-              </Link>
-              <p>
-                <strong>{player.strPlayer}</strong>
-              </p>
-              <p>Position: {player.strPosition}</p>
-              <p>Team: {player.strTeam}</p>
-            </div>
-          );
-        })}
+        <div className=' d-flex flex-wrap'>
+          {renderedPlayers.map((player) => {
+            const key = `${player.strTeam}-${player.idPlayer}`;
+
+            return (
+              <div key={key} data-key={key} className='col-md-3 mb-3'>
+                <Link to={`/IndividualPlayer/${player.idPlayer}`}>
+                  <div className='flex container-md card'>
+                    <img
+                      src={player.strThumb}
+                      alt={`${player.strPlayer}`}
+                      className='img-fluid'
+                      style={{ margin: '10px 0' }}
+                    />
+
+                    <p>
+                      <strong>{player.strPlayer}</strong>
+                    </p>
+                    <p>Position: {player.strPosition}</p>
+                    <p>Team: {player.strTeam}</p>
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
