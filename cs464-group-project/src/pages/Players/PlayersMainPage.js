@@ -13,6 +13,7 @@ export function Player() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTeam, setSelectedTeam] = useState('');
   const [teamNames, setTeamNames] = useState([]);
+  const teamcache = {};
 
   useEffect(() => {
     setPlayers([]);
@@ -23,8 +24,6 @@ export function Player() {
         const teamNames = await getAllTeamNames();
         const teams = teamNames.teams || [];
         setTeamNames(teams);
-
-        let uniquePlayers = new Set(); // Use Set to store unique players
 
         const teamPromises = teams.map(async (team) => {
           const teamName = team.strTeam;
@@ -75,12 +74,17 @@ export function Player() {
       if (team === 'Random') {
         setPlayers(randomPlayers);
       } else {
-        const response = await getAllPlayersByTeam(team); // Fetch players for the selected team
-
-        if (!response.ok) {
-          setPlayers(response.player || []);
+        if (teamcache[team]) {
+          setPlayers(teamcache[team]);
         } else {
-          console.error(`Failed to fetch player data for team ${team}`);
+          const response = await getAllPlayersByTeam(team); // Fetch players for the selected team
+
+          if (!response.ok) {
+            setPlayers(response.player || []);
+            teamcache = response.player;
+          } else {
+            console.error(`Failed to fetch player data for team ${team}`);
+          }
         }
       }
     } catch (error) {
