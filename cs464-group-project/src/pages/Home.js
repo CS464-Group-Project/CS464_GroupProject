@@ -69,6 +69,9 @@ export function Home() {
           name: team.strTeam,
           capacity: team.intStadiumCapacity,
           rank: team.intRank,
+          wins: team.intWin,
+          loss: team.intLoss,
+          points: team.intPoints,
         }));
         setRanking(teamRanks);
       } catch (err) {
@@ -93,8 +96,23 @@ export function Home() {
     ],
   };
 
+  function getTeamClass(index) {
+    if (index < 4) {
+      return 'champions-league';
+    }
+    if (index < 6) {
+      return 'europa-league';
+    }
+    if (index == 7) {
+      return 'europa-qualification';
+    }
+    if (index > 16) {
+      return 'relegation';
+    }
+  }
+
   return (
-    <div className='capacity-chart'>
+    <div className='home-charts'>
       <Bar data={data} />
       <div className='team-ranking'>
         <h2>Team Rankings</h2>
@@ -103,16 +121,30 @@ export function Home() {
             <tr>
               <th>Rank</th>
               <th>Team Name</th>
+              <th>Wins</th>
+              <th>Loss</th>
+              <th>
+                <div className='pts-header'>
+                  Points
+                  <span className='info-container'>
+                    <sup className='info-icon'>i</sup>
+                    <span className='tooltip'>3 pts for wins, 1 for draws</span>
+                  </span>
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
-            {ranking.map((team) => (
-              <tr key={team.id}>
+            {ranking.map((team, index) => (
+              //assign different class name for top 4 teams, 5th team, bottom 3
+              <tr key={team.id} className={getTeamClass(index)}>
                 <td>{team.rank}</td>
                 <td>{team.name}</td>
+                <td>{team.wins}</td>
+                <td>{team.loss}</td>
+                <td>{team.points}</td>
               </tr>
             ))}
-            <td></td>
           </tbody>
         </table>
       </div>
