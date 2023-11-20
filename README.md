@@ -23,4 +23,10 @@
 
 ### Libraries Installed
    1. React Tables: npm install @table-library/react-table-library @emotion/react
+   2. Font Awesome 
+      npm i --save @fortawesome/fontawesome-svg-core
+      npm i --save @fortawesome/free-solid-svg-icons
+      npm i --save @fortawesome/react-fontawesome
+      npm i --save @fortawesome/free-brands-svg-icons
+
 

@@ -5,6 +5,78 @@ body {
 h1 {
   text-align: center;
   color: var(--white);
+  font-size: 20px;
+  font-family: 'Merriweather', serif;
+}
+
+@media (min-width: 414px) {
+  h1 {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 60px;
+  }
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+}
+
+p {
+  font-size: 15px;
+  font-family: 'DM Serif Display', serif;
+}
+
+@media (min-width: 414px) {
+  p {
+    font-size: 20px;
+    font-family: 'DM Serif Display', serif;
+  }
+}
+
+@media (min-width: 768px) {
+  p {
+    font-size: 15px;
+    font-family: 'DM Serif Display', serif;
+  }
+}
+
+@media (min-width: 1024px) {
+  p {
+    font-size: 20px;
+    font-family: 'DM Serif Display', serif;
+  }
+}
+
+#team-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#team-logo img {
+  max-width: 100%;
+}
+
+@media (min-width: 414px) {
+  #team-logo img {
+    max-width: 100%;
+  }
 }
 
 .team-name {
@@ -35,4 +107,14 @@ h1 {
 .player-info {
   display: flex;
   justify-content: space-between;
+}
+
+.social-media-icons {
+  font-size: 30px;
+}
+
+@media (min-width: 414px) {
+  .social-media-icons {
+    font-size: 50px;
+  }
 }
