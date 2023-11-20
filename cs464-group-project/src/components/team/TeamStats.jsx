@@ -40,16 +40,16 @@ export function TeamStats({ teamID }) {
     <>
       <h2 className='text-dark'>Current League Standings</h2>
       {teamInfo ? (
-        <div className='ranking'>
-          <p>Ranked: {teamInfo.intRank}</p>
-          <p>
+        <div className='ranking d-flex justify-content-evenly'>
+          <strong>Ranked: {teamInfo.intRank}</strong>
+          <strong>
             Record: {teamInfo.intWin}-{teamInfo.intDraw}-{teamInfo.intLoss}
-          </p>
+          </strong>
         </div>
       ) : (
         <p>Team information not found or not available</p>
       )}
-      <div className='goals-chart w-50'>
+      <div className='goals-chart mx-auto my-auto w-50'>
         <GoalsChart
           goals={{
             for: teamInfo.intGoalsFor,

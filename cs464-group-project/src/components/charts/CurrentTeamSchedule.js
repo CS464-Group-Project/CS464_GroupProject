@@ -17,38 +17,37 @@ export const UpcomingSchedule = ({ team, teamID }) => {
   const data = { nodes: teamSchedule };
   const theme = useTheme(getTheme());
 
-  // console.log(teamSchedule);
-  // console.log(teamID);
-
   return (
-    <Table data={data} theme={theme}>
-      {(tableList) => (
-        <>
-          <Header>
-            <HeaderRow>
-              <HeaderCell>Date</HeaderCell>
-              <HeaderCell>Opponent</HeaderCell>
-              <HeaderCell>Time</HeaderCell>
-              <HeaderCell>Stadium</HeaderCell>
-            </HeaderRow>
-          </Header>
+    <div className='table-container'>
+      <Table data={data} theme={theme}>
+        {(tableList) => (
+          <>
+            <Header>
+              <HeaderRow>
+                <HeaderCell>Date</HeaderCell>
+                <HeaderCell>Opponent</HeaderCell>
+                <HeaderCell>Time</HeaderCell>
+                <HeaderCell>Stadium</HeaderCell>
+              </HeaderRow>
+            </Header>
 
-          <Body>
-            {tableList.map((item) => (
-              <Row key={item.dateEvent} item={item}>
-                <Cell>{item.dateEvent}</Cell>
-                {item.idHomeTeam === teamID ? (
-                  <Cell>vs {item.strAwayTeam}</Cell>
-                ) : (
-                  <Cell> @ {item.strHomeTeam}</Cell>
-                )}
-                <Cell>{item.strTime}</Cell>
-                <Cell>{item.strVenue}</Cell>
-              </Row>
-            ))}
-          </Body>
-        </>
-      )}
-    </Table>
+            <Body>
+              {tableList.map((item) => (
+                <Row key={item.dateEvent} item={item}>
+                  <Cell>{item.dateEvent}</Cell>
+                  {item.idHomeTeam === teamID ? (
+                    <Cell>vs {item.strAwayTeam}</Cell>
+                  ) : (
+                    <Cell> @ {item.strHomeTeam}</Cell>
+                  )}
+                  <Cell>{item.strTime}</Cell>
+                  <Cell>{item.strVenue}</Cell>
+                </Row>
+              ))}
+            </Body>
+          </>
+        )}
+      </Table>
+    </div>
   );
 };

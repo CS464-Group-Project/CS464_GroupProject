@@ -118,3 +118,19 @@ p {
     font-size: 50px;
   }
 }
+
+.ranking strong {
+  font-size: 15px;
+}
+
+@media (min-width: 414px) {
+  .ranking strong {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .ranking strong {
+    font-size: 25px;
+  }
+}

@@ -92,16 +92,16 @@ export function IndividualTeam() {
           </div>
         </div>
         <div className='row'>
-          <div className='col'>
+          <div className='col-6-6 col-sm-6-6 col-lg-6'>
             <div className='chart mt-4 '>
               <TeamStats teamID={team.idTeam} />
             </div>
-            <div className='team-schedule mt-4'>
+            <div className='team-schedule mt-4 p-4'>
               <TeamsSchedule teamID={team.idTeam} />
             </div>
           </div>
           <div className='col'>
-            <div className='team-players'>
+            <div className='team-players mt-4 p-4'>
               <TeamPlayers teamName={team.strTeam} />
             </div>
           </div>
