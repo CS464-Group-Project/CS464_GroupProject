@@ -48,13 +48,25 @@ export function IndividualPlayer() {
 
           {/* Right side with player details */}
           <div className='col-md-6'>
-            <h2>{playerData.strPlayer}</h2>
+            <div className='d-flex align-items-center'>
+              <h2>{playerData.strPlayer}</h2>
+
+              {/* Team logo as clickable img next to player's name */}
+              {teamData && (
+                <img
+                  src={teamData.strTeamBadge}
+                  alt={`${teamData.strTeam} Logo`}
+                  className='img-fluid'
+                  style={{ height: '2.5em', marginLeft: '10px' }}
+                  onClick={handleTeamClick}
+                />
+              )}
+            </div>
+
+            {/* Other player details */}
             <p>Team: {playerData.strTeam}</p>
             <p>Country: {playerData.strNationality}</p>
             <p>Position: {playerData.strPosition}</p>
-
-            {/* Button to navigate to IndividualTeam */}
-            {teamData && <button onClick={handleTeamClick}>View Team</button>}
           </div>
         </div>
       ) : (
