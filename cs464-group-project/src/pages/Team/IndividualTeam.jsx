@@ -35,47 +35,45 @@ export function IndividualTeam() {
       <h1 className='mt-4'>Welcome to {team.strAlternate} Page</h1>
       <div className=' flex container-md mt-4'>
         <div className='row'>
-          <div className='col-6 col-md-4' id='team-logo'>
-            <h3>To Official Home Page</h3>
-            <div className=''>
-              <a
-                className='team-homepage'
-                href={team.strWebsite}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <img
-                  className='image-fluid'
-                  src={team.strTeamBadge}
-                  alt={`${team.strTeam} badge logo`}
-                />
-              </a>
-            </div>
-          </div>
-          <div className='col-6 col-md-4 social-media-icons' id='team-links'>
-            <h3>Official Team Links</h3>
-            <div className='d-flex justify-content-evenly'>
-              <a
-                href={team.strTwitter}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <FontAwesomeIcon icon={faTwitter} />
-              </a>
-              <a
-                href={team.strFacebook}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <FontAwesomeIcon icon={faFacebook} />
-              </a>
-              <a
-                href={team.strYoutube}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <FontAwesomeIcon icon={faYoutube} />
-              </a>
+          <div className='col-6-6 col-sm-6 col-md-4' id='team-logo'>
+            <div className='row'>
+              <div className='col-12'>
+                <a
+                  className='team-homepage'
+                  href={`https://${team.strWebsite}`}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <img
+                    className='image-fluid'
+                    src={team.strTeamBadge}
+                    alt={`${team.strTeam} badge logo`}
+                  />
+                </a>
+              </div>
+              <div className='col d-flex justify-content-evenly social-media-icons'>
+                <a
+                  href={`https://${team.strTwitter}`}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <FontAwesomeIcon icon={faTwitter} />
+                </a>
+                <a
+                  href={`https://${team.strFacebook}`}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <FontAwesomeIcon icon={faFacebook} />
+                </a>
+                <a
+                  href={`https://${team.strYoutube}`}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <FontAwesomeIcon icon={faYoutube} />
+                </a>
+              </div>
             </div>
           </div>
           <div className='col' id='team-info'>

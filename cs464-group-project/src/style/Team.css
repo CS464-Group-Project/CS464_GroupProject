@@ -100,7 +100,6 @@ p {
 }
 
 [class^='col'] {
-  border: 2px solid var(--black);
   padding: 1rem;
 }
 
