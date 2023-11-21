@@ -47,9 +47,9 @@ export async function getSeasonStats(leagueId, year) {
   }
 }
 
-export async function getNextLeagueEvents(leagueId) {
+export async function getPLPastMatches(leagueId) {
   try {
-    return await theSportsDB.getNext15EventsByLeagueId(leagueId);
+    return await theSportsDB.getPast15EventsByLeagueId(leagueId);
   } catch (error) {
     console.error('Error getting team names:', error.message);
     throw error;
