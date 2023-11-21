@@ -11,14 +11,14 @@ import NavBar from './components/navigationBar/NavBar';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className='App'>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/teamsmainpage" element={<Team />} />
-          <Route path="/player" element={<Player />} />
-          <Route path="/individualteam" element={<IndividualTeam />} />
-          <Route path="/IndividualPlayer/:id" element={<IndividualPlayer />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/teamsmainpage' element={<Team />} />
+          <Route path='/player' element={<Player />} />
+          <Route path='/individualteam' element={<IndividualTeam />} />
+          <Route path='/IndividualPlayer/:id' element={<IndividualPlayer />} />
         </Routes>
       </div>
     </Router>
