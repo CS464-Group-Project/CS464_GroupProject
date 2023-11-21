@@ -103,7 +103,7 @@ export function Home() {
     if (index < 6) {
       return 'europa-league';
     }
-    if (index == 7) {
+    if (index == 6) {
       return 'europa-qualification';
     }
     if (index > 16) {
