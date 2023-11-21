@@ -32,8 +32,6 @@ export function TeamPlayers({ teamName }) {
     };
   }, [teamName]);
 
-  console.log('Players: ', players);
-
   if (loading) {
     return <p>Loading...</p>;
   }

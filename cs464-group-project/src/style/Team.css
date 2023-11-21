@@ -133,3 +133,23 @@ p {
     font-size: 25px;
   }
 }
+
+.roster-style {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .roster-style {
+    font-size: 15px;
+  }
+}
+
+.schedule-style {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .schedule-style {
+    font-size: 15px;
+  }
+}

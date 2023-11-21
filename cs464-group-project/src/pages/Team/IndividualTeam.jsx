@@ -28,7 +28,16 @@ export function IndividualTeam() {
     fetchData();
   }, [location.state]);
 
-  console.log('Team: ', team);
+  // Create an array to store all of the fan arts, then randomly display one each time page loads
+  const fanArtImages = [
+    team.strTeamFanart1,
+    team.strTeamFanart2,
+    team.strTeamFanart3,
+    team.strTeamFanart4,
+  ];
+
+  const index = Math.floor(Math.random() * fanArtImages.length);
+  const randdomFanArt = fanArtImages[index];
 
   return (
     <>
@@ -99,8 +108,18 @@ export function IndividualTeam() {
             </div>
           </div>
           <div className='col'>
-            <div className='team-players mt-4 p-4'>
+            <div className='row'></div>
+            <div className='col team-players mt-4 p-4'>
               <TeamPlayers teamName={team.strTeam} />
+            </div>
+            <div className='col fan-art'>
+              <h3>Fan Art</h3>
+              <img
+                className='image-fluid'
+                src={randdomFanArt}
+                alt={`${team.strTeam} - Fan Arts`}
+                style={{ maxWidth: '100%', maxHeight: 'auto' }}
+              />
             </div>
           </div>
         </div>

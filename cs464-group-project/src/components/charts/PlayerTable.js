@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../../style/Team.css';
 
 import {
   Table,
@@ -12,11 +14,28 @@ import {
 import { useTheme } from '@table-library/react-table-library/theme';
 
 export const PlayerTable = ({ player }) => {
-  console.log('Player Input: ', player);
+  const navigate = useNavigate();
   const data = { nodes: player.players };
-  const theme = useTheme({
+
+  const THEME = {
     Table: `height: 100%`,
-  });
+
+    HeaderCell: `
+      background-color: blue;`,
+
+    Cell: `
+      cursor: pointer;
+      &:hover {
+        background-color: #f5f5f5;
+        color: black;
+      }`,
+  };
+
+  const theme = useTheme(THEME);
+
+  const handlePlayerClick = (playerId) => {
+    navigate(`/individualplayer/${playerId}`);
+  };
 
   return (
     <div style={{ height: '300px' }}>
@@ -32,9 +51,14 @@ export const PlayerTable = ({ player }) => {
 
             <Body>
               {tableList.map((item) => (
-                <Row key={item.idPlayer} item={item}>
-                  <Cell>{item.strPlayer}</Cell>
-                  <Cell>{item.strPosition}</Cell>
+                <Row key={item.idPlayer} className='row-style' item={item}>
+                  <Cell
+                    className='roster-style'
+                    onClick={() => handlePlayerClick(item.idPlayer)}
+                  >
+                    {item.strPlayer}
+                  </Cell>
+                  <Cell className='roster-style'>{item.strPosition}</Cell>
                 </Row>
               ))}
             </Body>
