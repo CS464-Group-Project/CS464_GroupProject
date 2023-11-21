@@ -28,3 +28,7 @@ export async function getAllTeamNames() {
     throw error;
   }
 }
+
+export async function getTeamByName(teamName) {
+  return await theSportsDB.getTeamByName(teamName);
+}
