@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
-import { getAllTeamNames, getSeasonStats } from '../components/Api/ApiRequest';
+import {
+  getAllTeamNames,
+  getSeasonStats,
+  getNextLeagueEvents,
+} from '../components/Api/ApiRequest';
 import '../style/Home.css';
 
 const backgroundColors = [
@@ -83,6 +87,20 @@ export function Home() {
     fetchData();
   }, []);
 
+  //Next 15 match
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getNextLeagueEvents(4328);
+        console.log(data);
+        //get only id, capacity and team name
+      } catch (err) {
+        console.error('Error getting League information', err);
+      }
+    };
+    fetchData();
+  }, []);
+
   const data = {
     labels: stadiumCapacity.map((team) => team.name),
     datasets: [
@@ -112,42 +130,46 @@ export function Home() {
   }
 
   return (
-    <div className='home-charts'>
-      <Bar data={data} />
-      <div className='team-ranking'>
-        <h2>Team Rankings</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Team Name</th>
-              <th>Wins</th>
-              <th>Loss</th>
-              <th>
-                <div className='pts-header'>
-                  Points
-                  <span className='info-container'>
-                    <sup className='info-icon'>i</sup>
-                    <span className='tooltip'>3 pts for wins, 1 for draws</span>
-                  </span>
-                </div>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {ranking.map((team, index) => (
-              //assign different class name for top 4 teams, 5th team, bottom 3
-              <tr key={team.id} className={getTeamClass(index)}>
-                <td>{team.rank}</td>
-                <td>{team.name}</td>
-                <td>{team.wins}</td>
-                <td>{team.loss}</td>
-                <td>{team.points}</td>
+    <>
+      <div className='home-charts'>
+        <Bar data={data} />
+        <div className='team-ranking'>
+          <h2>Team Rankings</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Team Name</th>
+                <th>Wins</th>
+                <th>Loss</th>
+                <th>
+                  <div className='pts-header'>
+                    Points
+                    <span className='info-container'>
+                      <sup className='info-icon'>i</sup>
+                      <span className='tooltip'>
+                        3 pts for wins, 1 for draws
+                      </span>
+                    </span>
+                  </div>
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {ranking.map((team, index) => (
+                //assign different class name for top 4 teams, 5th team, bottom 3
+                <tr key={team.id} className={getTeamClass(index)}>
+                  <td>{team.rank}</td>
+                  <td>{team.name}</td>
+                  <td>{team.wins}</td>
+                  <td>{team.loss}</td>
+                  <td>{team.points}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
