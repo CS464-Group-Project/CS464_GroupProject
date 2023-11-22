@@ -9,6 +9,7 @@ import {
 import '../style/Home.css';
 import StadiumCap from './HomeComps/StadiumCap';
 import Table from './HomeComps/Table';
+import PastMatchTable from './HomeComps/PastMatchTable';
 
 export function Home() {
   const [stadiumCapacity, setStadiumCapacity] = useState([]);
@@ -75,7 +76,17 @@ export function Home() {
           awayScore: match.intAwayScore,
           eventDate: match.dateEvent,
         }));
-        setPastMatches(tempPastMatches);
+
+        const groupedMatches = tempPastMatches.reduce((acc, match) => {
+          const date = match.eventDate;
+
+          //create a property for each date storing in an array of matches
+          acc[date] = acc[date] || [];
+          acc[date].push(match);
+          return acc;
+        }, {});
+
+        setPastMatches(groupedMatches);
       } catch (err) {
         console.error('Error getting League information', err);
       }
@@ -87,8 +98,19 @@ export function Home() {
   return (
     <>
       <div className='home-charts'>
-        <StadiumCap prop={stadiumCapacity} />
-        <Table ranking={ranking} />
+        <div className='home-charts-left'>
+          <Table ranking={ranking} />
+        </div>
+        <div className='home-charts-right'>
+          <StadiumCap prop={stadiumCapacity} />
+          {/* looping over name value pairs in an object: https://javascript.info/keys-values-entries  */}
+
+          <div class='match-list-container'>
+            {Object.entries(pastMatches).map(([date, matches]) => (
+              <PastMatchTable key={date} date={date} matches={matches} />
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
