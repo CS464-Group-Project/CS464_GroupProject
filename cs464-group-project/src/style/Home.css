@@ -1,25 +1,22 @@
 .home-charts {
+  display: flex;
   margin: auto;
-  margin-top: 50px;
-  width: 60%;
+  margin-top: 100px;
   background-color: white;
+  width: 100%;
+  gap: 30px;
 }
 
-.home-charts {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
+.chart-content {
+  height: 250px;
 }
 
 .team-ranking {
   margin-top: 20px;
   margin-left: 20px;
-  padding: 10px;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
   margin-top: 20px;
   border: 1px solid black;
 }
@@ -77,6 +74,10 @@ tr:hover {
   opacity: 1;
 }
 
+.pts-header {
+  display: flex;
+}
+
 /*Add a darker line for groups */
 tr:nth-child(1),
 tr:nth-child(4),
@@ -123,4 +124,10 @@ tr:nth-child(17) {
 
 .relegation:hover {
   background-color: #e65c5c;
+}
+
+@media (min-width: 1025px) {
+  .chart-content {
+    height: 500px;
+  }
 }

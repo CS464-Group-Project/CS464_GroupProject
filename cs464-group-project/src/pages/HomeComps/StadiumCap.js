@@ -36,6 +36,9 @@ function StadiumCap({ prop }) {
       {
         label: 'Stadium Capicity',
         data: prop.map((team) => team.capacity),
+        options: {
+          responseive: true,
+        },
         backgroundColor: backgroundColors,
         borderColor: borderColors,
         borderWidth: 1,

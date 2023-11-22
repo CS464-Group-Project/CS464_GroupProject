@@ -1,0 +1,56 @@
+/* HomeComps.css */
+
+.match-list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.match-date {
+  font-size: 20px;
+}
+
+.past-match-container {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.match-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.match-item {
+  border: 1px solid #ccc;
+  margin: 15px 0;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.match-item:hover {
+  background-color: #f7f7f7;
+}
+
+.team-names {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-info {
+  margin-bottom: 8px;
+}
+
+.match-scores {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

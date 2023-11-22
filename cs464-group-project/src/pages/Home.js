@@ -102,7 +102,9 @@ export function Home() {
           <Table ranking={ranking} />
         </div>
         <div className='home-charts-right'>
-          <StadiumCap prop={stadiumCapacity} />
+          <div className='chart-content'>
+            <StadiumCap prop={stadiumCapacity} />
+          </div>
           {/* looping over name value pairs in an object: https://javascript.info/keys-values-entries  */}
 
           <div class='match-list-container'>
