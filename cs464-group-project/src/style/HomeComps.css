@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .match-date {
@@ -12,11 +13,12 @@
 
 .past-match-container {
   border: 1px solid #ddd;
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 5px;
+  margin-bottom: 10px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  width: 30%;
 }
 
 .match-list {
@@ -26,7 +28,7 @@
 
 .match-item {
   border: 1px solid #ccc;
-  margin: 15px 0;
+  margin: 10px 0;
   padding: 5px;
   display: flex;
   justify-content: space-between;
