@@ -15,6 +15,7 @@ import {
 export function IndividualTeam() {
   const location = useLocation();
   const [team, setTeam] = useState({});
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,14 +37,26 @@ export function IndividualTeam() {
     team.strTeamFanart4,
   ];
 
-  const index = Math.floor(Math.random() * fanArtImages.length);
-  const randdomFanArt = fanArtImages[index];
+  // Cycles and displays each image in the array
+
+  useEffect(() => {
+    const updateImageIndex = () => {
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % fanArtImages.length,
+      );
+    };
+    const intervalId = setInterval(updateImageIndex, 5000);
+    return () => clearInterval(intervalId);
+  }, [fanArtImages.length]);
+
+  // const index = Math.floor(Math.random() * fanArtImages.length);
+  // const randdomFanArt = fanArtImages[index];
 
   return (
     <>
       <h1 className='mt-4'>Welcome to {team.strAlternate} Page</h1>
       <div className=' flex container-md mt-4'>
-        <div className='row'>
+        <div className='row' id='main-row'>
           <div className='col-6-6 col-sm-6 col-md-4' id='team-logo'>
             <div className='row'>
               <div className='col-12'>
@@ -98,7 +111,7 @@ export function IndividualTeam() {
             <p>Stadium Capacity: {team.intStadiumCapacity}</p>
           </div>
         </div>
-        <div className='row'>
+        <div className='row' id='second-row'>
           <div className='col-6-6 col-sm-6-6 col-lg-6'>
             <div className='chart mt-4 '>
               <TeamStats teamID={team.idTeam} />
@@ -115,8 +128,8 @@ export function IndividualTeam() {
             <div className='col fan-art'>
               <h3>Fan Art</h3>
               <img
-                className='image-fluid'
-                src={randdomFanArt}
+                className='image-fluid transition-fade'
+                src={fanArtImages[currentImageIndex]}
                 alt={`${team.strTeam} - Fan Arts`}
                 style={{ maxWidth: '100%', maxHeight: 'auto' }}
               />

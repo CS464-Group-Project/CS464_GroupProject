@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../../style/Team.css';
 
 import {
@@ -12,31 +11,25 @@ import {
   Cell,
 } from '@table-library/react-table-library/table';
 import { useTheme } from '@table-library/react-table-library/theme';
+import { getTheme } from '@table-library/react-table-library/baseline';
 
 export const UpcomingSchedule = ({ team, teamID }) => {
-  const navigate = useNavigate();
   const teamSchedule = team.teamSchedule.events;
   const data = { nodes: teamSchedule };
 
-  const THEME = {
-    Cell: `
-    cursor: pointer;
-    &:hover {
-      background-color: #f5f5f5;
-      color: black;
-    }`,
-  };
+  // const THEME = {
+  // Cell: `
+  // cursor: pointer;
+  // &:hover {
+  // background-color: #f5f5f5;
+  // color: black;
+  // }`,
+  // };
 
-  const theme = useTheme(THEME);
-
-  // To implement
-  const handleTeamClick = (teamName) => {
-    console.log('team name: ', teamName);
-    // navigate(`/individualteam/${teamName}`);
-  };
+  const theme = useTheme(getTheme());
 
   return (
-    <div className='table-container'>
+    <div className='table-container border border-3 rounded-2'>
       <Table data={data} theme={theme}>
         {(tableList) => (
           <>
@@ -54,17 +47,11 @@ export const UpcomingSchedule = ({ team, teamID }) => {
                 <Row key={item.dateEvent} item={item}>
                   <Cell className='schedule-style'>{item.dateEvent}</Cell>
                   {item.idHomeTeam === teamID ? (
-                    <Cell
-                      className='schedule-style'
-                      onClick={() => handleTeamClick(item.strAwayTeam)}
-                    >
+                    <Cell className='schedule-style'>
                       vs {item.strAwayTeam}
                     </Cell>
                   ) : (
-                    <Cell
-                      className='schedule-style'
-                      onClick={() => handleTeamClick(item.strAwayTeam)}
-                    >
+                    <Cell className='schedule-style'>
                       {' '}
                       @ {item.strHomeTeam}
                     </Cell>

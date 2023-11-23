@@ -38,7 +38,7 @@ export const PlayerTable = ({ player }) => {
   };
 
   return (
-    <div style={{ height: '300px' }}>
+    <div className='border border-3 rounded-2' style={{ height: '300px' }}>
       <Table data={data} theme={theme}>
         {(tableList) => (
           <>
