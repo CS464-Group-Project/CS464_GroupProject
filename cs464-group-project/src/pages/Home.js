@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Chart from 'chart.js/auto';
-import { Bar } from 'react-chartjs-2';
 import {
   getAllTeamNames,
   getSeasonStats,
@@ -106,7 +104,6 @@ export function Home() {
             <StadiumCap prop={stadiumCapacity} />
           </div>
           {/* looping over name value pairs in an object: https://javascript.info/keys-values-entries  */}
-
           <div class='match-list-container'>
             {Object.entries(pastMatches).map(([date, matches]) => (
               <PastMatchTable key={date} date={date} matches={matches} />

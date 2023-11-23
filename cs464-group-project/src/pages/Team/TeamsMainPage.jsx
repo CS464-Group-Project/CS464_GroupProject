@@ -25,15 +25,8 @@ export function Team() {
 
   return (
     <div className='background'>
-      <h1>
-        <img
-          className='league-logo'
-          src='/Images/premierleague_logo.png'
-          alt='Premier League Logo'
-        />
-        Welcome to the Premier League
-      </h1>
-      <div className='flex container overflow-hidden text-center'>
+      <h1 className='mt-4'>Premier League Teams</h1>
+      <div className='flex container overflow-hidden text-center mt-5'>
         <div className='row row-cols-1 row-cols-md-2 row-cols-lg-4 g-1 gx-1'>
           {displayTeams.map((team) => (
             <div
