@@ -40,6 +40,7 @@ h3 {
 p {
   font-size: 15px;
   font-family: 'DM Serif Display', serif;
+  color: white;
 }
 
 @media (min-width: 414px) {
@@ -101,7 +102,6 @@ p {
 }
 
 [class^='col'] {
-  border: 1px solid;
   padding: 1rem;
 }
 
@@ -164,6 +164,19 @@ p {
   opacity: 0.7s;
 }
 
-#main-row {
-  background-color: lightgrey;
+#inner-row-1 {
+  border: 2px solid;
+  border-radius: 5px;
+  background-color: #94bee5;
+}
+
+#inner-row-2 {
+  border: 2px solid;
+  border-radius: 5px;
+  background-color: #94bee5;
+}
+
+#team-stadium-img {
+  max-width: 100%;
+  height: auto;
 }
