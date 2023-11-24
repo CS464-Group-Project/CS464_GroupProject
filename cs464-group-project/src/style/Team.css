@@ -161,3 +161,7 @@ p {
 .transition-fade:hover {
   opacity: 0.7s;
 }
+
+#main-row {
+  background-color: lightgrey;
+}
