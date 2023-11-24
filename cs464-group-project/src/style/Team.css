@@ -71,6 +71,7 @@ p {
 
 #team-logo img {
   max-width: 100%;
+  max-height: auto;
 }
 
 @media (min-width: 414px) {
@@ -100,6 +101,7 @@ p {
 }
 
 [class^='col'] {
+  border: 1px solid;
   padding: 1rem;
 }
 
@@ -160,4 +162,8 @@ p {
 
 .transition-fade:hover {
   opacity: 0.7s;
+}
+
+#main-row {
+  background-color: burlywood;
 }
