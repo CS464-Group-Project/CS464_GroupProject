@@ -21,7 +21,6 @@ export const UpcomingSchedule = ({ team, teamID }) => {
 
   function handleDisplayDate(dateString) {
     const options = { month: 'short', day: 'numeric', weekday: 'short' };
-    console.log('Date: ', dateString);
     return new Date(dateString).toLocaleString('en-US', options);
   }
 
@@ -40,8 +39,6 @@ export const UpcomingSchedule = ({ team, teamID }) => {
 
     return pstTime;
   }
-
-  console.log('Team Info: ', teamSchedule);
 
   return (
     <div className='table-container border border-3 rounded-2'>
