@@ -36,7 +36,6 @@ export const UpcomingSchedule = ({ team, teamID }) => {
     const pstTime = new Intl.DateTimeFormat('en-US', pstOptions).format(
       inputDate,
     );
-
     return pstTime;
   }
 

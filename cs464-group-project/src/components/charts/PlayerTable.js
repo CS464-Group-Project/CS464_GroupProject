@@ -28,9 +28,12 @@ export const PlayerTable = ({ player }) => {
 
     Cell: `
       cursor: pointer;
+      background-color: #ffffff;
+      font-family: 'Roboto', sans-serif;
       &:hover {
         background-color: #f5f5f5;
         color: black;
+        font-weight: bold;
       }`,
   };
 
