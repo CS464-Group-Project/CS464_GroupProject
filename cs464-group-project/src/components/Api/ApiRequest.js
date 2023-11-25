@@ -11,12 +11,25 @@ export async function getAllPlayersByTeam(teamName) {
   return await theSportsDB.getAllPlayersByTeam(teamName);
 }
 
-async function getTeamsByLeagueName(leagueName) {
-  return await theSportsDB.getTeamsByLeagueName(leagueName);
-}
-
 export async function getPlayerDetails(playerId) {
   return await theSportsDB.getPlayerDetailsById(playerId);
+}
+
+export async function getLeagueDetails(leagueId) {
+  return await theSportsDB.getLeagueDetailsById(leagueId);
+}
+
+export async function getLookUpTable(id, season) {
+  return await theSportsDB.getLookupTableByLeagueIdAndSeason(id, season);
+}
+
+// Retrieve teams upcoming schedules
+export async function getUpcomingSchedule(teamId) {
+  return await theSportsDB.getNext5EventsByTeamId(teamId);
+}
+
+async function getTeamsByLeagueName(leagueName) {
+  return await theSportsDB.getTeamsByLeagueName(leagueName);
 }
 
 export async function getAllTeamNames() {
@@ -29,6 +42,27 @@ export async function getAllTeamNames() {
   }
 }
 
-export async function getTeamByName(teamName) {
-  return await theSportsDB.getTeamByName(teamName);
+let allTeamLogos = null;
+export async function getTeamLogos() {
+  //if empty do the call
+  if (allTeamLogos === null) {
+    try {
+      const data = await getAllTeamNames();
+      allTeamLogos = data.teams.map((team) => ({
+        id: team.idTeam,
+        name: team.strTeam,
+        logo: team.strTeamLogo,
+      }));
+    } catch (error) {
+      console.error('Error getting team names:', error.message);
+      throw error;
+    }
+  } else {
+    return allTeamLogos;
+  }
 }
+
+//automatically call it to populate the array at the start
+await getTeamLogos();
+
+export { allTeamLogos };
