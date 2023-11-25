@@ -17,15 +17,6 @@ export const UpcomingSchedule = ({ team, teamID }) => {
   const teamSchedule = team.teamSchedule.events;
   const data = { nodes: teamSchedule };
 
-  // const THEME = {
-  // Cell: `
-  // cursor: pointer;
-  // &:hover {
-  // background-color: #f5f5f5;
-  // color: black;
-  // }`,
-  // };
-
   const theme = useTheme(getTheme());
 
   return (

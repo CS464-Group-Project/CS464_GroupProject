@@ -18,10 +18,13 @@ export const PlayerTable = ({ player }) => {
   const data = { nodes: player.players };
 
   const THEME = {
-    Table: `height: 100%`,
+    Table: `
+      height: 100%;
+      `,
 
     HeaderCell: `
-      background-color: blue;`,
+      background-color: grey;
+      `,
 
     Cell: `
       cursor: pointer;
@@ -39,7 +42,7 @@ export const PlayerTable = ({ player }) => {
 
   return (
     <div className='border border-3 rounded-2' style={{ height: '300px' }}>
-      <Table data={data} theme={theme}>
+      <Table className='table-style' data={data} theme={theme}>
         {(tableList) => (
           <>
             <Header>
@@ -49,7 +52,7 @@ export const PlayerTable = ({ player }) => {
               </HeaderRow>
             </Header>
 
-            <Body>
+            <Body className='body-style'>
               {tableList.map((item) => (
                 <Row key={item.idPlayer} className='row-style' item={item}>
                   <Cell
