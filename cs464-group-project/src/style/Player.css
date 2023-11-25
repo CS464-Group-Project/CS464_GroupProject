@@ -2,7 +2,6 @@
   background-color: var(--white);
   border: var(--black);
   border-radius: 5px;
-  text-decoration: none;
 }
 
 .card:hover {
@@ -17,4 +16,12 @@
 select,
 input {
   height: 35px;
+}
+
+.team-logo {
+  transition: transform 0.3s ease-in-out;
+}
+
+.team-logo:hover {
+  transform: scale(1.2);
 }

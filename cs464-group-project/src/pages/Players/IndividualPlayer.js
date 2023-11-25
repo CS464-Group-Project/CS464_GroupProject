@@ -36,7 +36,7 @@ export function IndividualPlayer() {
   };
 
   return (
-    <div className='container-md'>
+    <div className='container-md mt-4'>
       {playerData ? (
         <div className='row'>
           {/* Left side with player image */}
@@ -58,9 +58,14 @@ export function IndividualPlayer() {
                 <img
                   src={teamData.strTeamBadge}
                   alt={`${teamData.strTeam} Logo`}
-                  className='img-fluid'
-                  style={{ height: '2.5em', marginLeft: '10px' }}
+                  className='img-fluid team-logo'
+                  style={{
+                    height: '2.5em',
+                    marginLeft: '10px',
+                    cursor: 'pointer',
+                  }}
                   onClick={handleTeamClick}
+                  title={`Click to visit the ${teamData.strTeam} page`}
                 />
               )}
             </div>
