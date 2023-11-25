@@ -4,10 +4,15 @@
   margin-top: 100px;
   background-color: white;
   gap: 30px;
+  width: 100%;
+}
+
+.home-charts-right {
+  width: 100%;
 }
 
 .chart-content {
-  height: 400px;
+  height: 250px;
 }
 
 .team-ranking {
@@ -129,7 +134,10 @@ tr:nth-child(17) {
   .chart-content {
     height: 500px;
   }
-  .home-charts {
-    background-color: red;
+}
+
+@media (min-width: 1230px) {
+  .chart-content {
+    height: 400px;
   }
 }
