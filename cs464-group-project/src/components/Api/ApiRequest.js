@@ -41,3 +41,27 @@ export async function getAllTeamNames() {
     throw error;
   }
 }
+
+let allTeamLogos = null;
+
+export async function getTeamLogos() {
+  //if empty do the call
+  if (allTeamLogos === null) {
+    try {
+      const data = await getAllTeamNames();
+      allTeamLogos = data.teams.map((team) => ({
+        name: team.strTeam,
+        logo: team.strTeamLogo,
+      }));
+    } catch (error) {
+      console.error('Error getting team names:', error.message);
+      throw error;
+    }
+  } else {
+    return allTeamLogos;
+  }
+}
+//automatically call it to populate the array
+await getTeamLogos();
+
+export { allTeamLogos };
