@@ -2,6 +2,7 @@
   background-color: var(--white);
   border: var(--black);
   border-radius: 5px;
+  text-decoration: none;
 }
 
 .card:hover {

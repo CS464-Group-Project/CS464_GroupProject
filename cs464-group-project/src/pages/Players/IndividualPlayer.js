@@ -4,9 +4,11 @@ import {
   getPlayerDetails,
   getTeamByName,
 } from '../../components/Api/ApiRequest';
+import '../../style/Player.css';
 
 export function IndividualPlayer() {
   const { id } = useParams();
+
   const navigate = useNavigate();
   const [playerData, setPlayerData] = useState(null);
   const [teamData, setTeamData] = useState(null);
@@ -34,7 +36,7 @@ export function IndividualPlayer() {
   };
 
   return (
-    <div className='container-mt4'>
+    <div className='container-md'>
       {playerData ? (
         <div className='row'>
           {/* Left side with player image */}
@@ -64,9 +66,12 @@ export function IndividualPlayer() {
             </div>
 
             {/* Other player details */}
+            <p>Nationality: {playerData.strNationality}</p>
             <p>Team: {playerData.strTeam}</p>
-            <p>Country: {playerData.strNationality}</p>
+            <p>Date of Birth: {playerData.dateBorn}</p>
             <p>Position: {playerData.strPosition}</p>
+            <p>Height: {playerData.strHeight}</p>
+            <p>Weight: {playerData.strHeight}</p>
           </div>
         </div>
       ) : (

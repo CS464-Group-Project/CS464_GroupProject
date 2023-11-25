@@ -141,7 +141,10 @@ export function Player() {
 
             return (
               <div key={key} data-key={key} className='col-md-3 mb-3'>
-                <Link to={`/IndividualPlayer/${player.idPlayer}`}>
+                <Link
+                  to={`/IndividualPlayer/${player.idPlayer}`}
+                  style={{ textDecoration: 'none' }}
+                >
                   <div className='flex container-md card'>
                     <img
                       src={player.strThumb}
