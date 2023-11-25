@@ -19,9 +19,33 @@ export const UpcomingSchedule = ({ team, teamID }) => {
 
   const theme = useTheme(getTheme());
 
+  function handleDisplayDate(dateString) {
+    const options = { month: 'short', day: 'numeric', weekday: 'short' };
+    console.log('Date: ', dateString);
+    return new Date(dateString).toLocaleString('en-US', options);
+  }
+
+  function handleDisplayTime(timeString) {
+    const inputDate = new Date(timeString);
+    const pstOptions = {
+      timeZone: 'America/Los_Angeles',
+      hour12: true,
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZoneName: 'short',
+    };
+    const pstTime = new Intl.DateTimeFormat('en-US', pstOptions).format(
+      inputDate,
+    );
+
+    return pstTime;
+  }
+
+  console.log('Team Info: ', teamSchedule);
+
   return (
     <div className='table-container border border-3 rounded-2'>
-      <Table data={data} theme={theme}>
+      <Table className='mb-0' data={data} theme={theme}>
         {(tableList) => (
           <>
             <Header>
@@ -36,7 +60,9 @@ export const UpcomingSchedule = ({ team, teamID }) => {
             <Body>
               {tableList.map((item) => (
                 <Row key={item.dateEvent} item={item}>
-                  <Cell className='schedule-style'>{item.dateEvent}</Cell>
+                  <Cell className='schedule-style'>
+                    {handleDisplayDate(item.strTimestamp)}
+                  </Cell>
                   {item.idHomeTeam === teamID ? (
                     <Cell className='schedule-style'>
                       vs {item.strAwayTeam}
@@ -47,7 +73,9 @@ export const UpcomingSchedule = ({ team, teamID }) => {
                       @ {item.strHomeTeam}
                     </Cell>
                   )}
-                  <Cell className='schedule-style'>{item.strTime}</Cell>
+                  <Cell className='schedule-style'>
+                    {handleDisplayTime(item.strTimestamp)}
+                  </Cell>
                   <Cell className='schedule-style'>{item.strVenue}</Cell>
                 </Row>
               ))}
