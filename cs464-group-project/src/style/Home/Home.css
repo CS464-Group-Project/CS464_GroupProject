@@ -3,12 +3,11 @@
   margin: auto;
   margin-top: 100px;
   background-color: white;
-  width: 100%;
   gap: 30px;
 }
 
 .chart-content {
-  height: 250px;
+  height: 400px;
 }
 
 .team-ranking {
@@ -126,8 +125,11 @@ tr:nth-child(17) {
   background-color: #e65c5c;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1920px) {
   .chart-content {
     height: 500px;
+  }
+  .home-charts {
+    background-color: red;
   }
 }

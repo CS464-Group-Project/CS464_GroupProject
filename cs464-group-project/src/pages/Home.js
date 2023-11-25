@@ -4,7 +4,7 @@ import {
   getSeasonStats,
   getPLPastMatches,
 } from '../components/Api/ApiRequest';
-import '../style/Home.css';
+import '../style/Home/Home.css';
 import StadiumCap from './HomeComps/StadiumCap';
 import Table from './HomeComps/Table';
 import PastMatchTable from './HomeComps/PastMatchTable';
