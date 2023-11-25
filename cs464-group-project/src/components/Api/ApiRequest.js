@@ -43,13 +43,13 @@ export async function getAllTeamNames() {
 }
 
 let allTeamLogos = null;
-
 export async function getTeamLogos() {
   //if empty do the call
   if (allTeamLogos === null) {
     try {
       const data = await getAllTeamNames();
       allTeamLogos = data.teams.map((team) => ({
+        id: team.idTeam,
         name: team.strTeam,
         logo: team.strTeamLogo,
       }));
@@ -61,7 +61,8 @@ export async function getTeamLogos() {
     return allTeamLogos;
   }
 }
-//automatically call it to populate the array
+
+//automatically call it to populate the array at the start
 await getTeamLogos();
 
 export { allTeamLogos };
