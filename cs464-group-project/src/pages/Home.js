@@ -104,6 +104,18 @@ export function Home() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        await getTeamLogos();
+        console.log(allTeamLogos);
+      } catch (error) {
+        console.error('Error fetching team logos:', error.message);
+      }
+    }
+
+    fetchData();
+  }, []);
   return (
     <>
       <div className='home-charts'>
