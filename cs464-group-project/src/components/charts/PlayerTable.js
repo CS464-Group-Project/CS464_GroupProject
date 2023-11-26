@@ -24,12 +24,19 @@ export const PlayerTable = ({ player }) => {
 
     HeaderCell: `
       background-color: grey;
+      padding-left: 8px;
+      padding-top: 3px;
+      padding-bottom: 3px;
       `,
 
     Cell: `
       cursor: pointer;
       background-color: #ffffff;
       font-family: 'Roboto', sans-serif;
+      padding-left: 8px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid #f0f0f0;
       &:hover {
         background-color: #f5f5f5;
         color: black;

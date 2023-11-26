@@ -137,10 +137,16 @@ p {
 }
 
 .roster-style {
-  font-size: 12px;
+  font-size: 15px;
 }
 
 @media (min-width: 768px) {
+  .roster-style {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 992px) {
   .roster-style {
     font-size: 15px;
   }
@@ -150,7 +156,25 @@ p {
   font-size: 12px;
 }
 
+@media (min-width: 576px) {
+  .schedule-style {
+    font-size: 15px;
+  }
+}
+
 @media (min-width: 768px) {
+  .schedule-style {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 992px) {
+  .schedule-style {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1200px) {
   .schedule-style {
     font-size: 15px;
   }
