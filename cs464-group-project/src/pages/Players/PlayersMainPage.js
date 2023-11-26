@@ -140,8 +140,15 @@ export function Player() {
             const key = `${player.strTeam}-${player.idPlayer}`;
 
             return (
-              <div key={key} data-key={key} className='col-md-3 mb-3'>
-                <Link to={`/IndividualPlayer/${player.idPlayer}`}>
+              <div
+                key={key}
+                data-key={key}
+                className='col-lg-3 col-md-3 col-sm-6 col-6 mb-3'
+              >
+                <Link
+                  to={`/IndividualPlayer/${player.idPlayer}`}
+                  style={{ textDecoration: 'none' }}
+                >
                   <div className='flex container-md card'>
                     <img
                       src={player.strThumb}
@@ -150,11 +157,24 @@ export function Player() {
                       style={{ margin: '10px 0' }}
                     />
 
-                    <p>
-                      <strong>{player.strPlayer}</strong>
+                    <p style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>
+                      {player.strPlayer}
                     </p>
-                    <p>Position: {player.strPosition}</p>
-                    <p>Team: {player.strTeam}</p>
+                    <p
+                      style={{
+                        fontSize: '1rem',
+                      }}
+                    >
+                      <strong>Position:</strong> {player.strPosition}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: '1rem',
+                      }}
+                    >
+                      <strong>Team: </strong>
+                      {player.strTeam}
+                    </p>
                   </div>
                 </Link>
               </div>

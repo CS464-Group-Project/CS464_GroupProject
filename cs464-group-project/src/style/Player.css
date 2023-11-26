@@ -17,3 +17,11 @@ select,
 input {
   height: 35px;
 }
+
+.team-logo {
+  transition: transform 0.3s ease-in-out;
+}
+
+.team-logo:hover {
+  transform: scale(1.2);
+}
