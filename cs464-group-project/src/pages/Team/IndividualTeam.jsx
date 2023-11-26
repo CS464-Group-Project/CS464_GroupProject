@@ -5,6 +5,7 @@ import '../../style/Team.css';
 import { TeamStats } from '../../components/team/TeamStats';
 import { TeamsSchedule } from '../../components/team/TeamsSchedule';
 import { TeamRoster } from '../../components/team/TeamRoster';
+import { TeamsPreviousMatches } from '../../components/team/TeamsPreviousMatches';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
@@ -72,6 +73,7 @@ export function IndividualTeam() {
                     src={team.strTeamBadge}
                     alt={`${team.strTeam} badge logo`}
                     style={{ maxWidth: '100%', maxHeight: 'auto' }}
+                    title={`To Official Team Home Page`}
                   />
                 </a>
               </div>
@@ -124,8 +126,11 @@ export function IndividualTeam() {
               >
                 <TeamRoster teamName={team.strTeam} />
               </div>
-              <div className='col mt-1 p-2 p-sm-4' id='team-schedule'>
+              <div className='col-12 mt-1 p-2 p-sm-4' id='team-schedule'>
                 <TeamsSchedule teamID={team.idTeam} />
+              </div>
+              <div className='col'>
+                <TeamsPreviousMatches teamID={team.idTeam} />
               </div>
             </div>
           </div>
