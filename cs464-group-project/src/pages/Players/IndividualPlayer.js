@@ -3,8 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import {
   getPlayerDetails,
   getTeamByName,
+  getPlayerContractsById,
 } from '../../components/Api/ApiRequest';
 import '../../style/Player.css';
+import { PlayerContracts } from '../../components/player/PlayerContracts';
+import { PlayerHonours } from '../../components/player/PlayerHonours';
+import { Bar } from 'react-chartjs-2';
 
 export function IndividualPlayer() {
   const { id } = useParams();
@@ -16,6 +20,7 @@ export function IndividualPlayer() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Make API call to get player information by id
         const response = await getPlayerDetails(id);
         setPlayerData(response.players[0]);
 
@@ -76,8 +81,12 @@ export function IndividualPlayer() {
             <p>Date of Birth: {playerData.dateBorn}</p>
             <p>Position: {playerData.strPosition}</p>
             <p>Height: {playerData.strHeight}</p>
-            <p>Weight: {playerData.strHeight}</p>
           </div>
+          {/*Contract Timeline Chart component */}
+          <div className='col-md-12'>
+            <PlayerContracts id={id} />
+          </div>
+          <div className='col-md-12'>{/*<PlayerHonours id={id} />*/}</div>
         </div>
       ) : (
         <p>Loading...</p>

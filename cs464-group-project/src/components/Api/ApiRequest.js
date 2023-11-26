@@ -1,3 +1,5 @@
+import thesportsdb from 'thesportsdb';
+
 // API key
 const apiKey = process.env.REACT_APP_API_KEY;
 const theSportsDB = require('thesportsdb');
@@ -44,6 +46,25 @@ export async function getAllTeamNames() {
 
 export async function getTeamByName(teamName) {
   return await theSportsDB.getTeamByName(teamName);
+}
+
+export async function getPlayerContractsById(id) {
+  try {
+    return await theSportsDB.getPlayerContractsById(id);
+  } catch (error) {
+    console.error('Error getting contract data: '.error.message);
+    throw error;
+  }
+}
+
+export async function getHonoursById(id) {
+  try {
+    console.log(id);
+    return await theSportsDB.getPlayerHonoursById(id);
+  } catch (error) {
+    console.error('Error getting honours data: '.error.message);
+    throw error;
+  }
 }
 
 let allTeamLogos = null;
