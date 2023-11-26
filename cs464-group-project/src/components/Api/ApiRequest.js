@@ -62,7 +62,4 @@ export async function getTeamLogos() {
   }
 }
 
-//automatically call it to populate the array at the start
-await getTeamLogos();
-
 export { allTeamLogos };
