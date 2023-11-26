@@ -9,6 +9,7 @@ import '../style/Home/Home.css';
 import StadiumCap from './HomeComps/StadiumCap';
 import Table from './HomeComps/Table';
 import PastMatchTable from './HomeComps/PastMatchTable';
+import { getTeamLogos, allTeamLogos } from '../components/Api/ApiRequest';
 
 export function Home() {
   const [stadiumCapacity, setStadiumCapacity] = useState([]);

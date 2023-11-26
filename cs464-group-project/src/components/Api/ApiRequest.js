@@ -71,7 +71,7 @@ export async function getPLPastMatches(leagueId) {
 
 export async function getPLLiveScores() {
   try {
-    return await theSportsDB.getBasketballLivescores();
+    return await theSportsDB.getLivescoresBySport('soccer');
   } catch (error) {
     console.error('Error getting team names:', error.message);
     throw error;
