@@ -46,6 +46,10 @@ export async function getAllTeamNames() {
   }
 }
 
+export async function getTeamByName(teamName) {
+  return await theSportsDB.getTeamByName(teamName);
+}
+
 let allTeamLogos = null;
 export async function getTeamLogos() {
   //if empty do the call
@@ -65,8 +69,5 @@ export async function getTeamLogos() {
     return allTeamLogos;
   }
 }
-
-//automatically call it to populate the array at the start
-await getTeamLogos();
 
 export { allTeamLogos };
