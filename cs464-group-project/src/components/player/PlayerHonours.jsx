@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getHonoursById, getPlayerDetails } from '../Api/ApiRequest';
-import thesportsdb, { getPlayerHonoursById } from 'thesportsdb';
+import { getHonoursById } from '../Api/ApiRequest';
+import { getPlayerHonoursById } from 'thesportsdb';
 
 export function PlayerHonours({ id }) {
   useEffect(() => {

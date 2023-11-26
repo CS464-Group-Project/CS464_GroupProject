@@ -3,12 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import {
   getPlayerDetails,
   getTeamByName,
-  getPlayerContractsById,
 } from '../../components/Api/ApiRequest';
 import '../../style/Player.css';
 import { PlayerContracts } from '../../components/player/PlayerContracts';
-import { PlayerHonours } from '../../components/player/PlayerHonours';
-import { Bar } from 'react-chartjs-2';
+//import { PlayerHonours } from '../../components/player/PlayerHonours';
 
 export function IndividualPlayer() {
   const { id } = useParams();
