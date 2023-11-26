@@ -68,3 +68,12 @@ export async function getPLPastMatches(leagueId) {
     throw error;
   }
 }
+
+export async function getPLLiveScores() {
+  try {
+    return await theSportsDB.getBasketballLivescores();
+  } catch (error) {
+    console.error('Error getting team names:', error.message);
+    throw error;
+  }
+}

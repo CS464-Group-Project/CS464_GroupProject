@@ -130,14 +130,13 @@ tr:nth-child(17) {
   background-color: #e65c5c;
 }
 
-@media (min-width: 1920px) {
-  .chart-content {
-    height: 500px;
-  }
-}
-
 @media (min-width: 1230px) {
   .chart-content {
     height: 400px;
+  }
+}
+@media (min-width: 1920px) {
+  .chart-content {
+    height: 500px;
   }
 }

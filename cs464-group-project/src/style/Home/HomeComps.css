@@ -1,14 +1,19 @@
 /* HomeComps.css */
 
 .match-list-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 20px;
+  height: 400px;
+  overflow-y: auto;
+  padding: 10px; /* Add padding for better visual separation */
+  border: 1px solid #ddd; /* Add a border for a container look */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  max-width: 500px;
 }
 
 .match-date {
   font-size: 20px;
+  margin-bottom: 8px;
 }
 
 .past-match-container {
@@ -18,7 +23,6 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  width: 30%;
 }
 
 .match-list {
@@ -29,7 +33,7 @@
 .match-item {
   border: 1px solid #ccc;
   margin: 10px 0;
-  padding: 5px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;

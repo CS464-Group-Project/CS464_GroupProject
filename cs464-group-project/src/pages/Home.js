@@ -3,6 +3,7 @@ import {
   getAllTeamNames,
   getSeasonStats,
   getPLPastMatches,
+  getPLLiveScores,
 } from '../components/Api/ApiRequest';
 import '../style/Home/Home.css';
 import StadiumCap from './HomeComps/StadiumCap';
@@ -58,12 +59,24 @@ export function Home() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getPLLiveScores();
+
+        console.log(data);
+      } catch (err) {
+        console.error('Error getting League information', err);
+      }
+    };
+    fetchData();
+  }, []);
+
   //Past 15 match
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getPLPastMatches(4328);
-        console.log(data);
         const tempPastMatches = data.events.map((match) => ({
           id: match.idEvent,
           homeId: match.idHomeTeam,
@@ -83,7 +96,6 @@ export function Home() {
           acc[date].push(match);
           return acc;
         }, {});
-
         setPastMatches(groupedMatches);
       } catch (err) {
         console.error('Error getting League information', err);
@@ -92,7 +104,6 @@ export function Home() {
     fetchData();
   }, []);
 
-  console.log(pastMatches);
   return (
     <>
       <div className='home-charts'>
