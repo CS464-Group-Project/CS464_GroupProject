@@ -5,6 +5,7 @@ export function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
+        await getTeamLogos();
         console.log(allTeamLogos);
       } catch (error) {
         console.error('Error fetching team logos:', error.message);
