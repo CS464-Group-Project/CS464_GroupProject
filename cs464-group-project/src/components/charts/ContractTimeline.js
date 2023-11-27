@@ -29,6 +29,8 @@ export const ContractTimeline = ({ contracts }) => {
       endYear: contracts.strYearEnd,
     }));
 
+    chartData.sort((a, b) => a.startYear - b.startYear);
+
     const minStartYear = Math.min(...chartData.map((team) => team.startYear));
     const maxEndYear = Math.max(...chartData.map((team) => team.endYear));
 
