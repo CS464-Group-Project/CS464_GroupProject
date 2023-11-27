@@ -36,6 +36,19 @@ export const PreviousMatches = ({ team, teamID }) => {
     }
   }
 
+  function getOutcomeColor(outcome) {
+    switch (outcome) {
+      case 'Win':
+        return 'win-color';
+      case 'Draw':
+        return 'draw-color';
+      case 'Loss':
+        return 'loss-color';
+      default:
+        return '';
+    }
+  }
+
   function displayScores(item) {
     let score = `${item.intHomeScore} - ${item.intAwayScore}`;
     return score;
@@ -71,7 +84,13 @@ export const PreviousMatches = ({ team, teamID }) => {
                       @ {item.strHomeTeam}
                     </Cell>
                   )}
-                  <Cell className='schedule-style'>{handleOutcome(item)}</Cell>
+                  <Cell
+                    className={`schedule-style ${getOutcomeColor(
+                      handleOutcome(item),
+                    )}`}
+                  >
+                    {handleOutcome(item)}
+                  </Cell>
                   <Cell className='schedule-style'>{displayScores(item)}</Cell>
                 </Row>
               ))}

@@ -209,3 +209,16 @@ p {
   max-width: 100%;
   height: auto;
 }
+
+.win-color {
+  color: green;
+  font-weight: bold;
+}
+
+.draw-color {
+  color: black;
+}
+
+.loss-color {
+  color: red;
+}

@@ -38,7 +38,6 @@ export const UpcomingSchedule = ({ team, teamID }) => {
     );
     return pstTime;
   }
-  console.log('Team Schedule: ', team);
 
   return (
     <div className='table-container border border-3 rounded-2'>
