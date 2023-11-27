@@ -29,6 +29,7 @@ export const ContractTimeline = ({ contracts }) => {
       endYear: contracts.strYearEnd,
     }));
 
+    //Sort entries from earliest to latest by starting year
     chartData.sort((a, b) => a.startYear - b.startYear);
 
     const minStartYear = Math.min(...chartData.map((team) => team.startYear));
@@ -51,7 +52,6 @@ export const ContractTimeline = ({ contracts }) => {
         },
       ],
     };
-    console.log(datasets);
 
     const chartOptions = {
       type: 'bar',

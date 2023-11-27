@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { getHonoursById } from '../Api/ApiRequest';
-import { getPlayerHonoursById } from 'thesportsdb';
+import { getHonoursById, getMilestonessById } from '../Api/ApiRequest';
+import { HonoursTable } from '../charts/HonoursTable';
 
 export function PlayerHonours({ id }) {
+  const [honours, setHonours] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const honoursResponse = await getHonoursById(id);
-        console.log(honoursResponse);
+        const response = await getHonoursById(id);
+        setHonours(response);
       } catch (err) {
         console.error('Error getting honours', err);
       }
@@ -19,7 +20,9 @@ export function PlayerHonours({ id }) {
   return (
     <>
       <h3>Career Honours</h3>
-      <div></div>
+      <div>
+        <HonoursTable honours={honours} />
+      </div>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import thesportsdb from 'thesportsdb';
+import axios from 'axios';
 
 // API key
 const apiKey = process.env.REACT_APP_API_KEY;
@@ -59,10 +60,24 @@ export async function getPlayerContractsById(id) {
 
 export async function getHonoursById(id) {
   try {
-    console.log(id);
-    return await theSportsDB.getPlayerHonoursById(id);
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/${apiKey}/lookuphonours.php?id=${id}`
+    );
+    return response.data;
   } catch (error) {
-    console.error('Error getting honours data: '.error.message);
+    console.error(`Error getting honours data: ${error.message}`);
+    throw error;
+  }
+}
+
+export async function getMilestonessById(id) {
+  try {
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/${apiKey}/lookupmilestones.php?id=${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(`Error getting milestone data: ${error.message}`);
     throw error;
   }
 }

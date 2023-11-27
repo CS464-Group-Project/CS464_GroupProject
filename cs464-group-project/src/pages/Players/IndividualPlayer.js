@@ -6,7 +6,7 @@ import {
 } from '../../components/Api/ApiRequest';
 import '../../style/Player.css';
 import { PlayerContracts } from '../../components/player/PlayerContracts';
-//import { PlayerHonours } from '../../components/player/PlayerHonours';
+import { PlayerHonours } from '../../components/player/PlayerHonours';
 
 export function IndividualPlayer() {
   const { id } = useParams();
@@ -21,7 +21,7 @@ export function IndividualPlayer() {
         // Make API call to get player information by id
         const response = await getPlayerDetails(id);
         setPlayerData(response.players[0]);
-
+        console.log(response);
         // Make API call to get team information by name
         const teamName = response.players[0].strTeam;
         const teamResponse = await getTeamByName(teamName);
@@ -84,7 +84,7 @@ export function IndividualPlayer() {
           <div className='col-md-12'>
             <PlayerContracts id={id} />
           </div>
-          <div className='col-md-12'>{/*<PlayerHonours id={id} />*/}</div>
+          <div className='col-md-12'>{<PlayerHonours id={id} />}</div>
         </div>
       ) : (
         <p>Loading...</p>
