@@ -4,6 +4,7 @@ import {
   getSeasonStats,
   getPLPastMatches,
   getPLLiveScores,
+  getHistoryLeagues,
 } from '../components/Api/ApiRequest';
 import '../style/Home/Home.css';
 import StadiumCap from './HomeComps/StadiumCap';
@@ -15,6 +16,7 @@ export function Home() {
   const [stadiumCapacity, setStadiumCapacity] = useState([]);
   const [ranking, setRanking] = useState([]);
   const [pastMatches, setPastMatches] = useState([]);
+  const [teamLogos, setTeamLogos] = useState([]);
 
   //Stadium capacity
   useEffect(() => {
@@ -42,6 +44,7 @@ export function Home() {
     const fetchData = async () => {
       try {
         const data = await getSeasonStats(4328, '2023-2024');
+        console.log(data);
         //get only id, capacity and team name
         const teamRanks = data.table.map((team) => ({
           id: team.idTeam,
@@ -51,6 +54,7 @@ export function Home() {
           wins: team.intWin,
           loss: team.intLoss,
           points: team.intPoints,
+          logo: team.strTeamBadge,
         }));
         setRanking(teamRanks);
       } catch (err) {
@@ -78,16 +82,25 @@ export function Home() {
     const fetchData = async () => {
       try {
         const data = await getPLPastMatches(4328);
-        const tempPastMatches = data.events.map((match) => ({
-          id: match.idEvent,
-          homeId: match.idHomeTeam,
-          awayId: match.idAwayTeam,
-          homeName: match.strHomeTeam,
-          awayName: match.strAwayTeam,
-          homeScore: match.intHomeScore,
-          awayScore: match.intAwayScore,
-          eventDate: match.dateEvent,
-        }));
+        console.log(data);
+        const tempPastMatches = data.events.map((match) => {
+          //find logos from ranking array instead of doing another api call
+          const homeTeam = ranking.find((team) => team.id === match.idHomeTeam);
+          const awayTeam = ranking.find((team) => team.id === match.idAwayTeam);
+
+          return {
+            id: match.idEvent,
+            homeId: match.idHomeTeam,
+            awayId: match.idAwayTeam,
+            homeName: match.strHomeTeam,
+            awayName: match.strAwayTeam,
+            homeScore: match.intHomeScore,
+            awayScore: match.intAwayScore,
+            eventDate: match.dateEvent,
+            homeLogo: homeTeam ? homeTeam.logo : null,
+            awayLogo: awayTeam ? awayTeam.logo : null,
+          };
+        });
 
         const groupedMatches = tempPastMatches.reduce((acc, match) => {
           const date = match.eventDate;
@@ -108,7 +121,7 @@ export function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        await getTeamLogos();
+        setTeamLogos(await getTeamLogos());
         console.log(allTeamLogos);
       } catch (error) {
         console.error('Error fetching team logos:', error.message);

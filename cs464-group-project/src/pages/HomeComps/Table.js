@@ -25,7 +25,7 @@ const Table = ({ ranking }) => {
         <thead>
           <tr>
             <th>Rank</th>
-            <th>Team Name</th>
+            <th>Team</th>
             <th>Wins</th>
             <th>Loss</th>
             <th>
@@ -44,7 +44,14 @@ const Table = ({ ranking }) => {
             // Assign different class name for top 4 teams, 5th team, bottom 3
             <tr key={team.id} className={getTeamClass(index)}>
               <td>{team.rank}</td>
-              <td>{team.name}</td>
+              <td className='team-cell'>
+                <img
+                  src={team.logo}
+                  alt={`${team.name} Logo`}
+                  className='team-logo'
+                />
+                <div>{team.name}</div>
+              </td>
               <td>{team.wins}</td>
               <td>{team.loss}</td>
               <td>{team.points}</td>

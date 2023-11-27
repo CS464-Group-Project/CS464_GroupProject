@@ -82,6 +82,10 @@ export async function getTeamByName(teamName) {
   return await theSportsDB.getTeamByName(teamName);
 }
 
+export async function getHistoryLeagues() {
+  return await theSportsDB.getTeamDetailsById(133602);
+}
+
 let allTeamLogos = null;
 export async function getTeamLogos() {
   //if empty do the call
@@ -91,8 +95,9 @@ export async function getTeamLogos() {
       allTeamLogos = data.teams.map((team) => ({
         id: team.idTeam,
         name: team.strTeam,
-        logo: team.strTeamLogo,
+        logo: team.strTeamBadge,
       }));
+      return allTeamLogos;
     } catch (error) {
       console.error('Error getting team names:', error.message);
       throw error;

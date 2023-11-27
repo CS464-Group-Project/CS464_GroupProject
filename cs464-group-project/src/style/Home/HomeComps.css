@@ -45,13 +45,13 @@
   background-color: #f7f7f7;
 }
 
+.team-info {
+  margin-bottom: 8px;
+}
+
 .team-names {
   display: flex;
   flex-direction: column;
-}
-
-.team-info {
-  margin-bottom: 8px;
 }
 
 .match-scores {

@@ -18,11 +18,13 @@
 .team-ranking {
   margin-top: 20px;
   margin-left: 20px;
+  margin-bottom: 10px;
 }
 
 table {
   margin-top: 20px;
   border: 1px solid black;
+  border-bottom: none;
 }
 
 th,
@@ -30,8 +32,19 @@ td {
   padding: 8px;
   line-height: 1.2;
   text-align: left;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
   cursor: default;
+}
+
+.team-cell {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.team-logo {
+  max-width: 30px;
+  max-height: 30px;
 }
 
 th {
@@ -80,15 +93,6 @@ tr:hover {
 
 .pts-header {
   display: flex;
-}
-
-/*Add a darker line for groups */
-tr:nth-child(1),
-tr:nth-child(4),
-tr:nth-child(6),
-tr:nth-child(7),
-tr:nth-child(17) {
-  border-bottom: 2px solid #333;
 }
 
 /* Add differnt colors for groups */
