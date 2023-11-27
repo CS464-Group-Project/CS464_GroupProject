@@ -11,12 +11,14 @@ import StadiumCap from './HomeComps/StadiumCap';
 import Table from './HomeComps/Table';
 import PastMatchTable from './HomeComps/PastMatchTable';
 import { getTeamLogos, allTeamLogos } from '../components/Api/ApiRequest';
+import LiveMatch from './HomeComps/LiveMatch';
 
 export function Home() {
   const [stadiumCapacity, setStadiumCapacity] = useState([]);
   const [ranking, setRanking] = useState([]);
   const [pastMatches, setPastMatches] = useState([]);
   const [teamLogos, setTeamLogos] = useState([]);
+  const [liveTeams, setLiveTeams] = useState([]);
 
   //Stadium capacity
   useEffect(() => {
@@ -44,7 +46,6 @@ export function Home() {
     const fetchData = async () => {
       try {
         const data = await getSeasonStats(4328, '2023-2024');
-        console.log(data);
         //get only id, capacity and team name
         const teamRanks = data.table.map((team) => ({
           id: team.idTeam,
@@ -57,36 +58,15 @@ export function Home() {
           logo: team.strTeamBadge,
         }));
         setRanking(teamRanks);
-      } catch (err) {
-        console.error('Error getting League information', err);
-      }
-    };
-    fetchData();
-  }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getPLLiveScores();
-
-        console.log(data);
-      } catch (err) {
-        console.error('Error getting League information', err);
-      }
-    };
-    fetchData();
-  }, []);
-
-  //Past 15 match
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getPLPastMatches(4328);
-        console.log(data);
-        const tempPastMatches = data.events.map((match) => {
-          //find logos from ranking array instead of doing another api call
-          const homeTeam = ranking.find((team) => team.id === match.idHomeTeam);
-          const awayTeam = ranking.find((team) => team.id === match.idAwayTeam);
+        const pastMatchesData = await getPLPastMatches(4328);
+        const tempPastMatches = pastMatchesData.events.map((match) => {
+          const homeTeam = teamRanks.find(
+            (team) => team.id === match.idHomeTeam
+          );
+          const awayTeam = teamRanks.find(
+            (team) => team.id === match.idAwayTeam
+          );
 
           return {
             id: match.idEvent,
@@ -118,18 +98,35 @@ export function Home() {
     fetchData();
   }, []);
 
+  //getting live matches
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
-        setTeamLogos(await getTeamLogos());
-        console.log(allTeamLogos);
-      } catch (error) {
-        console.error('Error fetching team logos:', error.message);
+        const data = await getPLLiveScores();
+        console.log(data);
+        //Filter out non PL leagues
+        const plData = data.events.filter((match) => match.idLeague === '4398');
+        console.log(data);
+        const liveMatches = plData.map((match) => ({
+          homeId: match.idHomeTeam,
+          awayId: match.idAwayTeam,
+          homeTeam: match.strHomeTeam,
+          awayTeam: match.strAwayTeam,
+          homeScore: match.intHomeScore,
+          awayScore: match.intAwayScore,
+          clock: match.strProgress,
+          homeLogo: match.strHomeTeamBadge,
+          awayLogo: match.strAwayTeamBadge,
+        }));
+        setLiveTeams(liveMatches);
+      } catch (err) {
+        console.error('Error getting League information', err);
       }
-    }
-
+    };
     fetchData();
-  }, []);
+  }, [liveTeams.clock]);
+  console.log(liveTeams);
+
   return (
     <>
       <div className='home-charts'>
@@ -137,11 +134,17 @@ export function Home() {
           <Table ranking={ranking} />
         </div>
         <div className='home-charts-right'>
+          <div className='live-game'>
+            <h2>Live Matches</h2>
+            {liveTeams.map((liveMatch) => (
+              <LiveMatch key={liveMatch.homeId} match={liveMatch} />
+            ))}
+          </div>
           <div className='chart-content'>
             <StadiumCap prop={stadiumCapacity} />
           </div>
           {/* looping over name value pairs in an object: https://javascript.info/keys-values-entries  */}
-          <div class='match-list-container'>
+          <div className='match-list-container'>
             {Object.entries(pastMatches).map(([date, matches]) => (
               <PastMatchTable key={date} date={date} matches={matches} />
             ))}

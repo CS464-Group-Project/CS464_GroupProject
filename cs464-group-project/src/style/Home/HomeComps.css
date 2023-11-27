@@ -1,6 +1,7 @@
 /* HomeComps.css */
 
-.match-list-container {
+.match-list-container,
+.live-game {
   height: 400px;
   overflow-y: auto;
   padding: 10px; /* Add padding for better visual separation */

@@ -1,0 +1,50 @@
+.live-game {
+  margin-top: 10px;
+  width: 500px;
+  height: 500px;
+  font-size: 20px;
+}
+
+.live-header {
+  color: black;
+}
+
+.live-left {
+  display: flex;
+  gap: 20px;
+}
+
+.live-clock {
+  align-self: center;
+  margin-left: 5px;
+  font-size: 25px;
+}
+
+/* https://stackoverflow.com/questions/64753675/css-fade-out-and-stay-so */
+.circle-icon {
+  align-self: center;
+  width: 15px;
+  height: 15px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  animation: fadeInOut 2.5s linear infinite;
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.live-game .team-names {
+  gap: 10px;
+}
+
+.live-game .team-logo {
+  max-width: 40px;
+  max-height: 40px;
+}
