@@ -105,7 +105,7 @@ export function Home() {
         const data = await getPLLiveScores();
         console.log(data);
         //Filter out non PL leagues
-        const plData = data.events.filter((match) => match.idLeague === '4398');
+        const plData = data.events.filter((match) => match.idLeague === '4322');
         console.log(data);
         const liveMatches = plData.map((match) => ({
           homeId: match.idHomeTeam,
@@ -124,8 +124,13 @@ export function Home() {
       }
     };
     fetchData();
-  }, [liveTeams.clock]);
-  console.log(liveTeams);
+
+    const intervalId = setInterval(() => {
+      fetchData();
+    }, 60000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <>
@@ -135,10 +140,17 @@ export function Home() {
         </div>
         <div className='home-charts-right'>
           <div className='live-game'>
-            <h2>Live Matches</h2>
-            {liveTeams.map((liveMatch) => (
-              <LiveMatch key={liveMatch.homeId} match={liveMatch} />
-            ))}
+            {liveTeams.length > 0 ? (
+              //if there is live game
+              <>
+                <h2>Live Matches</h2>
+                {liveTeams.map((liveMatch) => (
+                  <LiveMatch key={liveMatch.homeId} match={liveMatch} />
+                ))}
+              </>
+            ) : (
+              <p>No live matches</p>
+            )}
           </div>
           <div className='chart-content'>
             <StadiumCap prop={stadiumCapacity} />
