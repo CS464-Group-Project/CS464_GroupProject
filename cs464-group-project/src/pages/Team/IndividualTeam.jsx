@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import '../../style/Team.css';
 import { TeamStats } from '../../components/team/TeamStats';
 import { TeamsSchedule } from '../../components/team/TeamsSchedule';
-import { TeamPlayers } from '../../components/team/TeamPlayers';
+import { TeamRoster } from '../../components/team/TeamRoster';
+import { TeamsPreviousMatches } from '../../components/team/TeamsPreviousMatches';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
@@ -15,6 +16,7 @@ import {
 export function IndividualTeam() {
   const location = useLocation();
   const [team, setTeam] = useState({});
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,17 +38,29 @@ export function IndividualTeam() {
     team.strTeamFanart4,
   ];
 
-  const index = Math.floor(Math.random() * fanArtImages.length);
-  const randdomFanArt = fanArtImages[index];
+  // Cycles and displays each image in the array
+
+  useEffect(() => {
+    const updateImageIndex = () => {
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % fanArtImages.length,
+      );
+    };
+    const intervalId = setInterval(updateImageIndex, 5000);
+    return () => clearInterval(intervalId);
+  }, [fanArtImages.length]);
 
   return (
     <>
       <h1 className='mt-4'>Welcome to {team.strAlternate} Page</h1>
-      <div className=' flex container-md mt-4'>
-        <div className='row'>
-          <div className='col-6-6 col-sm-6 col-md-4' id='team-logo'>
+      <div className=' flex container-fluid mt-4'>
+        <div className='row' id='main-row'>
+          <div
+            className='col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2'
+            id='links-logo'
+          >
             <div className='row'>
-              <div className='col-12'>
+              <div className='col-6 col-sm-2 col-md-2 col-lg-2 col-xl-12 mx-auto'>
                 <a
                   className='team-homepage'
                   href={`https://${team.strWebsite}`}
@@ -55,12 +69,15 @@ export function IndividualTeam() {
                 >
                   <img
                     className='image-fluid'
+                    id='team-logo'
                     src={team.strTeamBadge}
                     alt={`${team.strTeam} badge logo`}
+                    style={{ maxWidth: '100%', maxHeight: 'auto' }}
+                    title={`To Official Team Home Page`}
                   />
                 </a>
               </div>
-              <div className='col d-flex justify-content-evenly social-media-icons'>
+              <div className='col-12 col-sm-10 col-lg-12 d-flex my-auto justify-content-evenly social-media-icons'>
                 <a
                   href={`https://${team.strTwitter}`}
                   target='_blank'
@@ -85,42 +102,49 @@ export function IndividualTeam() {
               </div>
             </div>
           </div>
-          <div className='col' id='team-info'>
+          <div className='col-sm-12 col-md-6 col-lg-6 col-xl-4' id='team-info'>
+            <div className='row' id='inner-row-1'>
+              <div className='col-12 col-lg-12 chart mt-4' id='goals-chart'>
+                <TeamStats teamID={team.idTeam} />
+              </div>
+              <div className='col' id='fan-art'>
+                <h2>Fan Art</h2>
+                <img
+                  className='image-fluid transition-fade'
+                  src={fanArtImages[currentImageIndex]}
+                  alt={`${team.strTeam} - Fan Arts`}
+                  style={{ maxWidth: '100%', maxHeight: 'auto' }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className='col-12 col-md-6 col-lg-6 col-xl-5 col-xxl-4'>
+            <div className='row' id='inner-row-2'>
+              <div
+                className='col-12 col-sm-12 col-md-12 col-lg-12 mt-4 p-2 p-sm-4'
+                id='team-players'
+              >
+                <TeamRoster teamName={team.strTeam} />
+              </div>
+              <div className='col-12 mt-1 p-2 p-sm-4' id='team-schedule'>
+                <TeamsSchedule teamID={team.idTeam} />
+              </div>
+              <div className='col'>
+                <TeamsPreviousMatches teamID={team.idTeam} />
+              </div>
+            </div>
+          </div>
+          <div className='col-12 col-md-6 col-xl-6 col-xxl-2 mx-auto'>
             <img
-              className='image-fluid'
+              className='image-fluid mx-auto'
+              id='team-stadium-img'
               src={team.strStadiumThumb}
               alt={`${team.strTeam} stadium`}
-              style={{ maxWidth: '100%', height: 'auto' }}
             />
             <p>Country: {team.strCountry}</p>
             <p>Formed Year: {team.intFormedYear}</p>
             <p>Stadium: {team.strStadiumLocation}</p>
             <p>Stadium Capacity: {team.intStadiumCapacity}</p>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='col-6-6 col-sm-6-6 col-lg-6'>
-            <div className='chart mt-4 '>
-              <TeamStats teamID={team.idTeam} />
-            </div>
-            <div className='team-schedule mt-4 p-4'>
-              <TeamsSchedule teamID={team.idTeam} />
-            </div>
-          </div>
-          <div className='col'>
-            <div className='row'></div>
-            <div className='col team-players mt-4 p-4'>
-              <TeamPlayers teamName={team.strTeam} />
-            </div>
-            <div className='col fan-art'>
-              <h3>Fan Art</h3>
-              <img
-                className='image-fluid'
-                src={randdomFanArt}
-                alt={`${team.strTeam} - Fan Arts`}
-                style={{ maxWidth: '100%', maxHeight: 'auto' }}
-              />
-            </div>
           </div>
         </div>
       </div>

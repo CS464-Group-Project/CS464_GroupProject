@@ -34,7 +34,7 @@ export function TeamsSchedule({ teamID }) {
 
   return (
     <>
-      <h3>Upcoming Schedule</h3>
+      <h2>Upcoming Schedule</h2>
       <div>
         <UpcomingSchedule team={{ teamSchedule }} teamID={teamID} />
       </div>
