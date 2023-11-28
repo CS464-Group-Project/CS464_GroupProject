@@ -1,7 +1,7 @@
 .live-game {
   margin-top: 10px;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   font-size: 20px;
 }
 
@@ -28,6 +28,19 @@
   background-color: #ff0000;
   border-radius: 50%;
   animation: fadeInOut 2.5s linear infinite;
+}
+
+.no-live {
+  text-align: center;
+}
+
+.no-live p {
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.no-live img {
+  width: 350px;
 }
 
 @keyframes fadeInOut {

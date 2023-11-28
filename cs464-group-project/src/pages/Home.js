@@ -139,27 +139,37 @@ export function Home() {
           <Table ranking={ranking} />
         </div>
         <div className='home-charts-right'>
-          <div className='live-game'>
-            {liveTeams.length > 0 ? (
-              //if there is live game
-              <>
-                <h2>Live Matches</h2>
-                {liveTeams.map((liveMatch) => (
-                  <LiveMatch key={liveMatch.homeId} match={liveMatch} />
-                ))}
-              </>
-            ) : (
-              <p>No live matches</p>
-            )}
-          </div>
           <div className='chart-content'>
             <StadiumCap prop={stadiumCapacity} />
           </div>
-          {/* looping over name value pairs in an object: https://javascript.info/keys-values-entries  */}
-          <div className='match-list-container'>
-            {Object.entries(pastMatches).map(([date, matches]) => (
-              <PastMatchTable key={date} date={date} matches={matches} />
-            ))}
+          <div className='gamematches-container'>
+            <div className='live-game'>
+              {liveTeams.length > 0 ? (
+                //if there is live game
+                <>
+                  <h2>Live Matches</h2>
+                  {liveTeams.map((liveMatch) => (
+                    <LiveMatch key={liveMatch.homeId} match={liveMatch} />
+                  ))}
+                </>
+              ) : (
+                <div className='no-live'>
+                  <p>No Live Games Currently</p>
+                  <img src='https://media.istockphoto.com/id/609834212/vector/error-404-page.jpg?s=170667a&w=0&k=20&c=WyWApHYs9ku80AUYwDApZ2jADK6S_pG9Gu_K3M_Y4lo=' />
+                  <p>Come Back in the Weekends!</p>
+                </div>
+              )}
+            </div>
+
+            {/* looping over name value pairs in an object: https://javascript.info/keys-values-entries  */}
+            <div className='match-list-container'>
+              <h2>Past Matches</h2>
+              <div className='all-past-matches'>
+                {Object.entries(pastMatches).map(([date, matches]) => (
+                  <PastMatchTable key={date} date={date} matches={matches} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
