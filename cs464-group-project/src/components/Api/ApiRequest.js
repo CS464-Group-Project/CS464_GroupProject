@@ -58,6 +58,15 @@ export async function getPlayerContractsById(id) {
   }
 }
 
+export async function getFormerTeams(id) {
+  try {
+    return await theSportsDB.getPlayerFormerTeamsById(id);
+  } catch (error) {
+    console.error('Error getting former teams: '.error.message);
+    throw error;
+  }
+}
+
 export async function getHonoursById(id) {
   try {
     const response = await axios.get(

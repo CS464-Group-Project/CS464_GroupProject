@@ -5,7 +5,8 @@ import {
   getTeamByName,
 } from '../../components/Api/ApiRequest';
 import '../../style/Player.css';
-import { PlayerContracts } from '../../components/player/PlayerContracts';
+
+import { PlayerFormerTeams } from '../../components/player/PlayerFormerTeams';
 import { PlayerHonours } from '../../components/player/PlayerHonours';
 import {
   faInstagram,
@@ -129,8 +130,9 @@ export function IndividualPlayer() {
           </div>
 
           {/*Contract Timeline Chart component */}
+
           <div className='col-md-12'>
-            <PlayerContracts id={id} />
+            <PlayerFormerTeams id={id} />
           </div>
           <div className='col-md-12'>{<PlayerHonours id={id} />}</div>
         </div>

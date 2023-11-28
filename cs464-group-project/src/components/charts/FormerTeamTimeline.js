@@ -19,15 +19,26 @@ ChartJS.register(
   Legend
 );
 
-export const ContractTimeline = ({ contracts }) => {
+export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
   let chartData = [];
 
-  if (contracts.length != []) {
-    chartData = contracts.contracts.map((contracts) => ({
+  console.log(formerTeams);
+  if (formerTeams.length != [] && contracts.length != []) {
+    const formerTeamData = formerTeams.formerteams.map((formerTeams) => ({
+      team: formerTeams.strFormerTeam,
+      startYear: formerTeams.strJoined,
+      endYear: formerTeams.strDeparted,
+    }));
+
+    const contractData = contracts.contracts.map((contracts) => ({
       team: contracts.strTeam,
       startYear: contracts.strYearStart,
       endYear: contracts.strYearEnd,
     }));
+
+    chartData = [...formerTeamData, ...contractData];
+    // Filter out entries where startYear and endYear are the same
+    chartData = chartData.filter((team) => team.startYear !== team.endYear);
 
     //Sort entries from earliest to latest by starting year
     chartData.sort((a, b) => a.startYear - b.startYear);
