@@ -14,6 +14,7 @@ import {
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { PlayerFormerBadges } from '../../components/player/PlayerFormerBadges';
 
 export function IndividualPlayer() {
   const { id } = useParams();
@@ -130,10 +131,12 @@ export function IndividualPlayer() {
           </div>
 
           {/*Contract Timeline Chart component */}
-
-          <div className='col-md-12'>{<PlayerHonours id={id} />}</div>
           <div className='col-md-12'>
             <PlayerFormerTeams id={id} />
+          </div>
+          <div className='col-md-6'>{<PlayerHonours id={id} />}</div>
+          <div className='col-md-6'>
+            <PlayerFormerBadges id={id} />
           </div>
         </div>
       ) : (

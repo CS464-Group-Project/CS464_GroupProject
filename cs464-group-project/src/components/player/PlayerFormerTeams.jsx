@@ -28,33 +28,11 @@ export function PlayerFormerTeams({ id }) {
 
   return (
     <>
-      <h3>Former Teams</h3>
+      <h3>Former Teams Timeline</h3>
       <div>
         {formerTeams && contract && (
           <FormerTeamTimeline formerTeams={formerTeams} contracts={contract} />
         )}
-        <div>
-          {' '}
-          <div className='col d-flex mt-3 flex-wrap justify-content-evenly'>
-            {formerTeams.map((team) => {
-              const key = team.idFormerTeam;
-
-              //Check for duplicates of the same team
-              if (uniqueKeys.has(key)) {
-                return null;
-              }
-              uniqueKeys.add(key);
-              return (
-                <img
-                  key={team.idFormerTeam}
-                  src={team.strTeamBadge}
-                  alt={`${team.strFormerTeam} Team Badge`}
-                  style={{ width: '10%', height: 'auto', margin: '5px' }}
-                />
-              );
-            })}
-          </div>
-        </div>
       </div>
     </>
   );
