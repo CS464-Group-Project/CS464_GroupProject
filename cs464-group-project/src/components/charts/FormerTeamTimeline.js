@@ -7,7 +7,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import React, { useState, useEffect } from 'react';
+
 import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(
@@ -22,15 +22,15 @@ ChartJS.register(
 export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
   let chartData = [];
 
-  console.log(formerTeams);
+  // console.log(formerTeams);
   if (formerTeams.length != [] && contracts.length != []) {
-    const formerTeamData = formerTeams.formerteams.map((formerTeams) => ({
+    const formerTeamData = formerTeams.map((formerTeams) => ({
       team: formerTeams.strFormerTeam,
       startYear: formerTeams.strJoined,
       endYear: formerTeams.strDeparted,
     }));
 
-    const contractData = contracts.contracts.map((contracts) => ({
+    const contractData = contracts.map((contracts) => ({
       team: contracts.strTeam,
       startYear: contracts.strYearStart,
       endYear: contracts.strYearEnd,
@@ -40,12 +40,16 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
     // Filter out entries where startYear and endYear are the same
     chartData = chartData.filter((team) => team.startYear !== team.endYear);
 
+    //Filter out incomplete data
+    chartData = chartData.filter((team) => team.startYear !== '');
+    chartData = chartData.filter((team) => team.endYear !== '');
+
     //Sort entries from earliest to latest by starting year
     chartData.sort((a, b) => a.startYear - b.startYear);
 
     const minStartYear = Math.min(...chartData.map((team) => team.startYear));
     const maxEndYear = Math.max(...chartData.map((team) => team.endYear));
-
+    console.log(chartData);
     let datasets = {
       labels: chartData.map((team) => team.team),
       datasets: [
@@ -83,7 +87,6 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
         },
         title: {
           display: true,
-          text: 'Timeline of contract history',
         },
       },
     };

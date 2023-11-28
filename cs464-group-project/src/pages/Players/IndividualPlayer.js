@@ -131,10 +131,10 @@ export function IndividualPlayer() {
 
           {/*Contract Timeline Chart component */}
 
+          <div className='col-md-12'>{<PlayerHonours id={id} />}</div>
           <div className='col-md-12'>
             <PlayerFormerTeams id={id} />
           </div>
-          <div className='col-md-12'>{<PlayerHonours id={id} />}</div>
         </div>
       ) : (
         <p>Loading...</p>
