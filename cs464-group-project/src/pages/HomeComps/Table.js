@@ -21,7 +21,23 @@ const Table = ({ ranking }) => {
 
   return (
     <div className='team-ranking'>
-      <h2>Team Rankings</h2>
+      <div className='ranking-header info-header'>
+        <h2>Team Rankings</h2>
+        <span className='info-container'>
+          <sup className='info-icon'>i</sup>
+          <span className='tooltip'>
+            <p>
+              Different rank position qualifies in different European Leagues
+            </p>
+            <ul>
+              <li>Top 4: Champions League (Green) </li>
+              <li>5th, 6th: Europa League (Gray)</li>
+              <li>7th: Europa Qualification (Blue)</li>
+              <li>Bottom 3: Relegated to lower divsion (Red)</li>
+            </ul>
+          </span>
+        </span>
+      </div>
       <table>
         <thead>
           <tr>
@@ -30,7 +46,7 @@ const Table = ({ ranking }) => {
             <th>Wins</th>
             <th>Loss</th>
             <th>
-              <div className='pts-header'>
+              <div className='info-header'>
                 Points
                 <span className='info-container'>
                   <sup className='info-icon'>i</sup>
@@ -43,7 +59,7 @@ const Table = ({ ranking }) => {
         <tbody>
           {ranking.map((team, index) => (
             // Assign different class name for top 4 teams, 5th team, bottom 3
-            <tr key={team.id} className={getTeamClass(index)}>
+            <tr key={team.id} className={`cell-left ${getTeamClass(index)}`}>
               <td>{team.rank}</td>
               <td className='team-cell'>
                 <img

@@ -103,6 +103,9 @@ export function Home() {
     const fetchData = async () => {
       try {
         const data = await getPLLiveScores();
+        if (data.events === null) {
+          return;
+        }
         console.log(data);
         //Filter out non PL leagues
         const plData = data.events.filter((match) => match.idLeague === '4322');
