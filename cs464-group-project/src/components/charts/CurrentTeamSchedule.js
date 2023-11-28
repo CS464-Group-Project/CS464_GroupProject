@@ -46,7 +46,7 @@ export const UpcomingSchedule = ({ team, teamID }) => {
           <>
             <Header>
               <HeaderRow>
-                <HeaderCell>Date</HeaderCell>
+                <HeaderCell resize>Date</HeaderCell>
                 <HeaderCell>Opponent</HeaderCell>
                 <HeaderCell>Time</HeaderCell>
               </HeaderRow>

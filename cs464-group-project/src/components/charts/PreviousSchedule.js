@@ -28,21 +28,21 @@ export const PreviousMatches = ({ team, teamID }) => {
     switch (true) {
       case item.intHomeScore > item.intAwayScore && item.idHomeTeam === teamID:
       case item.intAwayScore > item.intHomeScore && item.idAwayTeam === teamID:
-        return 'Win';
+        return 'W';
       case item.intHomeScore === item.intAwayScore:
-        return 'Draw';
+        return 'D';
       default:
-        return 'Loss';
+        return 'L';
     }
   }
 
   function getOutcomeColor(outcome) {
     switch (outcome) {
-      case 'Win':
+      case 'W':
         return 'win-color';
-      case 'Draw':
+      case 'D':
         return 'draw-color';
-      case 'Loss':
+      case 'L':
         return 'loss-color';
       default:
         return '';
@@ -61,8 +61,8 @@ export const PreviousMatches = ({ team, teamID }) => {
           <>
             <Header>
               <HeaderRow>
-                <HeaderCell>Date</HeaderCell>
-                <HeaderCell>Opponent</HeaderCell>
+                <HeaderCell resize>Date</HeaderCell>
+                <HeaderCell resize>Opponent</HeaderCell>
                 <HeaderCell>Outcome</HeaderCell>
                 <HeaderCell>Score</HeaderCell>
               </HeaderRow>
@@ -88,6 +88,7 @@ export const PreviousMatches = ({ team, teamID }) => {
                     className={`schedule-style ${getOutcomeColor(
                       handleOutcome(item),
                     )}`}
+                    id='outcome'
                   >
                     {handleOutcome(item)}
                   </Cell>
