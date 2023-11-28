@@ -36,7 +36,9 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
       endYear: contracts.strYearEnd,
     }));
 
+    //concatenate former team data with contract data
     chartData = [...formerTeamData, ...contractData];
+
     // Filter out entries where startYear and endYear are the same
     chartData = chartData.filter((team) => team.startYear !== team.endYear);
 
@@ -46,6 +48,21 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
 
     //Sort entries from earliest to latest by starting year
     chartData.sort((a, b) => a.startYear - b.startYear);
+
+    // Combine entries with the same team name and consecutive start/end years
+    chartData = chartData.reduce((result, current) => {
+      const last = result[result.length - 1];
+      if (
+        last &&
+        last.team === current.team &&
+        last.endYear === current.startYear
+      ) {
+        last.endYear = current.endYear;
+      } else {
+        result.push(current);
+      }
+      return result;
+    }, []);
 
     const minStartYear = Math.min(...chartData.map((team) => team.startYear));
     const maxEndYear = Math.max(...chartData.map((team) => team.endYear));

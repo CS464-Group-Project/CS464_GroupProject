@@ -35,7 +35,7 @@ export function PlayerFormerTeams({ id }) {
         )}
         <div>
           {' '}
-          <div className='col d-flex mt-3 justify-content-evenly'>
+          <div className='col d-flex mt-3 flex-wrap justify-content-evenly'>
             {formerTeams.map((team) => {
               const key = team.idFormerTeam;
 
