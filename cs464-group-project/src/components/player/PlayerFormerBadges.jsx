@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  getFormerTeams,
-  getPlayerContractsById,
-} from '../../components/Api/ApiRequest';
-import { FormerTeamTimeline } from '../charts/FormerTeamTimeline';
+import { getFormerTeams } from '../../components/Api/ApiRequest';
 
 export function PlayerFormerBadges({ id }) {
   const [formerTeams, setFormerTeams] = useState([]);
@@ -18,7 +14,7 @@ export function PlayerFormerBadges({ id }) {
         console.error('Error getting  former teams', err);
       }
     };
-    console.log(formerTeams);
+
     fetchData();
   }, []);
 
@@ -41,7 +37,7 @@ export function PlayerFormerBadges({ id }) {
               key={team.idFormerTeam}
               src={team.strTeamBadge}
               alt={`${team.strFormerTeam} Team Badge`}
-              style={{ width: '10%', height: 'auto', margin: '5px' }}
+              style={{ width: '33%', height: 'auto' }}
             />
           );
         })}

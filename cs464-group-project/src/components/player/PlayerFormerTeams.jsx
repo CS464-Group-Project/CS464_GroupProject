@@ -20,11 +20,9 @@ export function PlayerFormerTeams({ id }) {
         console.error('Error getting  former teams or contracts', err);
       }
     };
-    console.log(formerTeams);
+
     fetchData();
   }, []);
-
-  const uniqueKeys = new Set();
 
   return (
     <>

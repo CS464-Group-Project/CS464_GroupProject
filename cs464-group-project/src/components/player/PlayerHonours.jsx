@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getHonoursById, getMilestonessById } from '../Api/ApiRequest';
+import { getHonoursById } from '../Api/ApiRequest';
 import { HonoursTable } from '../charts/HonoursTable';
 
 export function PlayerHonours({ id }) {

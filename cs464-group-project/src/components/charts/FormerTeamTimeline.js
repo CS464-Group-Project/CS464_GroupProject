@@ -23,7 +23,7 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
   let chartData = [];
 
   // console.log(formerTeams);
-  if (formerTeams.length != [] && contracts.length != []) {
+  if (formerTeams.length != null && contracts.length != null) {
     const formerTeamData = formerTeams.map((formerTeams) => ({
       team: formerTeams.strFormerTeam,
       startYear: formerTeams.strJoined,
@@ -66,7 +66,7 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
 
     const minStartYear = Math.min(...chartData.map((team) => team.startYear));
     const maxEndYear = Math.max(...chartData.map((team) => team.endYear));
-    console.log(chartData);
+
     let datasets = {
       labels: chartData.map((team) => team.team),
       datasets: [

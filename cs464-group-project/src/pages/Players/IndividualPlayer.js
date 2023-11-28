@@ -123,11 +123,22 @@ export function IndividualPlayer() {
             </div>
 
             {/* Other player details */}
-            <p>Nationality: {playerData.strNationality}</p>
-            <p>Team: {playerData.strTeam}</p>
-            <p>Date of Birth: {playerData.dateBorn}</p>
-            <p>Position: {playerData.strPosition}</p>
-            <p>Height: {playerData.strHeight}</p>
+            <div className='row'>
+              <div className='col-6'>
+                <p>Nationality:</p>
+                <p>Team: </p>
+                <p>Date of Birth: </p>
+                <p>Position: </p>
+                <p>Height: </p>
+              </div>
+              <div className='col-6' style={{ textAlign: 'right' }}>
+                <p>{playerData.strNationality}</p>
+                <p>{playerData.strTeam}</p>
+                <p>{playerData.dateBorn}</p>
+                <p>{playerData.strPosition}</p>
+                <p>{playerData.strHeight}</p>
+              </div>
+            </div>
           </div>
 
           {/*Contract Timeline Chart component */}
