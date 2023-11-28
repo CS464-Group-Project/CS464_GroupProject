@@ -15,7 +15,7 @@ export function PlayerHonours({ id }) {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <>

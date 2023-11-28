@@ -22,7 +22,7 @@ export function PlayerFormerTeams({ id }) {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <div>

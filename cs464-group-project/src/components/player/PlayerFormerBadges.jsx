@@ -16,7 +16,7 @@ export function PlayerFormerBadges({ id }) {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   const uniqueKeys = new Set();
 

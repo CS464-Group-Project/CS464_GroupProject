@@ -34,8 +34,6 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
       startYear: contracts.strYearStart,
       endYear: contracts.strYearEnd,
     }));
-    console.log(contractData);
-    console.log(formerTeamData);
 
     //concatenate former team data with contract data
     chartData = [...formerTeamData, ...contractData];
