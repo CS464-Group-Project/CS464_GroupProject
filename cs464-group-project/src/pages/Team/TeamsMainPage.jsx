@@ -27,7 +27,7 @@ export function Team() {
     <div className='background'>
       <h1 className='mt-4'>Premier League Teams</h1>
       <div className='flex container overflow-hidden text-center mt-5'>
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-4 g-1 gx-1'>
+        <div className='row row-cols-3 row-cols-md-3 row-cols-lg-4 g-1 gx-1'>
           {displayTeams.map((team) => (
             <div
               key={team.idTeam}

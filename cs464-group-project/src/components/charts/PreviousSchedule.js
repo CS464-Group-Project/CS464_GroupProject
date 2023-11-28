@@ -13,9 +13,9 @@ import {
 import { useTheme } from '@table-library/react-table-library/theme';
 import { getTheme } from '@table-library/react-table-library/baseline';
 
-export const UpcomingSchedule = ({ team, teamID }) => {
-  const teamSchedule = team.teamSchedule.events;
-  const data = { nodes: teamSchedule };
+export const PreviousMatches = ({ team, teamID }) => {
+  const prevMatches = team.prevMatches.results;
+  const data = { nodes: prevMatches };
 
   const theme = useTheme(getTheme());
 
@@ -24,19 +24,34 @@ export const UpcomingSchedule = ({ team, teamID }) => {
     return new Date(dateString).toLocaleString('en-US', options);
   }
 
-  function handleDisplayTime(timeString) {
-    const inputDate = new Date(timeString);
-    const pstOptions = {
-      timeZone: 'America/Los_Angeles',
-      hour12: true,
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZoneName: 'short',
-    };
-    const pstTime = new Intl.DateTimeFormat('en-US', pstOptions).format(
-      inputDate,
-    );
-    return pstTime;
+  function handleOutcome(item) {
+    switch (true) {
+      case item.intHomeScore > item.intAwayScore && item.idHomeTeam === teamID:
+      case item.intAwayScore > item.intHomeScore && item.idAwayTeam === teamID:
+        return 'W';
+      case item.intHomeScore === item.intAwayScore:
+        return 'D';
+      default:
+        return 'L';
+    }
+  }
+
+  function getOutcomeColor(outcome) {
+    switch (outcome) {
+      case 'W':
+        return 'win-color';
+      case 'D':
+        return 'draw-color';
+      case 'L':
+        return 'loss-color';
+      default:
+        return '';
+    }
+  }
+
+  function displayScores(item) {
+    let score = `${item.intHomeScore} - ${item.intAwayScore}`;
+    return score;
   }
 
   return (
@@ -47,14 +62,15 @@ export const UpcomingSchedule = ({ team, teamID }) => {
             <Header>
               <HeaderRow>
                 <HeaderCell resize>Date</HeaderCell>
-                <HeaderCell>Opponent</HeaderCell>
-                <HeaderCell>Time</HeaderCell>
+                <HeaderCell resize>Opponent</HeaderCell>
+                <HeaderCell>Outcome</HeaderCell>
+                <HeaderCell>Score</HeaderCell>
               </HeaderRow>
             </Header>
 
             <Body>
               {tableList.map((item) => (
-                <Row key={item.dateEvent} item={item}>
+                <Row key={item.idEvent} item={item}>
                   <Cell className='schedule-style'>
                     {handleDisplayDate(item.strTimestamp)}
                   </Cell>
@@ -68,9 +84,15 @@ export const UpcomingSchedule = ({ team, teamID }) => {
                       @ {item.strHomeTeam}
                     </Cell>
                   )}
-                  <Cell className='schedule-style'>
-                    {handleDisplayTime(item.strTimestamp)}
+                  <Cell
+                    className={`schedule-style ${getOutcomeColor(
+                      handleOutcome(item),
+                    )}`}
+                    id='outcome'
+                  >
+                    {handleOutcome(item)}
                   </Cell>
+                  <Cell className='schedule-style'>{displayScores(item)}</Cell>
                 </Row>
               ))}
             </Body>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { getAllPlayersByTeam } from '../../components/Api/ApiRequest';
+import { getAllPlayersByTeam } from '../Api/ApiRequest';
 import { useState, useEffect } from 'react';
 import { PlayerTable } from '../charts/PlayerTable';
 
-export function TeamPlayers({ teamName }) {
+export function TeamRoster({ teamName }) {
   const [players, setPlayers] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -38,7 +38,7 @@ export function TeamPlayers({ teamName }) {
 
   return (
     <>
-      <h3>Current Roster</h3>
+      <h2>Current Roster</h2>
       <div>
         <PlayerTable player={{ players }} />
       </div>

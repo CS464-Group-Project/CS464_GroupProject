@@ -28,6 +28,10 @@ export async function getUpcomingSchedule(teamId) {
   return await theSportsDB.getNext5EventsByTeamId(teamId);
 }
 
+export async function getPreviousTeamMatches(teamId) {
+  return await theSportsDB.getPast5EventsByTeamId(teamId);
+}
+
 async function getTeamsByLeagueName(leagueName) {
   return await theSportsDB.getTeamsByLeagueName(leagueName);
 }
