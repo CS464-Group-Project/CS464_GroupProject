@@ -28,7 +28,7 @@ export function IndividualPlayer() {
         // Make API call to get player information by id
         const response = await getPlayerDetails(id);
         setPlayerData(response.players[0]);
-        console.log(response);
+
         // Make API call to get team information by name
         const teamName = response.players[0].strTeam;
         const teamResponse = await getTeamByName(teamName);
