@@ -61,16 +61,9 @@ export function IndividualPlayer() {
           <header className='container'>
             <div className='row'>
               {/* Image on the left */}
-              <div className='col-md-4'>
-                <img
-                  src={playerData.strRender}
-                  alt={`{playerData.strPlayer} render`}
-                  className='img-fluid'
-                />
-              </div>
 
               {/* Text in the middle (slightly elevated) */}
-              <div className='col-md-4 d-flex align-items-center'>
+              <div className='col-md-8 d-flex align-items-end'>
                 <h1 className='mt-3'>{playerData.strPlayer}</h1>
               </div>
 
