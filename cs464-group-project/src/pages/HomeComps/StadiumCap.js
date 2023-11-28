@@ -1,8 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-import { Chart as ChartJS } from 'chart.js/auto';
-import { Chart } from 'react-chartjs-2';
 import { Bar } from 'react-chartjs-2';
 
 const backgroundColors = [
@@ -35,7 +33,6 @@ const borderColors = [
 
 function StadiumCap({ prop }) {
   const [displayedTeams, setDisplayedTeams] = useState([]);
-  const sortedData = prop.sort((a, b) => b.capacity - a.capacity);
 
   //https://stackoverflow.com/questions/31162606/how-to-detect-screen-size-for-responsive-web-design
   useEffect(() => {
@@ -43,9 +40,9 @@ function StadiumCap({ prop }) {
       //sort the team from largest to smallest
       const sortedTeams = prop.sort((a, b) => b.capacity - a.capacity);
 
-      // Display all teams in larger media queries
+      // Display all teams in larger media queries but cut to 10 in smaller
       const teamsToDisplay =
-        window.innerWidth >= 1230 ? sortedTeams : sortedTeams.slice(0, 10);
+        window.innerWidth >= 992 ? sortedTeams : sortedTeams.slice(0, 10);
 
       setDisplayedTeams(teamsToDisplay);
     };

@@ -4,20 +4,17 @@ import {
   getSeasonStats,
   getPLPastMatches,
   getPLLiveScores,
-  getHistoryLeagues,
 } from '../components/Api/ApiRequest';
 import '../style/Home/Home.css';
 import StadiumCap from './HomeComps/StadiumCap';
 import Table from './HomeComps/Table';
 import PastMatchTable from './HomeComps/PastMatchTable';
-import { getTeamLogos, allTeamLogos } from '../components/Api/ApiRequest';
 import LiveMatch from './HomeComps/LiveMatch';
 
 export function Home() {
   const [stadiumCapacity, setStadiumCapacity] = useState([]);
   const [ranking, setRanking] = useState([]);
   const [pastMatches, setPastMatches] = useState([]);
-  const [teamLogos, setTeamLogos] = useState([]);
   const [liveTeams, setLiveTeams] = useState([]);
 
   //Stadium capacity
@@ -158,7 +155,10 @@ export function Home() {
               ) : (
                 <div className='no-live'>
                   <p>No Live Games Currently</p>
-                  <img src='https://media.istockphoto.com/id/609834212/vector/error-404-page.jpg?s=170667a&w=0&k=20&c=WyWApHYs9ku80AUYwDApZ2jADK6S_pG9Gu_K3M_Y4lo=' />
+                  <img
+                    src='https://media.istockphoto.com/id/609834212/vector/error-404-page.jpg?s=170667a&w=0&k=20&c=WyWApHYs9ku80AUYwDApZ2jADK6S_pG9Gu_K3M_Y4lo='
+                    alt='404 Not Found'
+                  />
                   <p>Come Back in the Weekends!</p>
                 </div>
               )}

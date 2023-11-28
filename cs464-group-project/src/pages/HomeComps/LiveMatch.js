@@ -10,11 +10,19 @@ function LiveMatch({ match }) {
           <div className='live-clock'>{`${match.clock}'`}</div>
           <div className='team-names'>
             <div className='team-info team-cell'>
-              <img src={match.homeLogo} className='team-logo'></img>
+              <img
+                src={match.homeLogo}
+                className='team-logo'
+                alt={`${match.homeTeam} Logo`}
+              ></img>
               <div>{match.homeTeam}</div>
             </div>
             <div className='team-info team-cell'>
-              <img src={match.awayLogo} className='team-logo'></img>
+              <img
+                src={match.awayLogo}
+                className='team-logo'
+                alt={`${match.awayTeam} Logo`}
+              ></img>
               <div className='team-info'>{match.awayTeam}</div>
             </div>
           </div>
