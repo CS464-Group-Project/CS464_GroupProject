@@ -22,7 +22,6 @@ ChartJS.register(
 export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
   let chartData = [];
 
-  // console.log(formerTeams);
   if (formerTeams.length != null && contracts.length != null) {
     const formerTeamData = formerTeams.map((formerTeams) => ({
       team: formerTeams.strFormerTeam,
@@ -35,6 +34,8 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
       startYear: contracts.strYearStart,
       endYear: contracts.strYearEnd,
     }));
+    console.log(contractData);
+    console.log(formerTeamData);
 
     //concatenate former team data with contract data
     chartData = [...formerTeamData, ...contractData];
@@ -63,6 +64,17 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
       }
       return result;
     }, []);
+
+    // Combine entries with the same team name and consecutive start/end years
+    const uniqueEntries = {};
+    chartData = chartData.filter((current) => {
+      const key = `${current.team}_${current.startYear}_${current.endYear}`;
+      if (!uniqueEntries[key]) {
+        uniqueEntries[key] = true;
+        return true;
+      }
+      return false;
+    });
 
     const minStartYear = Math.min(...chartData.map((team) => team.startYear));
     const maxEndYear = Math.max(...chartData.map((team) => team.endYear));
