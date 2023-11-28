@@ -81,6 +81,7 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
           borderWidth: 1,
           hoverBackgroundColor: 'rgba(75,192,192,0.6)',
           hoverBorderColor: 'rgba(75,192,192,1)',
+          borderSkipped: false,
         },
       ],
     };
@@ -101,9 +102,7 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
       plugins: {
         legend: {
           position: 'top',
-        },
-        title: {
-          display: true,
+          display: false,
         },
       },
     };

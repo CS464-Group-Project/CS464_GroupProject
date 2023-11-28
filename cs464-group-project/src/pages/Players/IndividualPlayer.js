@@ -5,7 +5,6 @@ import {
   getTeamByName,
 } from '../../components/Api/ApiRequest';
 import '../../style/Player.css';
-
 import { PlayerFormerTeams } from '../../components/player/PlayerFormerTeams';
 import { PlayerHonours } from '../../components/player/PlayerHonours';
 import {
@@ -44,6 +43,15 @@ export function IndividualPlayer() {
 
   const handleTeamClick = () => {
     navigate(`/individualteam`, { state: { team: teamData } });
+  };
+
+  const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    return `${month}/${day}/${year}`;
   };
 
   return (
@@ -101,9 +109,12 @@ export function IndividualPlayer() {
           {/* Right side with player details */}
           <div className='col-md-6'>
             <div className='d-flex align-items-center'>
-              <h2>
-                #{playerData.strNumber} {playerData.strPlayer}
-              </h2>
+              {playerData.strNumber && (
+                <h2>
+                  #{playerData.strNumber} {playerData.strPlayer}
+                </h2>
+              )}
+              {!playerData.strNumber && <h2>{playerData.strPlayer}</h2>}
 
               {/* Team logo as clickable img next to player's name */}
               {teamData && (
@@ -125,17 +136,18 @@ export function IndividualPlayer() {
             {/* Other player details */}
             <div className='row'>
               <div className='col-6'>
-                <p>Nationality:</p>
                 <p>Team: </p>
-                <p>Date of Birth: </p>
                 <p>Position: </p>
+                <p>Date of Birth: </p>
+                <p>Nationality:</p>
+
                 <p>Height: </p>
               </div>
               <div className='col-6' style={{ textAlign: 'right' }}>
-                <p>{playerData.strNationality}</p>
                 <p>{playerData.strTeam}</p>
-                <p>{playerData.dateBorn}</p>
                 <p>{playerData.strPosition}</p>
+                <p>{formatDate(playerData.dateBorn)}</p>
+                <p>{playerData.strNationality}</p>
                 <p>{playerData.strHeight}</p>
               </div>
             </div>
