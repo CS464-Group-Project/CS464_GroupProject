@@ -60,15 +60,13 @@ export function IndividualPlayer() {
         <div>
           <header className='container'>
             <div className='row'>
-              {/* Image on the left */}
-
-              {/* Text in the middle (slightly elevated) */}
-              <div className='col-md-8 d-flex align-items-end'>
+              {/* Player name*/}
+              <div className='col-8 d-flex align-items-end'>
                 <h1 className='mt-3'>{playerData.strPlayer}</h1>
               </div>
 
-              {/* Text on the bottom right */}
-              <div className='col-md-4 d-flex justify-content-end align-items-end'>
+              {/* Player*/}
+              <div className='col-4 d-flex justify-content-end align-items-end'>
                 {playerData.strNumber && (
                   <h1 className='mb-0'>#{playerData.strNumber}</h1>
                 )}
@@ -78,6 +76,14 @@ export function IndividualPlayer() {
 
           <div className='container-md mt-4'>
             <div className='row'>
+              {/* Left side with player image */}
+              <div className='col-md-6'>
+                <img
+                  src={playerData.strThumb}
+                  alt={`${playerData.strPlayer}`}
+                  className='img-fluid'
+                />
+              </div>
               {/* Right side with player details */}
               <div className='col-md-6'>
                 {/* Other player details */}
@@ -98,6 +104,7 @@ export function IndividualPlayer() {
                   </div>
                 </div>
 
+                {/*Social media links if they exist*/}
                 <div className='col d-flex mt-3 justify-content-evenly'>
                   {/* Team logo as clickable img*/}
                   {teamData && (
@@ -155,15 +162,6 @@ export function IndividualPlayer() {
                     </a>
                   )}
                 </div>
-              </div>
-              {/* Left side with player image */}
-              <div className='col-md-6'>
-                <img
-                  src={playerData.strThumb}
-                  alt={`${playerData.strPlayer}`}
-                  className='img-fluid'
-                />
-                {/*Social media links if they exist*/}
               </div>
 
               {/*Contract Timeline Chart component */}
