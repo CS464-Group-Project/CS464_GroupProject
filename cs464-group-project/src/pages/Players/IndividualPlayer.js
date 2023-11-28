@@ -99,12 +99,12 @@ export function IndividualPlayer() {
                 </div>
 
                 <div className='col d-flex mt-3 justify-content-evenly'>
-                  {/* Team logo as clickable img next to player's name */}
+                  {/* Team logo as clickable img*/}
                   {teamData && (
                     <img
                       src={teamData.strTeamBadge}
                       alt={`${teamData.strTeam} Logo`}
-                      className='img-fluid team-logo'
+                      className='img-fluid logo'
                       style={{
                         height: '4em',
                         marginLeft: '10px',
@@ -120,6 +120,7 @@ export function IndividualPlayer() {
                       href={`https://${playerData.strTwitter}`}
                       target='_blank'
                       rel='noopener noreferrer'
+                      className='logo'
                     >
                       <FontAwesomeIcon
                         icon={faTwitter}
@@ -132,6 +133,7 @@ export function IndividualPlayer() {
                       href={`https://${playerData.strInstagram}`}
                       target='_blank'
                       rel='noopener noreferrer'
+                      className='logo'
                     >
                       <FontAwesomeIcon
                         icon={faInstagram}
@@ -144,6 +146,7 @@ export function IndividualPlayer() {
                       href={`https://${playerData.strYoutube}`}
                       target='_blank'
                       rel='noopener noreferrer'
+                      className='logo'
                     >
                       <FontAwesomeIcon
                         icon={faYoutube}

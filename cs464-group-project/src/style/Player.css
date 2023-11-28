@@ -18,11 +18,11 @@ input {
   height: 35px;
 }
 
-.team-logo {
+.logo {
   transition: transform 0.3s ease-in-out;
 }
 
-.team-logo:hover {
+.logo:hover {
   transform: scale(1.2);
 }
 
