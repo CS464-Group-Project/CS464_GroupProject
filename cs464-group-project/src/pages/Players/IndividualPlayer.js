@@ -7,6 +7,12 @@ import {
 import '../../style/Player.css';
 import { PlayerContracts } from '../../components/player/PlayerContracts';
 import { PlayerHonours } from '../../components/player/PlayerHonours';
+import {
+  faInstagram,
+  faTwitter,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export function IndividualPlayer() {
   const { id } = useParams();
@@ -49,12 +55,53 @@ export function IndividualPlayer() {
               alt={`${playerData.strPlayer}`}
               className='img-fluid'
             />
+            {/*Social media links if they exist*/}
+            <div className='col d-flex mt-3 justify-content-evenly'>
+              {playerData.strTwitter && (
+                <a
+                  href={`https://${playerData.strTwitter}`}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <FontAwesomeIcon
+                    icon={faTwitter}
+                    style={{ fontSize: '2em' }}
+                  />
+                </a>
+              )}
+              {playerData.strInstagram && (
+                <a
+                  href={`https://${playerData.strInstagram}`}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <FontAwesomeIcon
+                    icon={faInstagram}
+                    style={{ fontSize: '2em' }}
+                  />
+                </a>
+              )}
+              {playerData.Youtube && (
+                <a
+                  href={`https://${playerData.strYoutube}`}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <FontAwesomeIcon
+                    icon={faYoutube}
+                    style={{ fontSize: '2em' }}
+                  />
+                </a>
+              )}
+            </div>
           </div>
 
           {/* Right side with player details */}
           <div className='col-md-6'>
             <div className='d-flex align-items-center'>
-              <h2>{playerData.strPlayer}</h2>
+              <h2>
+                #{playerData.strNumber} {playerData.strPlayer}
+              </h2>
 
               {/* Team logo as clickable img next to player's name */}
               {teamData && (
@@ -80,6 +127,7 @@ export function IndividualPlayer() {
             <p>Position: {playerData.strPosition}</p>
             <p>Height: {playerData.strHeight}</p>
           </div>
+
           {/*Contract Timeline Chart component */}
           <div className='col-md-12'>
             <PlayerContracts id={id} />
