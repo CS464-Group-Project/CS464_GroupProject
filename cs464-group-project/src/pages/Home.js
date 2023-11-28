@@ -105,7 +105,9 @@ export function Home() {
         }
         console.log(data);
         //Filter out non PL leagues
-        const plData = data.events.filter((match) => match.idLeague === '4322');
+        //Check console.log for live match if you'd like to see some content, replace league id
+        //Will remove for final PR
+        const plData = data.events.filter((match) => match.idLeague === '4480');
         console.log(data);
         const liveMatches = plData.map((match) => ({
           homeId: match.idHomeTeam,

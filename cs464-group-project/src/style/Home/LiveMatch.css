@@ -11,12 +11,11 @@
 
 .live-left {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
 .live-clock {
   align-self: center;
-  margin-left: 5px;
   font-size: 25px;
 }
 
