@@ -87,23 +87,13 @@ export function IndividualPlayer() {
             <div className='row'>
               {/* Right side with player details */}
               <div className='col-md-6'>
-                <div className='d-flex align-items-center'>
-                  {playerData.strNumber && (
-                    <h2>
-                      #{playerData.strNumber} {playerData.strPlayer}
-                    </h2>
-                  )}
-                  {!playerData.strNumber && <h2>{playerData.strPlayer}</h2>}
-                </div>
-
                 {/* Other player details */}
                 <div className='row'>
-                  <div className='col-6'>
+                  <div className='col-6 ' style={{ fontWeight: 'bold' }}>
                     <p>Team: </p>
                     <p>Position: </p>
                     <p>Date of Birth: </p>
                     <p>Nationality:</p>
-
                     <p>Height: </p>
                   </div>
                   <div className='col-6' style={{ textAlign: 'right' }}>
