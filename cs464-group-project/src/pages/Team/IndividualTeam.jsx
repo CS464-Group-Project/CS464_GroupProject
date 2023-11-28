@@ -118,7 +118,7 @@ export function IndividualTeam() {
               </div>
             </div>
           </div>
-          <div className='col-12 col-md-6 col-lg-6 col-xl-4'>
+          <div className='col-12 col-md-6 col-lg-6 col-xl-5 col-xxl-4'>
             <div className='row' id='inner-row-2'>
               <div
                 className='col-12 col-sm-12 col-md-12 col-lg-12 mt-4 p-2 p-sm-4'
@@ -134,7 +134,7 @@ export function IndividualTeam() {
               </div>
             </div>
           </div>
-          <div className='col-12 col-xl-2'>
+          <div className='col-12 col-md-6 col-xl-6 col-xxl-2 mx-auto'>
             <img
               className='image-fluid mx-auto'
               id='team-stadium-img'

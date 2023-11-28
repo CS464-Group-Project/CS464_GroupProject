@@ -49,7 +49,6 @@ export const UpcomingSchedule = ({ team, teamID }) => {
                 <HeaderCell>Date</HeaderCell>
                 <HeaderCell>Opponent</HeaderCell>
                 <HeaderCell>Time</HeaderCell>
-                <HeaderCell>Stadium</HeaderCell>
               </HeaderRow>
             </Header>
 
@@ -72,7 +71,6 @@ export const UpcomingSchedule = ({ team, teamID }) => {
                   <Cell className='schedule-style'>
                     {handleDisplayTime(item.strTimestamp)}
                   </Cell>
-                  <Cell className='schedule-style'>{item.strVenue}</Cell>
                 </Row>
               ))}
             </Body>
