@@ -75,15 +75,14 @@ function StadiumCap({ prop }) {
   };
 
   const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
     responsive: true,
     maintainAspectRatio: false,
     scales: {
-      x: {
-        title: {
-          display: true,
-          text: 'Teams',
-        },
-      },
       y: {
         title: {
           display: true,

@@ -4,6 +4,7 @@ import {
   getSeasonStats,
   getPLPastMatches,
   getPLLiveScores,
+  getPLUpcomingMatches,
 } from '../components/Api/ApiRequest';
 import '../style/Home/Home.css';
 import StadiumCap from './HomeComps/StadiumCap';
@@ -107,7 +108,7 @@ export function Home() {
         //Filter out non PL leagues
         //Check console.log for live match if you'd like to see some content, replace league id
         //Will remove for final PR
-        const plData = data.events.filter((match) => match.idLeague === '4480');
+        const plData = data.events.filter((match) => match.idLeague === '4351');
         console.log(data);
         const liveMatches = plData.map((match) => ({
           homeId: match.idHomeTeam,
@@ -132,6 +133,27 @@ export function Home() {
     }, 60000);
 
     return () => clearInterval(intervalId);
+  }, []);
+
+  //Stadium capacity
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getPLUpcomingMatches();
+        console.log(data);
+        /*get only id, capacity and team name
+        const teams = data.teams.map((team) => ({
+          id: team.idTeam,
+          capacity: team.intStadiumCapacity,
+          name: team.strTeam,
+        }));
+        setStadiumCapacity(teams);
+        */
+      } catch (err) {
+        console.error('Error getting League information', err);
+      }
+    };
+    fetchData();
   }, []);
 
   return (
@@ -165,7 +187,6 @@ export function Home() {
                 </div>
               )}
             </div>
-
             {/* looping over name value pairs in an object: https://javascript.info/keys-values-entries  */}
             <div className='match-list-container'>
               <h2>Past Matches</h2>
