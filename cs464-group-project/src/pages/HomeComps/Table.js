@@ -20,8 +20,8 @@ const Table = ({ ranking }) => {
   };
 
   return (
-    <div className='team-ranking'>
-      <div className='ranking-header info-header'>
+    <div className='team-ranking row'>
+      <div className='ranking-header info-header row'>
         <h2>Team Rankings</h2>
         <span className='info-container'>
           <sup className='info-icon'>i</sup>
@@ -38,30 +38,25 @@ const Table = ({ ranking }) => {
           </span>
         </span>
       </div>
-      <table>
+      <table className='m-auto'>
         <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Team</th>
-            <th>Wins</th>
-            <th>Loss</th>
-            <th>
-              <div className='info-header'>
-                Points
-                <span className='info-container'>
-                  <sup className='info-icon'>i</sup>
-                  <span className='tooltip'>3 pts for wins, 1 for draws</span>
-                </span>
-              </div>
-            </th>
+          <tr className='row container-fluid'>
+            <th className='col-sm-2'>Rank</th>
+            <th className='col-sm-4'>Team</th>
+            <th className='col-sm-2'>Wins</th>
+            <th className='col-sm-2'>Loss</th>
+            <th className='col-sm-2'>Points</th>
           </tr>
         </thead>
         <tbody>
           {ranking.map((team, index) => (
             // Assign different class name for top 4 teams, 5th team, bottom 3
-            <tr key={team.id} className={`cell-left ${getTeamClass(index)}`}>
-              <td>{team.rank}</td>
-              <td className='team-cell'>
+            <tr
+              key={team.id}
+              className={`cell-left ${getTeamClass(index)} row container-fluid`}
+            >
+              <td className='col-sm-2'>{team.rank}</td>
+              <td className='team-cell col-sm-4'>
                 <img
                   src={team.logo}
                   alt={`${team.name} Logo`}
@@ -69,9 +64,9 @@ const Table = ({ ranking }) => {
                 />
                 <div>{team.name}</div>
               </td>
-              <td>{team.wins}</td>
-              <td>{team.loss}</td>
-              <td>{team.points}</td>
+              <td className='col-sm-2'>{team.wins}</td>
+              <td className='col-sm-2'>{team.loss}</td>
+              <td className='col-sm-2'>{team.points}</td>
             </tr>
           ))}
         </tbody>
