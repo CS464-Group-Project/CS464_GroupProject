@@ -19,7 +19,6 @@
   font-size: 25px;
 }
 
-/* https://stackoverflow.com/questions/64753675/css-fade-out-and-stay-so */
 .circle-icon {
   align-self: center;
   width: 15px;
@@ -40,7 +39,7 @@
 }
 
 .no-live img {
-  width: 350px;
+  width: 80%;
 }
 
 @keyframes fadeInOut {
@@ -66,5 +65,11 @@
   .live-game {
     width: 100%;
     margin-top: 20px;
+  }
+}
+
+@media (min-width: 850px) {
+  .live-game {
+    width: 50%;
   }
 }

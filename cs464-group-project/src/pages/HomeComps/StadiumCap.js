@@ -40,7 +40,7 @@ function StadiumCap({ prop }) {
     labels: sortedTeams.map((team) => team.name),
     datasets: [
       {
-        label: 'Stadium Capicity',
+        label: 'Stadium Capacity',
         data: prop.map((team) => team.capacity),
         options: {
           responsive: true,

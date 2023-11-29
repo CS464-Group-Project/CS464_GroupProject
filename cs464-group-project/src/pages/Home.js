@@ -105,10 +105,7 @@ export function Home() {
           return;
         }
         console.log(data);
-        //Filter out non PL leagues
-        //Check console.log for live match if you'd like to see some content, replace league id
-        //Will remove for final PR
-        const plData = data.events.filter((match) => match.idLeague === '4694');
+        const plData = data.events.filter((match) => match.idLeague === '4328');
         console.log(data);
         const liveMatches = plData.map((match) => ({
           homeId: match.idHomeTeam,
@@ -152,7 +149,6 @@ export function Home() {
     <>
       <div className='home-container'>
         <div className='home-charts'>
-          {/* <div className='home-charts-left'> */}
           <Table ranking={ranking} />
           <div className='gamematches-container'>
             <div className='live-game'>

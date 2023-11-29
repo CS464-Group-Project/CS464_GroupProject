@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Match({ match }) {
-  //need to extract logos from the allTeamLogos array
   return (
     <li key={match.id} className='match-item'>
       <div className='team-names'>

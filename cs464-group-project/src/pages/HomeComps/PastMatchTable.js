@@ -8,7 +8,6 @@ function formatDate(dateString) {
   //getting Sunday, Nov 26
   //so we can use split to parse the date
   const splitDate = myDate.split(', ');
-
   return (
     <>
       <div>{splitDate[0]}</div>
