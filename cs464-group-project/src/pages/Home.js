@@ -141,14 +141,6 @@ export function Home() {
       try {
         const data = await getPLUpcomingMatches();
         console.log(data);
-        /*get only id, capacity and team name
-        const teams = data.teams.map((team) => ({
-          id: team.idTeam,
-          capacity: team.intStadiumCapacity,
-          name: team.strTeam,
-        }));
-        setStadiumCapacity(teams);
-        */
       } catch (err) {
         console.error('Error getting League information', err);
       }
@@ -158,14 +150,10 @@ export function Home() {
 
   return (
     <>
-      <div className='home-charts'>
-        <div className='home-charts-left'>
+      <div className='home-container'>
+        <div className='home-charts'>
+          {/* <div className='home-charts-left'> */}
           <Table ranking={ranking} />
-        </div>
-        <div className='home-charts-right'>
-          <div className='chart-content'>
-            <StadiumCap prop={stadiumCapacity} />
-          </div>
           <div className='gamematches-container'>
             <div className='live-game'>
               {liveTeams.length > 0 ? (
@@ -197,6 +185,9 @@ export function Home() {
               </div>
             </div>
           </div>
+        </div>
+        <div className='chart-content'>
+          <StadiumCap prop={stadiumCapacity} />
         </div>
       </div>
     </>

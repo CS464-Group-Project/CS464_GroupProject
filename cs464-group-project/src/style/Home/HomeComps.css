@@ -4,15 +4,19 @@
 .live-game {
   margin-top: 10px;
   margin-right: 20px;
-  overflow-y: auto;
-  padding: 10px; /* Add padding for better visual separation */
-  border: 1px solid #ddd; /* Add a border for a container look */
+  padding: 10px;
+  border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
 
+.all-past-matches {
+  display: flex;
+}
+
 .live-game {
+  overflow-y: auto;
   height: 400px;
 }
 
