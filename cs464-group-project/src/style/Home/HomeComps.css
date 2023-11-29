@@ -1,6 +1,6 @@
 /* HomeComps.css */
 
-.all-past-matches,
+.match-list-container,
 .live-game {
   margin-top: 10px;
   margin-right: 20px;
@@ -13,6 +13,7 @@
 
 .all-past-matches {
   display: flex;
+  flex-direction: column;
 }
 
 .live-game {
@@ -23,31 +24,41 @@
 .match-date {
   font-size: 20px;
   margin-bottom: 8px;
+  align-self: center;
+  min-width: 100px;
 }
 
 .past-match-container {
+  gap: 20px;
   border: 1px solid #ddd;
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  display: flex;
+  width: 100%;
 }
 
 .match-list {
+  margin-top: 5px;
+  margin-bottom: 5px;
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .match-item {
   border: 1px solid #ccc;
-  margin: 10px 0;
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  min-width: 250px;
 }
 
 .match-item:hover {
