@@ -62,19 +62,17 @@ export function IndividualPlayer() {
             <div className='row'>
               {/* Player name*/}
               <div className='col-8 d-flex align-items-end'>
-                <h1 className='mt-3'>{playerData.strPlayer}</h1>
+                <h1>{playerData.strPlayer}</h1>
               </div>
 
               {/* Player*/}
               <div className='col-4 d-flex justify-content-end align-items-end'>
-                {playerData.strNumber && (
-                  <h1 className='mb-0'>#{playerData.strNumber}</h1>
-                )}
+                {playerData.strNumber && <h1>#{playerData.strNumber}</h1>}
               </div>
             </div>
           </header>
 
-          <div className='container-md mt-4'>
+          <div className='container-md'>
             <div className='row'>
               {/* Left side with player image */}
               <div className='col-md-6'>
