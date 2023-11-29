@@ -131,3 +131,10 @@ tr:hover {
 .relegation:hover {
   background-color: #e65c5c;
 }
+
+@media (max-width: 850px) {
+  .team-ranking {
+    margin: 0;
+    margin-top: 10px;
+  }
+}

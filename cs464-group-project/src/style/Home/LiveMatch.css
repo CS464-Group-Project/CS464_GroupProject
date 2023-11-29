@@ -61,3 +61,10 @@
   max-width: 40px;
   max-height: 40px;
 }
+
+@media (max-width: 991px) {
+  .live-game {
+    width: 100%;
+    margin-top: 20px;
+  }
+}

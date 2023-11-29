@@ -17,6 +17,8 @@
 }
 
 .live-game {
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
   height: 400px;
 }
@@ -58,7 +60,7 @@
   align-items: center;
   border-radius: 8px;
   transition: background-color 0.3s ease;
-  min-width: 250px;
+  min-width: 240px;
 }
 
 .match-item:hover {
@@ -82,4 +84,37 @@
 
 .match-scores {
   gap: 10px;
+}
+
+@media (max-width: 991px) {
+  .past-match-container {
+    flex-direction: column;
+  }
+
+  .match-item {
+    width: 300px;
+  }
+
+  .gamematches-container {
+    width: 40%;
+    margin: auto;
+  }
+
+  .match-date {
+    display: flex;
+    gap: 10px;
+  }
+
+  .past-match-container {
+    gap: 0px;
+  }
+
+  .match-list-container,
+  .live-game {
+    margin: auto;
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 414px) {
 }

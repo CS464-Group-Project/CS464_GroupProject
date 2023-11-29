@@ -34,32 +34,10 @@ const borderColors = [
 ];
 
 function StadiumCap({ prop }) {
-  const [displayedTeams, setDisplayedTeams] = useState([]);
-
-  //https://stackoverflow.com/questions/31162606/how-to-detect-screen-size-for-responsive-web-design
-  useEffect(() => {
-    const updateDisplayedTeams = () => {
-      //sort the team from largest to smallest
-      const sortedTeams = prop.sort((a, b) => b.capacity - a.capacity);
-
-      // Display all teams in larger media queries but cut to 10 in smaller
-      const teamsToDisplay =
-        window.innerWidth >= 992 ? sortedTeams : sortedTeams.slice(0, 10);
-
-      setDisplayedTeams(teamsToDisplay);
-    };
-    updateDisplayedTeams();
-
-    window.addEventListener('resize', updateDisplayedTeams);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', updateDisplayedTeams);
-    };
-  }, [prop]);
+  const sortedTeams = prop.sort((a, b) => b.capacity - a.capacity);
 
   const data = {
-    labels: displayedTeams.map((team) => team.name),
+    labels: sortedTeams.map((team) => team.name),
     datasets: [
       {
         label: 'Stadium Capicity',
