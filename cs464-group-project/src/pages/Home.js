@@ -59,10 +59,10 @@ export function Home() {
         const pastMatchesData = await getPLPastMatches(4328);
         const tempPastMatches = pastMatchesData.events.map((match) => {
           const homeTeam = teamRanks.find(
-            (team) => team.id === match.idHomeTeam
+            (team) => team.id === match.idHomeTeam,
           );
           const awayTeam = teamRanks.find(
-            (team) => team.id === match.idAwayTeam
+            (team) => team.id === match.idAwayTeam,
           );
 
           return {
@@ -131,7 +131,15 @@ export function Home() {
 
   return (
     <>
-      <div className='home-container'>
+      <h1>
+        <img
+          className='league-logo'
+          src='/Images/premierleague_logo.png'
+          alt='Premier League Logo'
+        />
+        Welcome to the Premier League
+      </h1>
+      <div className='home-container mt-0'>
         <div className='home-charts'>
           <Table ranking={ranking} />
           <div className='gamematches-container'>
