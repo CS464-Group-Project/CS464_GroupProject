@@ -5,6 +5,15 @@ import {
   getTeamByName,
 } from '../../components/Api/ApiRequest';
 import '../../style/Player.css';
+import { PlayerFormerTeams } from '../../components/player/PlayerFormerTeams';
+import { PlayerHonours } from '../../components/player/PlayerHonours';
+import {
+  faInstagram,
+  faTwitter,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { PlayerFormerBadges } from '../../components/player/PlayerFormerBadges';
 
 export function IndividualPlayer() {
   const { id } = useParams();
@@ -16,6 +25,7 @@ export function IndividualPlayer() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Make API call to get player information by id
         const response = await getPlayerDetails(id);
         setPlayerData(response.players[0]);
 
@@ -35,53 +45,137 @@ export function IndividualPlayer() {
     navigate(`/individualteam`, { state: { team: teamData } });
   };
 
+  const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    return `${month}/${day}/${year}`;
+  };
+
   return (
-    <div className='container-md mt-4'>
+    <>
       {playerData ? (
-        <div className='row'>
-          {/* Left side with player image */}
-          <div className='col-md-6'>
-            <img
-              src={playerData.strThumb}
-              alt={`${playerData.strPlayer}`}
-              className='img-fluid'
-            />
-          </div>
+        <div>
+          <header className='container'>
+            <div className='row'>
+              {/* Player name*/}
+              <div className='col-8 d-flex align-items-end'>
+                <h1>{playerData.strPlayer}</h1>
+              </div>
 
-          {/* Right side with player details */}
-          <div className='col-md-6'>
-            <div className='d-flex align-items-center'>
-              <h2>{playerData.strPlayer}</h2>
-
-              {/* Team logo as clickable img next to player's name */}
-              {teamData && (
-                <img
-                  src={teamData.strTeamBadge}
-                  alt={`${teamData.strTeam} Logo`}
-                  className='img-fluid team-logo'
-                  style={{
-                    height: '2.5em',
-                    marginLeft: '10px',
-                    cursor: 'pointer',
-                  }}
-                  onClick={handleTeamClick}
-                  title={`Click to visit the ${teamData.strTeam} page`}
-                />
-              )}
+              {/* Player*/}
+              <div className='col-4 d-flex justify-content-end align-items-end'>
+                {playerData.strNumber && <h1>#{playerData.strNumber}</h1>}
+              </div>
             </div>
+          </header>
 
-            {/* Other player details */}
-            <p>Nationality: {playerData.strNationality}</p>
-            <p>Team: {playerData.strTeam}</p>
-            <p>Date of Birth: {playerData.dateBorn}</p>
-            <p>Position: {playerData.strPosition}</p>
-            <p>Height: {playerData.strHeight}</p>
-            <p>Weight: {playerData.strHeight}</p>
+          <div className='container-md'>
+            <div className='row'>
+              {/* Left side with player image */}
+              <div className='col-md-6'>
+                <img
+                  src={playerData.strThumb}
+                  alt={`${playerData.strPlayer}`}
+                  className='img-fluid'
+                />
+              </div>
+              {/* Right side with player details */}
+              <div className='col-md-6'>
+                {/* Other player details */}
+                <div className='row'>
+                  <div className='col-6 ' style={{ fontWeight: 'bold' }}>
+                    <p>Team: </p>
+                    <p>Position: </p>
+                    <p>Date of Birth: </p>
+                    <p>Nationality:</p>
+                    <p>Height: </p>
+                  </div>
+                  <div className='col-6' style={{ textAlign: 'right' }}>
+                    <p>{playerData.strTeam}</p>
+                    <p>{playerData.strPosition}</p>
+                    <p>{formatDate(playerData.dateBorn)}</p>
+                    <p>{playerData.strNationality}</p>
+                    <p>{playerData.strHeight}</p>
+                  </div>
+                </div>
+
+                {/*Social media links if they exist*/}
+                <div className='col d-flex mt-3 justify-content-evenly'>
+                  {/* Team logo as clickable img*/}
+                  {teamData && (
+                    <img
+                      src={teamData.strTeamBadge}
+                      alt={`${teamData.strTeam} Logo`}
+                      className='img-fluid logo'
+                      style={{
+                        height: '4em',
+                        marginLeft: '10px',
+                        cursor: 'pointer',
+                      }}
+                      onClick={handleTeamClick}
+                      title={`Click to visit the ${teamData.strTeam} page`}
+                    />
+                  )}
+
+                  {playerData.strTwitter && (
+                    <a
+                      href={`https://${playerData.strTwitter}`}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='logo'
+                    >
+                      <FontAwesomeIcon
+                        icon={faTwitter}
+                        style={{ fontSize: '4em' }}
+                      />
+                    </a>
+                  )}
+                  {playerData.strInstagram && (
+                    <a
+                      href={`https://${playerData.strInstagram}`}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='logo'
+                    >
+                      <FontAwesomeIcon
+                        icon={faInstagram}
+                        style={{ fontSize: '4em' }}
+                      />
+                    </a>
+                  )}
+                  {playerData.Youtube && (
+                    <a
+                      href={`https://${playerData.strYoutube}`}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='logo'
+                    >
+                      <FontAwesomeIcon
+                        icon={faYoutube}
+                        style={{ fontSize: '4em' }}
+                      />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/*Contract Timeline Chart component */}
+              <div className='col-md-12'>
+                <PlayerFormerTeams id={id} />
+              </div>
+              <div className='col-md-6'>{<PlayerHonours id={id} />}</div>
+              <div className='col-md-6'>
+                <PlayerFormerBadges id={id} />
+              </div>
+            </div>
           </div>
         </div>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </>
   );
 }

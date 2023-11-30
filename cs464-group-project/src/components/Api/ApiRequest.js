@@ -1,3 +1,6 @@
+import thesportsdb from 'thesportsdb';
+import axios from 'axios';
+
 // API key
 const apiKey = process.env.REACT_APP_API_KEY;
 const theSportsDB = require('thesportsdb');
@@ -93,6 +96,48 @@ export async function getPLUpcomingMatches() {
 
 export async function getTeamByName(teamName) {
   return await theSportsDB.getTeamByName(teamName);
+}
+
+export async function getPlayerContractsById(id) {
+  try {
+    return await theSportsDB.getPlayerContractsById(id);
+  } catch (error) {
+    console.error('Error getting contract data: '.error.message);
+    throw error;
+  }
+}
+
+export async function getFormerTeams(id) {
+  try {
+    return await theSportsDB.getPlayerFormerTeamsById(id);
+  } catch (error) {
+    console.error('Error getting former teams: '.error.message);
+    throw error;
+  }
+}
+
+export async function getHonoursById(id) {
+  try {
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/${apiKey}/lookuphonours.php?id=${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(`Error getting honours data: ${error.message}`);
+    throw error;
+  }
+}
+
+export async function getMilestonessById(id) {
+  try {
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/${apiKey}/lookupmilestones.php?id=${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(`Error getting milestone data: ${error.message}`);
+    throw error;
+  }
 }
 
 export async function getHistoryLeagues() {
