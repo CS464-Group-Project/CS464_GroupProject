@@ -86,19 +86,26 @@ export function IndividualPlayer() {
               <div className='col-md-6'>
                 {/* Other player details */}
                 <div className='row'>
-                  <div className='col-6 ' style={{ fontWeight: 'bold' }}>
-                    <p>Team: </p>
-                    <p>Position: </p>
-                    <p>Date of Birth: </p>
-                    <p>Nationality:</p>
-                    <p>Height: </p>
+                  <div
+                    className='col-6 '
+                    style={{ fontWeight: 'bold', color: 'black' }}
+                  >
+                    <p style={{ color: 'black' }}>Team: </p>
+                    <p style={{ color: 'black' }}>Position: </p>
+                    <p style={{ color: 'black' }}>Date of Birth: </p>
+                    <p style={{ color: 'black' }}>Nationality:</p>
+                    <p style={{ color: 'black' }}>Height: </p>
                   </div>
                   <div className='col-6' style={{ textAlign: 'right' }}>
-                    <p>{playerData.strTeam}</p>
-                    <p>{playerData.strPosition}</p>
-                    <p>{formatDate(playerData.dateBorn)}</p>
-                    <p>{playerData.strNationality}</p>
-                    <p>{playerData.strHeight}</p>
+                    <p style={{ color: 'black' }}>{playerData.strTeam}</p>
+                    <p style={{ color: 'black' }}>{playerData.strPosition}</p>
+                    <p style={{ color: 'black' }}>
+                      {formatDate(playerData.dateBorn)}
+                    </p>
+                    <p style={{ color: 'black' }}>
+                      {playerData.strNationality}
+                    </p>
+                    <p style={{ color: 'black' }}>{playerData.strHeight}</p>
                   </div>
                 </div>
 
