@@ -1,4 +1,3 @@
-// Table.js
 import React from 'react';
 import '../../style/Home/Table.css';
 

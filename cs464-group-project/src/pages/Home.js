@@ -147,7 +147,7 @@ export function Home() {
               ) : (
                 <div className='no-live'>
                   <h2>No Live Games Currently</h2>
-                  <p>Come Back in the Weekends!</p>
+                  <p>Come Back on the Weekends!</p>
                 </div>
               )}
             </div>
