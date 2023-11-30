@@ -134,26 +134,3 @@ export async function getMilestonessById(id) {
 export async function getHistoryLeagues() {
   return await theSportsDB.getTeamDetailsById(133602);
 }
-
-let allTeamLogos = null;
-export async function getTeamLogos() {
-  //if empty do the call
-  if (allTeamLogos === null) {
-    try {
-      const data = await getAllTeamNames();
-      allTeamLogos = data.teams.map((team) => ({
-        id: team.idTeam,
-        name: team.strTeam,
-        logo: team.strTeamBadge,
-      }));
-      return allTeamLogos;
-    } catch (error) {
-      console.error('Error getting team names:', error.message);
-      throw error;
-    }
-  } else {
-    return allTeamLogos;
-  }
-}
-
-export { allTeamLogos };

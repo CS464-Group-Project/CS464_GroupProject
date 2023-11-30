@@ -103,9 +103,7 @@ export function Home() {
         if (data.events === null) {
           return;
         }
-        console.log(data);
         const plData = data.events.filter((match) => match.idLeague === '4328');
-        console.log(data);
         const liveMatches = plData.map((match) => ({
           homeId: match.idHomeTeam,
           awayId: match.idAwayTeam,
@@ -148,11 +146,7 @@ export function Home() {
                 </>
               ) : (
                 <div className='no-live'>
-                  <p>No Live Games Currently</p>
-                  <img
-                    src='https://media.istockphoto.com/id/609834212/vector/error-404-page.jpg?s=170667a&w=0&k=20&c=WyWApHYs9ku80AUYwDApZ2jADK6S_pG9Gu_K3M_Y4lo='
-                    alt='404 Not Found'
-                  />
+                  <h2>No Live Games Currently</h2>
                   <p>Come Back in the Weekends!</p>
                 </div>
               )}
