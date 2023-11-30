@@ -149,7 +149,7 @@ export function Player() {
                   to={`/IndividualPlayer/${player.idPlayer}`}
                   style={{ textDecoration: 'none' }}
                 >
-                  <div className='flex container-md card'>
+                  <div className='flex container-md card '>
                     <img
                       src={player.strThumb}
                       alt={`${player.strPlayer}`}
@@ -157,12 +157,19 @@ export function Player() {
                       style={{ margin: '10px 0' }}
                     />
 
-                    <p style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>
+                    <p
+                      style={{
+                        fontWeight: 'bold',
+                        fontSize: '1.2rem',
+                        color: 'black',
+                      }}
+                    >
                       {player.strPlayer}
                     </p>
                     <p
                       style={{
                         fontSize: '1rem',
+                        color: 'black',
                       }}
                     >
                       <strong>Position:</strong> {player.strPosition}
@@ -170,6 +177,7 @@ export function Player() {
                     <p
                       style={{
                         fontSize: '1rem',
+                        color: 'black',
                       }}
                     >
                       <strong>Team: </strong>
