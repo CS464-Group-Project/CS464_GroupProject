@@ -1,0 +1,117 @@
+/* HomeComps.css */
+
+.match-list-container,
+.live-game {
+  margin-top: 10px;
+  margin-right: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.all-past-matches {
+  display: flex;
+  flex-direction: column;
+}
+
+.live-game {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 400px;
+}
+
+.match-date {
+  font-size: 20px;
+  margin-bottom: 8px;
+  align-self: center;
+  min-width: 100px;
+}
+
+.past-match-container {
+  gap: 20px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+}
+
+.match-list {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-self: center;
+}
+
+.match-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  min-width: 240px;
+}
+
+.match-item:hover {
+  background-color: #f7f7f7;
+}
+
+.team-info {
+  margin-bottom: 8px;
+}
+
+.team-names {
+  display: flex;
+  flex-direction: column;
+}
+
+.match-scores {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.match-scores {
+  gap: 10px;
+}
+
+@media (max-width: 991px) {
+  .past-match-container {
+    flex-direction: column;
+  }
+
+  .match-item {
+    width: 300px;
+  }
+
+  .gamematches-container {
+    margin: auto;
+  }
+
+  .match-date {
+    display: flex;
+    gap: 10px;
+  }
+
+  .past-match-container {
+    gap: 0px;
+  }
+
+  .match-list-container,
+  .live-game {
+    margin: auto;
+    margin-top: 20px;
+  }
+}

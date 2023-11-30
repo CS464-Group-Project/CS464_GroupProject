@@ -1,0 +1,75 @@
+.live-game {
+  margin-top: 10px;
+  width: 400px;
+  height: 400px;
+  font-size: 20px;
+}
+
+.live-header {
+  color: black;
+}
+
+.live-left {
+  display: flex;
+  gap: 10px;
+}
+
+.live-clock {
+  align-self: center;
+  font-size: 25px;
+}
+
+.circle-icon {
+  align-self: center;
+  width: 15px;
+  height: 15px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  animation: fadeInOut 2.5s linear infinite;
+}
+
+.no-live {
+  text-align: center;
+}
+
+.no-live p {
+  font-size: 25px;
+  margin-top: 10px;
+  color: black;
+}
+
+.no-live img {
+  width: 80%;
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.live-game .team-names {
+  gap: 10px;
+}
+
+.live-game .team-logo {
+  max-width: 40px;
+  max-height: 40px;
+}
+
+@media (max-width: 991px) {
+  .live-game {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 850px) {
+  .live-game {
+    width: 50%;
+  }
+}

@@ -49,6 +49,42 @@ export async function getAllTeamNames() {
   }
 }
 
+export async function getPLTeamDetails(teamId) {
+  try {
+    return await theSportsDB.getTeamDetailsById(teamId);
+  } catch (error) {
+    console.error('Error getting team names:', error.message);
+    throw error;
+  }
+}
+
+export async function getSeasonStats(leagueId, year) {
+  try {
+    return await theSportsDB.getLookupTableByLeagueIdAndSeason(leagueId, year);
+  } catch (error) {
+    console.error('Error getting team names:', error.message);
+    throw error;
+  }
+}
+
+export async function getPLPastMatches(leagueId) {
+  try {
+    return await theSportsDB.getPast15EventsByLeagueId(leagueId);
+  } catch (error) {
+    console.error('Error getting team names:', error.message);
+    throw error;
+  }
+}
+
+export async function getPLLiveScores() {
+  try {
+    return await theSportsDB.getLivescoresBySport('soccer');
+  } catch (error) {
+    console.error('Error getting team names:', error.message);
+    throw error;
+  }
+}
+
 export async function getTeamByName(teamName) {
   return await theSportsDB.getTeamByName(teamName);
 }
@@ -95,24 +131,6 @@ export async function getMilestonessById(id) {
   }
 }
 
-let allTeamLogos = null;
-export async function getTeamLogos() {
-  //if empty do the call
-  if (allTeamLogos === null) {
-    try {
-      const data = await getAllTeamNames();
-      allTeamLogos = data.teams.map((team) => ({
-        id: team.idTeam,
-        name: team.strTeam,
-        logo: team.strTeamLogo,
-      }));
-    } catch (error) {
-      console.error('Error getting team names:', error.message);
-      throw error;
-    }
-  } else {
-    return allTeamLogos;
-  }
+export async function getHistoryLeagues() {
+  return await theSportsDB.getTeamDetailsById(133602);
 }
-
-export { allTeamLogos };
