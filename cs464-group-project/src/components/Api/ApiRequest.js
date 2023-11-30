@@ -85,15 +85,6 @@ export async function getPLLiveScores() {
   }
 }
 
-export async function getPLUpcomingMatches() {
-  try {
-    return await theSportsDB.getNext15EventsByLeagueId(4328);
-  } catch (error) {
-    console.error('Error getting team names:', error.message);
-    throw error;
-  }
-}
-
 export async function getTeamByName(teamName) {
   return await theSportsDB.getTeamByName(teamName);
 }

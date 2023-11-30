@@ -4,7 +4,6 @@ import {
   getSeasonStats,
   getPLPastMatches,
   getPLLiveScores,
-  getPLUpcomingMatches,
 } from '../components/Api/ApiRequest';
 import '../style/Home/Home.css';
 import StadiumCap from './HomeComps/StadiumCap';
@@ -130,19 +129,6 @@ export function Home() {
     }, 60000);
 
     return () => clearInterval(intervalId);
-  }, []);
-
-  //Stadium capacity
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getPLUpcomingMatches();
-        console.log(data);
-      } catch (err) {
-        console.error('Error getting League information', err);
-      }
-    };
-    fetchData();
   }, []);
 
   return (
