@@ -4,14 +4,14 @@
   margin-bottom: 10px;
 }
 
-table {
+.team-ranking table {
   margin-top: 5px;
   border: 1px solid black;
   border-bottom: none;
 }
 
-th,
-td {
+.team-ranking th,
+.team-ranking td {
   padding: 8px;
   line-height: 1.2;
   text-align: center;
