@@ -132,10 +132,12 @@ export function Home() {
   return (
     <>
       <div className='home-container'>
-        <div className='home-charts'>
-          <Table ranking={ranking} />
-          <div className='gamematches-container'>
-            <div className='live-game'>
+        <div className='home-charts container-fluid'>
+          <div className='col-lg-4'>
+            <Table ranking={ranking} />
+          </div>
+          <div className='gamematches-container col-lg-8'>
+            <div className='live-game row'>
               {liveTeams.length > 0 ? (
                 //if there is live game
                 <>
@@ -152,7 +154,7 @@ export function Home() {
               )}
             </div>
             {/* looping over name value pairs in an object: https://javascript.info/keys-values-entries  */}
-            <div className='match-list-container'>
+            <div className='match-list-container row'>
               <h2>Past Matches</h2>
               <div className='all-past-matches'>
                 {Object.entries(pastMatches).map(([date, matches]) => (

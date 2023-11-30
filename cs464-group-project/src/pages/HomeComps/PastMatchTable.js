@@ -18,9 +18,9 @@ function formatDate(dateString) {
 
 function PastMatchTable({ date, matches }) {
   return (
-    <div className='past-match-container' key={date}>
-      <h2 className='match-date'>{formatDate(date)}</h2>
-      <ul className='match-list'>
+    <div className='past-match-container row container-fluid' key={date}>
+      <h2 className='match-date col-3'>{formatDate(date)}</h2>
+      <ul className='match-list col-8'>
         {matches.map((match) => (
           <Match key={match.id} match={match} />
         ))}
