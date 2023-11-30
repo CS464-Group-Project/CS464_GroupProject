@@ -4,9 +4,6 @@ import '../../style/Player.css';
 export const HonoursTable = ({ honours }) => {
   if (honours) {
     const data = honours.honours;
-    if (data === null) {
-      console.log('bad');
-    }
     return (
       <table className='honours-table'>
         <thead>
