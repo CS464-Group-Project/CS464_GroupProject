@@ -66,7 +66,7 @@ const Table = ({ ranking }) => {
                   alt={`${team.name} Logo`}
                   className='team-logo'
                 />
-                <div>{team.name}</div>
+                <div className='team-cell-name'>{team.name}</div>
               </td>
               <td>{team.wins}</td>
               <td>{team.loss}</td>

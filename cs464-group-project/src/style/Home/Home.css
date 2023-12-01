@@ -1,6 +1,5 @@
 .home-container {
   background-color: white;
-  margin: 50px;
 }
 
 .home-charts {
@@ -49,8 +48,4 @@ h1 .league-logo {
   h1 .league-logo {
     width: 250px;
   }
-}
-
-[class^='col'] {
-  border: 1px solid;
 }
