@@ -217,8 +217,10 @@ p {
 
 .draw-color {
   color: black;
+  font-weight: bold;
 }
 
 .loss-color {
-  color: red;
+  color: rgb(170, 3, 3);
+  font-weight: bold;
 }
