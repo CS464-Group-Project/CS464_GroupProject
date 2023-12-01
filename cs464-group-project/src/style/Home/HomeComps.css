@@ -20,7 +20,6 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 400px;
 }
 
 .match-date {
@@ -50,7 +49,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  justify-content: flex-start;
 }
 
 .match-item {

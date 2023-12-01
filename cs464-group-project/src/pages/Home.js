@@ -150,12 +150,11 @@ export function Home() {
           <div className='col'>
             <div className='row'>
               <div className='col-12'>
-                <h2>Live Events</h2>
                 <div className='live-game'>
+                  <h2>Live Events</h2>
                   {liveTeams.length > 0 ? (
                     //if there is live game
                     <>
-                      <h2>Live Matches</h2>
                       {liveTeams.map((liveMatch) => (
                         <LiveMatch key={liveMatch.homeId} match={liveMatch} />
                       ))}
