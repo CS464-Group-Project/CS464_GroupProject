@@ -23,7 +23,6 @@ export const PlayerTable = ({ player }) => {
       `,
 
     HeaderCell: `
-      background-color: grey;
       padding-left: 8px;
       padding-top: 3px;
       padding-bottom: 3px;

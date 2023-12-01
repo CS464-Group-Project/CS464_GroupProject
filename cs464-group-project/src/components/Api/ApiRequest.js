@@ -1,4 +1,3 @@
-import thesportsdb from 'thesportsdb';
 import axios from 'axios';
 
 // API key
@@ -110,7 +109,7 @@ export async function getFormerTeams(id) {
 export async function getHonoursById(id) {
   try {
     const response = await axios.get(
-      `https://www.thesportsdb.com/api/v1/json/${apiKey}/lookuphonours.php?id=${id}`
+      `https://www.thesportsdb.com/api/v1/json/${apiKey}/lookuphonours.php?id=${id}`,
     );
     return response.data;
   } catch (error) {
@@ -122,7 +121,7 @@ export async function getHonoursById(id) {
 export async function getMilestonessById(id) {
   try {
     const response = await axios.get(
-      `https://www.thesportsdb.com/api/v1/json/${apiKey}/lookupmilestones.php?id=${id}`
+      `https://www.thesportsdb.com/api/v1/json/${apiKey}/lookupmilestones.php?id=${id}`,
     );
     return response.data;
   } catch (error) {

@@ -80,6 +80,7 @@ export function IndividualTeam() {
               <div className='col-12 col-sm-10 col-lg-12 d-flex my-auto justify-content-evenly social-media-icons'>
                 <a
                   href={`https://${team.strTwitter}`}
+                  aria-label='twitter link'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
@@ -87,6 +88,7 @@ export function IndividualTeam() {
                 </a>
                 <a
                   href={`https://${team.strFacebook}`}
+                  aria-label='facebook link'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
@@ -94,6 +96,7 @@ export function IndividualTeam() {
                 </a>
                 <a
                   href={`https://${team.strYoutube}`}
+                  aria-label='Youtube link'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
