@@ -41,9 +41,9 @@ export function Team() {
                 style={{ maxWidth: '100%', height: 'auto' }}
               />
               <div>
-                <p className='team-name' key={team.idTeam}>
+                <h2 className='team-name' key={team.idTeam}>
                   {team.strTeam}
-                </p>
+                </h2>
               </div>
             </div>
           ))}

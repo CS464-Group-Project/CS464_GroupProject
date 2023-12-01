@@ -50,7 +50,3 @@ h1 .league-logo {
     width: 250px;
   }
 }
-
-[class^='col'] {
-  border: 1px solid;
-}
