@@ -9,7 +9,7 @@ import { PlayerFormerTeams } from '../../components/player/PlayerFormerTeams';
 import { PlayerHonours } from '../../components/player/PlayerHonours';
 import {
   faInstagram,
-  faTwitter,
+  faXTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -135,7 +135,7 @@ export function IndividualPlayer() {
                       className='logo'
                     >
                       <FontAwesomeIcon
-                        icon={faTwitter}
+                        icon={faXTwitter}
                         style={{ fontSize: '4em' }}
                       />
                     </a>
