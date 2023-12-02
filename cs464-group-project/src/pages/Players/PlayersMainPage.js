@@ -105,8 +105,8 @@ export function Player() {
       <div className='row'>
         {/*Player Search*/}
         <div className='col-md-9 mb-3'>
-          <label htmlFor='playerSearch' className='visually-hidden'>
-            Search players:
+          <label htmlFor='playerSearch' style={{ color: 'white' }}>
+            <h2>Search Players</h2>
           </label>
           <input
             id='playerSearch'
@@ -120,8 +120,8 @@ export function Player() {
         {/*Team Select*/}
         <div className='col-md-3 mb-3'>
           <div className='input-group'>
-            <label htmlFor='teamOptions' className='visually-hidden'>
-              Select a team:
+            <label htmlFor='teamOptions' style={{ color: 'white' }}>
+              <h2>Select a Team</h2>
             </label>
             <select
               id='teamOptions'
