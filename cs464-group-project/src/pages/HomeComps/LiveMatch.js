@@ -15,7 +15,8 @@ function LiveMatch({ match }) {
                 className='team-logo'
                 alt={`${match.homeTeam} Logo`}
               ></img>
-              <div>{match.homeTeam}</div>
+              <div className='live-home-name'>{match.homeTeam}</div>
+              <div className='live-home-score'>{match.homeScore}</div>
             </div>
             <div className='team-info team-cell'>
               <img
@@ -23,14 +24,13 @@ function LiveMatch({ match }) {
                 className='team-logo'
                 alt={`${match.awayTeam} Logo`}
               ></img>
-              <div className='team-info'>{match.awayTeam}</div>
+              <div className='live-away-name'>{match.awayTeam}</div>
+
+              <div className='live-away-score'>{match.awayScore}</div>
             </div>
           </div>
         </div>
-        <div className='match-scores'>
-          <div className='team-info'>{match.homeScore}</div>
-          <div className='team-info'>{match.awayScore}</div>
-        </div>
+        <div className='match-scores'></div>
       </li>
     </>
   );

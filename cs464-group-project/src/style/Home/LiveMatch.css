@@ -1,7 +1,6 @@
 .live-game {
   margin-top: 10px;
   width: 100%;
-  font-size: 20px;
 }
 
 .live-header {
@@ -22,12 +21,12 @@
 
 .live-clock {
   align-self: center;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .circle-icon {
   align-self: center;
-  width: 15px;
+  width: 20px;
   height: 15px;
   background-color: #ff0000;
   border-radius: 50%;
@@ -63,8 +62,8 @@
 }
 
 .live-game .team-logo {
-  max-width: 40px;
-  max-height: 40px;
+  max-width: 30px;
+  max-height: 30px;
 }
 
 @media (max-width: 991px) {

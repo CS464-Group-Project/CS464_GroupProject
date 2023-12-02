@@ -100,10 +100,11 @@ export function Home() {
     const fetchData = async () => {
       try {
         const data = await getPLLiveScores();
+        console.log(data);
         if (data.events === null) {
           return;
         }
-        const plData = data.events.filter((match) => match.idLeague === '4328');
+        const plData = data.events.filter((match) => match.idLeague === '4790');
         const liveMatches = plData.map((match) => ({
           homeId: match.idHomeTeam,
           awayId: match.idAwayTeam,
