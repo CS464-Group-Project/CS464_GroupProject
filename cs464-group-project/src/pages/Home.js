@@ -143,7 +143,7 @@ export function Home() {
         <div className='row' id='main-row'>
           <div
             className='col col-sm-12 col-lg-6 col-xl-6 col-xxl-4'
-            id='left-col'
+            id='team-ranking-container'
           >
             <Table ranking={ranking} />
           </div>

@@ -49,3 +49,9 @@ h1 .league-logo {
     width: 250px;
   }
 }
+
+@media (max-width: 414px) {
+  #team-ranking-container {
+    padding: 8px;
+  }
+}

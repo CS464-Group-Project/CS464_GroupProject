@@ -38,7 +38,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   display: flex;
-  width: 100%;
 }
 
 .match-list {
@@ -131,10 +130,6 @@
   .match-away {
     flex-direction: row-reverse;
     justify-content: flex-start;
-  }
-
-  .team-cell {
-    width: 45%;
   }
 
   .match-home-score {
