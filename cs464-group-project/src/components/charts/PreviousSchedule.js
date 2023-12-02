@@ -61,10 +61,18 @@ export const PreviousMatches = ({ team, teamID }) => {
           <>
             <Header>
               <HeaderRow>
-                <HeaderCell resize>Date</HeaderCell>
-                <HeaderCell resize>Opponent</HeaderCell>
-                <HeaderCell>Outcome</HeaderCell>
-                <HeaderCell>Score</HeaderCell>
+                <HeaderCell className='header-cell' resize>
+                  Date
+                </HeaderCell>
+                <HeaderCell className='header-cell' resize>
+                  Opponent
+                </HeaderCell>
+                <HeaderCell className='header-cell' id='outcome-header'>
+                  Outcome
+                </HeaderCell>
+                <HeaderCell className='header-cell' id='score-header'>
+                  Score
+                </HeaderCell>
               </HeaderRow>
             </Header>
 
@@ -92,7 +100,9 @@ export const PreviousMatches = ({ team, teamID }) => {
                   >
                     {handleOutcome(item)}
                   </Cell>
-                  <Cell className='schedule-style'>{displayScores(item)}</Cell>
+                  <Cell className='schedule-style' id='scores'>
+                    {displayScores(item)}
+                  </Cell>
                 </Row>
               ))}
             </Body>
