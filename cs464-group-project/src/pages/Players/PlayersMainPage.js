@@ -55,6 +55,7 @@ export function Player() {
     }
 
     //Helper function to randomize the array of players
+    //https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
     function randomize(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

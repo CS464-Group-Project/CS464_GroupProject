@@ -80,6 +80,8 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
     const minStartYear = Math.min(...chartData.map((team) => team.startYear));
     const maxEndYear = Math.max(...chartData.map((team) => team.endYear));
 
+    //https://www.chartjs.org/docs/latest/charts/bar.html
+    //https://www.youtube.com/watch?v=yLf0CaVesSA&t=302s
     let datasets = {
       labels: chartData.map((team) => team.team),
       datasets: [
