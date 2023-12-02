@@ -104,7 +104,7 @@ export function Home() {
         if (data.events === null) {
           return;
         }
-        const plData = data.events.filter((match) => match.idLeague === '4790');
+        const plData = data.events.filter((match) => match.idLeague === '4665');
         const liveMatches = plData.map((match) => ({
           homeId: match.idHomeTeam,
           awayId: match.idAwayTeam,
@@ -153,12 +153,15 @@ export function Home() {
               <div className='col-12'>
                 <div className='live-game'>
                   <h2>Live Events</h2>
+
                   {liveTeams.length > 0 ? (
                     //if there is live game
                     <>
-                      {liveTeams.map((liveMatch) => (
-                        <LiveMatch key={liveMatch.homeId} match={liveMatch} />
-                      ))}
+                      <div className='live-matches-container'>
+                        {liveTeams.map((liveMatch) => (
+                          <LiveMatch key={liveMatch.homeId} match={liveMatch} />
+                        ))}
+                      </div>
                     </>
                   ) : (
                     <div className='no-live'>
