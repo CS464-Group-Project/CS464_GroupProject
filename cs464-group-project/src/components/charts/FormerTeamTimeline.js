@@ -22,6 +22,7 @@ ChartJS.register(
 export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
   let chartData = [];
 
+  //Add former team data to chartData
   if (formerTeams.length != null && contracts.length != null) {
     const formerTeamData = formerTeams.map((formerTeams) => ({
       team: formerTeams.strFormerTeam,
@@ -29,6 +30,7 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
       endYear: formerTeams.strDeparted,
     }));
 
+    //Add contracted team data to chartData
     const contractData = contracts.map((contracts) => ({
       team: contracts.strTeam,
       startYear: contracts.strYearStart,
@@ -74,6 +76,7 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
       return false;
     });
 
+    //Determine start and end of chart
     const minStartYear = Math.min(...chartData.map((team) => team.startYear));
     const maxEndYear = Math.max(...chartData.map((team) => team.endYear));
 
