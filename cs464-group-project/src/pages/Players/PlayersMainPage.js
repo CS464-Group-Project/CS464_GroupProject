@@ -94,7 +94,7 @@ export function Player() {
   }
 
   const filteredPlayers = allPlayers.filter((player) =>
-    player.strPlayer.toLowerCase().includes(searchTerm.toLowerCase())
+    player.strPlayer.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const renderedPlayers = searchTerm ? filteredPlayers : players;
@@ -151,6 +151,7 @@ export function Player() {
                 key={key}
                 data-key={key}
                 className='col-lg-3 col-md-3 col-sm-6 col-6 mb-3'
+                id='player-card'
               >
                 <Link
                   to={`/IndividualPlayer/${player.idPlayer}`}
@@ -166,6 +167,7 @@ export function Player() {
 
                     <h3>{player.strPlayer}</h3>
                     <p
+                      className='player-info'
                       style={{
                         fontSize: '1rem',
                         color: 'black',
@@ -174,12 +176,13 @@ export function Player() {
                       <strong>Position:</strong> {player.strPosition}
                     </p>
                     <p
+                      className='player-info'
                       style={{
                         fontSize: '1rem',
                         color: 'black',
                       }}
                     >
-                      <strong>Team: </strong>
+                      <strong className='player-info'>Team: </strong>
                       {player.strTeam}
                     </p>
                   </div>

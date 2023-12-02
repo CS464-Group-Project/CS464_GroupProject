@@ -50,3 +50,13 @@ tr:hover {
 td {
   padding: 10px;
 }
+
+#player-card {
+  padding: 0.25rem;
+}
+
+@media (max-width: 576px) {
+  .player-info {
+    display: none;
+  }
+}
