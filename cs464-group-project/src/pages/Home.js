@@ -59,10 +59,10 @@ export function Home() {
         const pastMatchesData = await getPLPastMatches(4328);
         const tempPastMatches = pastMatchesData.events.map((match) => {
           const homeTeam = teamRanks.find(
-            (team) => team.id === match.idHomeTeam
+            (team) => team.id === match.idHomeTeam,
           );
           const awayTeam = teamRanks.find(
-            (team) => team.id === match.idAwayTeam
+            (team) => team.id === match.idAwayTeam,
           );
 
           return {
@@ -100,7 +100,6 @@ export function Home() {
     const fetchData = async () => {
       try {
         const data = await getPLLiveScores();
-        console.log(data);
         if (data.events === null) {
           return;
         }
@@ -184,7 +183,7 @@ export function Home() {
         </div>
         <div className='row'>
           <div className='col-6 chart-content'>
-            Stadium Capacity
+            <h3>Stadium Capacity</h3>
             <StadiumCap prop={stadiumCapacity} />
           </div>
         </div>
