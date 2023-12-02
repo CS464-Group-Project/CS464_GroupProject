@@ -112,7 +112,7 @@
     width: 100%;
   }
 
-  .team-names {
+  .past-match-container .team-names {
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
@@ -128,7 +128,7 @@
     max-width: 90px;
   }
 
-  .match-item {
+  .past-match-container .match-item {
     flex-direction: column;
     min-width: 0;
     width: 100%;
@@ -148,6 +148,5 @@
   }
   .match-name {
     text-align: center;
-    /* min-width: 70px; */
   }
 }

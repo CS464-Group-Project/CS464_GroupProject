@@ -57,6 +57,12 @@
   }
 }
 
+.live-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .live-game .team-names {
   gap: 10px;
 }
