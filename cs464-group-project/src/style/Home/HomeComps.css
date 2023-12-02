@@ -2,9 +2,8 @@
 
 .match-list-container,
 .live-game {
-  margin-top: 10px;
-  margin-right: 20px;
-  padding: 10px;
+  padding: 5px;
+
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -61,10 +60,6 @@
   min-width: 240px;
 }
 
-.team-names {
-  width: 100%;
-}
-
 .match-home-score,
 .match-away-score {
   margin-left: auto;
@@ -77,6 +72,7 @@
 .team-names {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 8px;
 }
 
@@ -105,7 +101,8 @@
   }
 }
 
-.match-away-logo {
+.match-away-logo,
+.team-logo {
   max-width: 30px;
   min-width: 30px;
 }
@@ -115,13 +112,23 @@
     width: 100%;
   }
 
-  .team-names {
+  .past-match-container .team-names {
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
+    gap: 20px;
   }
 
-  .match-item {
+  .team-cell {
+    gap: 10px;
+    width: 100%;
+  }
+
+  .match-name {
+    max-width: 90px;
+  }
+
+  .past-match-container .match-item {
     flex-direction: column;
     min-width: 0;
     width: 100%;
@@ -132,23 +139,14 @@
     justify-content: flex-start;
   }
 
-  .match-home-score {
-    margin-left: auto;
-  }
-
   .match-away-score {
-    margin-right: auto;
+    width: 100%;
   }
 
   .match-name {
     line-height: 1.2;
   }
-
-  .match-home .match-name {
-    text-align: left;
-  }
-
-  .match-away .match-name {
-    text-align: right;
+  .match-name {
+    text-align: center;
   }
 }

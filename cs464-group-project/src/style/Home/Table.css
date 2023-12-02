@@ -161,4 +161,8 @@
   .table-header-name {
     width: 140px;
   }
+
+  sup {
+    top: -0.2em;
+  }
 }

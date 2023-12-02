@@ -59,10 +59,10 @@ export function Home() {
         const pastMatchesData = await getPLPastMatches(4328);
         const tempPastMatches = pastMatchesData.events.map((match) => {
           const homeTeam = teamRanks.find(
-            (team) => team.id === match.idHomeTeam
+            (team) => team.id === match.idHomeTeam,
           );
           const awayTeam = teamRanks.find(
-            (team) => team.id === match.idAwayTeam
+            (team) => team.id === match.idAwayTeam,
           );
 
           return {
@@ -152,12 +152,15 @@ export function Home() {
               <div className='col-12'>
                 <div className='live-game'>
                   <h2>Live Events</h2>
+
                   {liveTeams.length > 0 ? (
                     //if there is live game
                     <>
-                      {liveTeams.map((liveMatch) => (
-                        <LiveMatch key={liveMatch.homeId} match={liveMatch} />
-                      ))}
+                      <div className='live-matches-container'>
+                        {liveTeams.map((liveMatch) => (
+                          <LiveMatch key={liveMatch.homeId} match={liveMatch} />
+                        ))}
+                      </div>
                     </>
                   ) : (
                     <div className='no-live'>
@@ -180,7 +183,7 @@ export function Home() {
         </div>
         <div className='row'>
           <div className='col-6 chart-content'>
-            Stadium Capacity
+            <h3>Stadium Capacity</h3>
             <StadiumCap prop={stadiumCapacity} />
           </div>
         </div>
