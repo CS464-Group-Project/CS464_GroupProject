@@ -100,12 +100,16 @@ export function Player() {
   const renderedPlayers = searchTerm ? filteredPlayers : players;
 
   return (
-    <div className='background'>
+    <div className='container'>
       <h1 className='mt-3'>Players</h1>
       <div className='row'>
         {/*Player Search*/}
         <div className='col-md-9 mb-3'>
+          <label htmlFor='playerSearch' className='visually-hidden'>
+            Search players:
+          </label>
           <input
+            id='playerSearch'
             type='text'
             className='form-control'
             placeholder='Search players...'
@@ -116,7 +120,9 @@ export function Player() {
         {/*Team Select*/}
         <div className='col-md-3 mb-3'>
           <div className='input-group'>
-            <label htmlFor='teamOptions'></label>
+            <label htmlFor='teamOptions' className='visually-hidden'>
+              Select a team:
+            </label>
             <select
               id='teamOptions'
               onChange={selectTeam}
@@ -153,20 +159,12 @@ export function Player() {
                   <div className='flex container-md card '>
                     <img
                       src={player.strThumb}
-                      alt={`${player.strPlayer}`}
+                      alt={`Player: ${player.strPlayer}`}
                       className='img-fluid'
                       style={{ margin: '10px 0' }}
                     />
 
-                    <p
-                      style={{
-                        fontWeight: 'bold',
-                        fontSize: '1.2rem',
-                        color: 'black',
-                      }}
-                    >
-                      {player.strPlayer}
-                    </p>
+                    <h3>{player.strPlayer}</h3>
                     <p
                       style={{
                         fontSize: '1rem',

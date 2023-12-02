@@ -10,8 +10,8 @@ export function PlayerFormerBadges({ id }) {
         const formerResponse = await getFormerTeams(id);
 
         setFormerTeams(formerResponse.formerteams);
-      } catch (err) {
-        console.error('Error getting  former teams', err);
+      } catch {
+        console.log('No former teams');
       }
     };
 
@@ -23,7 +23,7 @@ export function PlayerFormerBadges({ id }) {
   if (formerTeams) {
     return (
       <div>
-        <h3>Former Teams</h3>
+        <h2>Former Teams</h2>
         <div className='d-flex flex-wrap justify-content-evenly'>
           {formerTeams.map((team) => {
             const key = team.idFormerTeam;

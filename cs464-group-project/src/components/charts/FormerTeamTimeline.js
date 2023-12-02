@@ -125,7 +125,7 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
     return (
       <div>
         {' '}
-        <h3>Former Teams Timeline</h3>
+        <h2>Former Teams Timeline</h2>
         {<Bar data={datasets} options={chartOptions} />}
       </div>
     );
