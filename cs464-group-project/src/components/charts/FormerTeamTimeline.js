@@ -117,7 +117,13 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
       },
     };
 
-    return <div>{<Bar data={datasets} options={chartOptions} />}</div>;
+    return (
+      <div>
+        {' '}
+        <h3>Former Teams Timeline</h3>
+        {<Bar data={datasets} options={chartOptions} />}
+      </div>
+    );
   }
   return <div>Failed to load player contract timeline</div>;
 };

@@ -26,7 +26,6 @@ export function PlayerFormerTeams({ id }) {
 
   return (
     <div>
-      <h3>Former Teams Timeline</h3>
       <div>
         {formerTeams && contract && (
           <FormerTeamTimeline formerTeams={formerTeams} contracts={contract} />
