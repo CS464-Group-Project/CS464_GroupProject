@@ -22,6 +22,7 @@ ChartJS.register(
 export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
   let chartData = [];
 
+  //Add former team data to chartData
   if (formerTeams.length != null && contracts.length != null) {
     const formerTeamData = formerTeams.map((formerTeams) => ({
       team: formerTeams.strFormerTeam,
@@ -29,6 +30,7 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
       endYear: formerTeams.strDeparted,
     }));
 
+    //Add contracted team data to chartData
     const contractData = contracts.map((contracts) => ({
       team: contracts.strTeam,
       startYear: contracts.strYearStart,
@@ -74,9 +76,12 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
       return false;
     });
 
+    //Determine start and end of chart
     const minStartYear = Math.min(...chartData.map((team) => team.startYear));
     const maxEndYear = Math.max(...chartData.map((team) => team.endYear));
 
+    //https://www.chartjs.org/docs/latest/charts/bar.html
+    //https://www.youtube.com/watch?v=yLf0CaVesSA&t=302s
     let datasets = {
       labels: chartData.map((team) => team.team),
       datasets: [
@@ -117,7 +122,13 @@ export const FormerTeamTimeline = ({ formerTeams, contracts }) => {
       },
     };
 
-    return <div>{<Bar data={datasets} options={chartOptions} />}</div>;
+    return (
+      <div>
+        {' '}
+        <h2>Former Teams Timeline</h2>
+        {<Bar data={datasets} options={chartOptions} />}
+      </div>
+    );
   }
   return <div>Failed to load player contract timeline</div>;
 };

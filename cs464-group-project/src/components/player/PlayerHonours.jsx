@@ -19,7 +19,7 @@ export function PlayerHonours({ id }) {
 
   return (
     <>
-      <h3>Career Honours</h3>
+      <h2>Career Honours</h2>
       <div>
         <HonoursTable honours={honours} />
       </div>

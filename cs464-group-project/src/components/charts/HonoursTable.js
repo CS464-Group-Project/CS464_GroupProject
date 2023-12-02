@@ -16,9 +16,7 @@ export const HonoursTable = ({ honours }) => {
         <tbody>
           {!data ? (
             <tr>
-              <td colSpan={3} style={{ textAlign: 'center' }}>
-                No Career Honours
-              </td>
+              <td>No Career Honours</td>
             </tr>
           ) : (
             data.map((honour) => (

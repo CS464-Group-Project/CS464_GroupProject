@@ -86,10 +86,7 @@ export function IndividualPlayer() {
               <div className='col-md-6'>
                 {/* Other player details */}
                 <div className='row'>
-                  <div
-                    className='col-6 '
-                    style={{ fontWeight: 'bold', color: 'black' }}
-                  >
+                  <div className='col-6 '>
                     <p style={{ color: 'black' }}>Team: </p>
                     <p style={{ color: 'black' }}>Position: </p>
                     <p style={{ color: 'black' }}>Date of Birth: </p>
@@ -133,6 +130,7 @@ export function IndividualPlayer() {
                       target='_blank'
                       rel='noopener noreferrer'
                       className='logo'
+                      aria-label='twitter link'
                     >
                       <FontAwesomeIcon
                         icon={faXTwitter}
@@ -146,6 +144,7 @@ export function IndividualPlayer() {
                       target='_blank'
                       rel='noopener noreferrer'
                       className='logo'
+                      aria-label='Instagram link'
                     >
                       <FontAwesomeIcon
                         icon={faInstagram}
@@ -159,6 +158,7 @@ export function IndividualPlayer() {
                       target='_blank'
                       rel='noopener noreferrer'
                       className='logo'
+                      aria-label='YouTube link'
                     >
                       <FontAwesomeIcon
                         icon={faYoutube}
