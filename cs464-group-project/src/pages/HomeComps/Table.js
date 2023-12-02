@@ -41,7 +41,7 @@ const Table = ({ ranking }) => {
         <thead>
           <tr>
             <th>Rank</th>
-            <th>Team</th>
+            <th className='table-header-name'>Team</th>
             <th>Wins</th>
             <th>Loss</th>
             <th>

@@ -7,6 +7,8 @@
   margin-top: 5px;
   border: 1px solid black;
   border-bottom: none;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .team-ranking th,
@@ -132,8 +134,8 @@
 }
 
 .relegation {
-  background-color: #ff6666;
-  color: #fff;
+  background-color: #e6a3a2;
+  color: #000000;
 }
 
 .relegation:hover {
@@ -144,5 +146,19 @@
   .team-ranking {
     margin: 0;
     margin-top: 10px;
+  }
+}
+
+@media (max-width: 414px) {
+  .team-cell {
+    display: flex;
+  }
+
+  .team-ranking th,
+  .team-ranking tr {
+    padding: 4px;
+  }
+  .table-header-name {
+    width: 140px;
   }
 }
