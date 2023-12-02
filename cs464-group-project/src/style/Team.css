@@ -88,7 +88,13 @@ p {
 
 .team-name {
   color: var(--black);
+  font-size: 12px;
   font-weight: bold;
+}
+@media (min-width: 768px) {
+  .team-name {
+    font-size: 16px;
+  }
 }
 
 .card:hover {

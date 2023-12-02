@@ -9,7 +9,7 @@ import { TeamsPreviousMatches } from '../../components/team/TeamsPreviousMatches
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
-  faTwitter,
+  faXTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 
@@ -84,7 +84,7 @@ export function IndividualTeam() {
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  <FontAwesomeIcon icon={faTwitter} />
+                  <FontAwesomeIcon icon={faXTwitter} />
                 </a>
                 <a
                   href={`https://${team.strFacebook}`}
