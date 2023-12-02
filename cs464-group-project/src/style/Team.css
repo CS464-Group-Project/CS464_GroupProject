@@ -230,3 +230,20 @@ p {
   color: rgb(170, 3, 3);
   font-weight: bold;
 }
+
+.header-cell {
+  font-size: 12px;
+}
+
+@media (min-width: 576px) {
+  .header-cell {
+    font-size: 14px;
+  }
+}
+
+#outcome,
+#outcome-header,
+#score-header,
+#scores {
+  text-align: center;
+}
