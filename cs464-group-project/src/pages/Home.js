@@ -10,6 +10,7 @@ import StadiumCap from './HomeComps/StadiumCap';
 import Table from './HomeComps/Table';
 import PastMatchTable from './HomeComps/PastMatchTable';
 import LiveMatch from './HomeComps/LiveMatch';
+import NextLiveEvents from './HomeComps/NextLiveEvents';
 
 export function Home() {
   const [stadiumCapacity, setStadiumCapacity] = useState([]);
@@ -165,7 +166,9 @@ export function Home() {
                   ) : (
                     <div className='no-live'>
                       <h2>No Live Games Currently</h2>
-                      <h2>Come Back on the Weekends!</h2>
+                      <h3>
+                        <NextLiveEvents />
+                      </h3>
                     </div>
                   )}
                 </div>

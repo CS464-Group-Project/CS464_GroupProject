@@ -133,3 +133,15 @@ export async function getMilestonessById(id) {
 export async function getHistoryLeagues() {
   return await theSportsDB.getTeamDetailsById(133602);
 }
+
+export async function getNextLiveEvents(leagueId) {
+  try {
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/${apiKey}/eventsnextleague.php?id=${leagueId}`,
+    );
+    return response.data;
+  } catch (error) {
+    console.error(`Error getting next live events : , ${error.message}`);
+    throw error;
+  }
+}

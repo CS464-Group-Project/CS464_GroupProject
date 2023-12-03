@@ -150,3 +150,27 @@
     text-align: center;
   }
 }
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink 3s infinite; /* Adjust the duration as needed */
+  color: red;
+  font-size: 13px;
+}
+
+@media (min-width: 576px) {
+  .blink {
+    font-size: 20px;
+  }
+}
