@@ -1,11 +1,11 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import '../../style/Team.css';
-import { TeamStats } from '../../components/team/TeamStats';
-import { TeamsSchedule } from '../../components/team/TeamsSchedule';
-import { TeamRoster } from '../../components/team/TeamRoster';
-import { TeamsPreviousMatches } from '../../components/team/TeamsPreviousMatches';
+import '../style/Team.css';
+import { TeamStats } from './Team/TeamStats';
+import { TeamsSchedule } from './Team/TeamsSchedule';
+import { TeamRoster } from './Team/TeamRoster';
+import { TeamsPreviousMatches } from './Team/TeamsPreviousMatches';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
@@ -43,7 +43,7 @@ export function IndividualTeam() {
   useEffect(() => {
     const updateImageIndex = () => {
       setCurrentImageIndex(
-        (prevIndex) => (prevIndex + 1) % fanArtImages.length,
+        (prevIndex) => (prevIndex + 1) % fanArtImages.length
       );
     };
     const intervalId = setInterval(updateImageIndex, 5000);

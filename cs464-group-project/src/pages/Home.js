@@ -4,7 +4,7 @@ import {
   getSeasonStats,
   getPLPastMatches,
   getPLLiveScores,
-} from '../components/Api/ApiRequest';
+} from '../Api/ApiRequest';
 import '../style/Home/Home.css';
 import StadiumCap from './HomeComps/StadiumCap';
 import Table from './HomeComps/Table';
@@ -59,10 +59,10 @@ export function Home() {
         const pastMatchesData = await getPLPastMatches(4328);
         const tempPastMatches = pastMatchesData.events.map((match) => {
           const homeTeam = teamRanks.find(
-            (team) => team.id === match.idHomeTeam,
+            (team) => team.id === match.idHomeTeam
           );
           const awayTeam = teamRanks.find(
-            (team) => team.id === match.idAwayTeam,
+            (team) => team.id === match.idAwayTeam
           );
 
           return {

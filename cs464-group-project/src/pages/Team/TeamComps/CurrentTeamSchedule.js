@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/Team.css';
+import '../../../style/Team.css';
 
 import {
   Table,
@@ -34,7 +34,7 @@ export const UpcomingSchedule = ({ team, teamID }) => {
       timeZoneName: 'short',
     };
     const pstTime = new Intl.DateTimeFormat('en-US', pstOptions).format(
-      inputDate,
+      inputDate
     );
     return pstTime;
   }

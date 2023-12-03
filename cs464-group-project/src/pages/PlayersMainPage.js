@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {
-  getAllTeamNames,
-  getAllPlayersByTeam,
-} from '../../components/Api/ApiRequest';
+import { getAllTeamNames, getAllPlayersByTeam } from '../Api/ApiRequest';
 import { Link } from 'react-router-dom';
-import '../../style/Player.css';
+import '../style/Player.css';
 
 export function Player() {
   const [players, setPlayers] = useState([]);
@@ -94,7 +91,7 @@ export function Player() {
   }
 
   const filteredPlayers = allPlayers.filter((player) =>
-    player.strPlayer.toLowerCase().includes(searchTerm.toLowerCase()),
+    player.strPlayer.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const renderedPlayers = searchTerm ? filteredPlayers : players;

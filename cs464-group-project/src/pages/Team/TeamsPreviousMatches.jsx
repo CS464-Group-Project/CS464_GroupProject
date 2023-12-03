@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getPreviousTeamMatches } from '../Api/ApiRequest';
-import { PreviousMatches } from '../charts/PreviousSchedule';
+import { getPreviousTeamMatches } from '../../Api/ApiRequest';
+import { PreviousMatches } from './TeamComps/PreviousSchedule';
 import '../../style/Team.css';
 
 export function TeamsPreviousMatches({ teamID }) {

@@ -1,7 +1,7 @@
 import React from 'react';
-import { getAllPlayersByTeam } from '../Api/ApiRequest';
+import { getAllPlayersByTeam } from '../../Api/ApiRequest';
 import { useState, useEffect } from 'react';
-import { PlayerTable } from '../charts/PlayerTable';
+import { PlayerTable } from '../Players/PlayerComps/PlayerTable';
 
 export function TeamRoster({ teamName }) {
   const [players, setPlayers] = useState(null);

@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import {
-  getPlayerDetails,
-  getTeamByName,
-} from '../../components/Api/ApiRequest';
+import { getPlayerDetails, getTeamByName } from '../../Api/ApiRequest';
 import '../../style/Player.css';
-import { PlayerFormerTeams } from '../../components/player/PlayerFormerTeams';
-import { PlayerHonours } from '../../components/player/PlayerHonours';
+import { PlayerFormerTeams } from './PlayerFormerTeams';
+import { PlayerHonours } from './PlayerHonours';
 import {
   faInstagram,
   faXTwitter,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { PlayerFormerBadges } from '../../components/player/PlayerFormerBadges';
+import { PlayerFormerBadges } from './PlayerComps/PlayerFormerBadges';
 
 export function IndividualPlayer() {
   const { id } = useParams();

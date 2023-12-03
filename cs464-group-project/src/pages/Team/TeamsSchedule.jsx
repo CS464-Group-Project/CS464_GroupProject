@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getUpcomingSchedule } from '../Api/ApiRequest';
-import { UpcomingSchedule } from '../charts/CurrentTeamSchedule';
+import { getUpcomingSchedule } from '../../Api/ApiRequest';
+import { UpcomingSchedule } from './TeamComps/CurrentTeamSchedule';
 import '../../style/Team.css';
 
 export function TeamsSchedule({ teamID }) {

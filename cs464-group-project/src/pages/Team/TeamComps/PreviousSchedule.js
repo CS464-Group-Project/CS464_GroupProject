@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../style/Team.css';
+import '../../../style/Team.css';
 
 import {
   Table,
@@ -94,7 +94,7 @@ export const PreviousMatches = ({ team, teamID }) => {
                   )}
                   <Cell
                     className={`schedule-style ${getOutcomeColor(
-                      handleOutcome(item),
+                      handleOutcome(item)
                     )}`}
                     id='outcome'
                   >

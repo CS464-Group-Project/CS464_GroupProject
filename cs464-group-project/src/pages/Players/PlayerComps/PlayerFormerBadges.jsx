@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getFormerTeams } from '../../components/Api/ApiRequest';
+import { getFormerTeams } from '../../../Api/ApiRequest';
 
 export function PlayerFormerBadges({ id }) {
   const [formerTeams, setFormerTeams] = useState([]);
