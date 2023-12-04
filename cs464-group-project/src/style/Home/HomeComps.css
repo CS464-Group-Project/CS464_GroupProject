@@ -120,8 +120,8 @@
   }
 
   .team-cell {
-    gap: 10px;
     width: 100%;
+    gap: 8px;
   }
 
   .match-name {
@@ -144,9 +144,12 @@
   }
 
   .match-name {
+    font-size: 15px;
     line-height: 1.2;
+    text-align: left;
   }
-  .match-name {
-    text-align: center;
+
+  .match-away .match-name {
+    text-align: right;
   }
 }

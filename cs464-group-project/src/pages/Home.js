@@ -59,10 +59,10 @@ export function Home() {
         const pastMatchesData = await getPLPastMatches(4328);
         const tempPastMatches = pastMatchesData.events.map((match) => {
           const homeTeam = teamRanks.find(
-            (team) => team.id === match.idHomeTeam,
+            (team) => team.id === match.idHomeTeam
           );
           const awayTeam = teamRanks.find(
-            (team) => team.id === match.idAwayTeam,
+            (team) => team.id === match.idAwayTeam
           );
 
           return {
@@ -73,14 +73,14 @@ export function Home() {
             awayName: match.strAwayTeam,
             homeScore: match.intHomeScore,
             awayScore: match.intAwayScore,
-            eventDate: match.dateEvent,
+            eventDate: match.strTimestamp,
             homeLogo: homeTeam ? homeTeam.logo : null,
             awayLogo: awayTeam ? awayTeam.logo : null,
           };
         });
 
         const groupedMatches = tempPastMatches.reduce((acc, match) => {
-          const date = match.eventDate;
+          const date = match.eventDate.split('T')[0];
 
           //create a property for each date storing in an array of matches
           acc[date] = acc[date] || [];
@@ -88,6 +88,7 @@ export function Home() {
           return acc;
         }, {});
         setPastMatches(groupedMatches);
+        console.log(groupedMatches);
       } catch (err) {
         console.error('Error getting League information', err);
       }
