@@ -13,7 +13,6 @@ function NextLiveEvents() {
     const fetchData = async () => {
       try {
         const data = await getNextLiveEvents(leagueId);
-        console.log('data received: ', data);
 
         // Sort the events.  The returned array has the time for each day is in descending order
         const sortedEvents = data.events.sort((a, b) => {
@@ -66,7 +65,6 @@ function NextLiveEvents() {
       minute: '2-digit',
       timeZoneName: 'short',
     };
-    console.log('returned date format: ', date);
     return new Intl.DateTimeFormat('en-US', options).format(new Date(date));
   }
 
