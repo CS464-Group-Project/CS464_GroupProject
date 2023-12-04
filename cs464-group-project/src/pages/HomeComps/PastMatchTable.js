@@ -17,6 +17,7 @@ function formatDate(dateString) {
 }
 
 function PastMatchTable({ date, matches }) {
+  console.log(matches);
   return (
     <div className='past-match-container' key={date}>
       <h2 className='match-date'>{formatDate(date)}</h2>

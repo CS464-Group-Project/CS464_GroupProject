@@ -175,7 +175,11 @@ export function Home() {
                 <h2>Past Matches</h2>
                 <div className='all-past-matches'>
                   {Object.entries(pastMatches).map(([date, matches]) => (
-                    <PastMatchTable key={date} date={date} matches={matches} />
+                    <PastMatchTable
+                      key={date}
+                      date={matches[0].eventDate}
+                      matches={matches}
+                    />
                   ))}
                 </div>
               </div>
