@@ -88,7 +88,6 @@ export function Home() {
           return acc;
         }, {});
         setPastMatches(groupedMatches);
-        console.log(groupedMatches);
       } catch (err) {
         console.error('Error getting League information', err);
       }
