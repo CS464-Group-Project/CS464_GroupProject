@@ -6,7 +6,7 @@ import { Team } from './pages/Team/TeamsMainPage';
 import { Player } from './pages/Players/PlayersMainPage';
 import { IndividualPlayer } from './pages/Players/IndividualPlayer';
 import { IndividualTeam } from './pages/Team/IndividualTeam';
-import NavBar from './components/navigationBar/NavBar';
+import NavBar from './components/NavigationBar/NavBar';
 
 function App() {
   return (

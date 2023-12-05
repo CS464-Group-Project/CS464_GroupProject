@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAllTeamNames } from '../../components/Api/ApiRequest';
+import { getAllTeamNames } from '../../Api/ApiRequest';
 import '../../style/Team.css';
 
 export function Team() {

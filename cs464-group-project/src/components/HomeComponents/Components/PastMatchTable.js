@@ -1,6 +1,6 @@
 import React from 'react';
 import Match from './Match';
-import '../../style/Home/HomeComps.css'; // Import your CSS file
+import '../../../style/Home/HomeComps.css'; // Import your CSS file
 
 function formatDate(dateString) {
   const options = { month: 'short', day: 'numeric', weekday: 'long' };

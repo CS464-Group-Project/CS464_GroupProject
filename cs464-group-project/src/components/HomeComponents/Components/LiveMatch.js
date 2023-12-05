@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../style/Home/LiveMatch.css';
+import '../../../style/Home/LiveMatch.css';
 
 function LiveMatch({ match }) {
   return (

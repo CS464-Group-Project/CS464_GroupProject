@@ -2,10 +2,10 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../../style/Team.css';
-import { TeamStats } from '../../components/team/TeamStats';
-import { TeamsSchedule } from '../../components/team/TeamsSchedule';
-import { TeamRoster } from '../../components/team/TeamRoster';
-import { TeamsPreviousMatches } from '../../components/team/TeamsPreviousMatches';
+import { TeamStats } from '../../components/TeamComponents/Components/TeamStats';
+import { TeamsSchedule } from '../../components/TeamComponents/Components/TeamsSchedule';
+import { TeamRoster } from '../../components/TeamComponents/Components/TeamRoster';
+import { TeamsPreviousMatches } from '../../components/TeamComponents/Components/TeamsPreviousMatches';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,

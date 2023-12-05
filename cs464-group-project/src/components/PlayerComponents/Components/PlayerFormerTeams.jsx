@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
   getFormerTeams,
   getPlayerContractsById,
-} from '../../components/Api/ApiRequest';
-import { FormerTeamTimeline } from '../charts/FormerTeamTimeline';
+} from '../../../Api/ApiRequest';
+import { FormerTeamTimeline } from '../Charts/FormerTeamTimeline';
 
 export function PlayerFormerTeams({ id }) {
   const [formerTeams, setFormerTeams] = useState([]);

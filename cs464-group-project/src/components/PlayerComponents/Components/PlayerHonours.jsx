@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getHonoursById } from '../Api/ApiRequest';
-import { HonoursTable } from '../charts/HonoursTable';
+import { getHonoursById } from '../../../Api/ApiRequest';
+import { HonoursTable } from '../Charts/HonoursTable';
 
 export function PlayerHonours({ id }) {
   const [honours, setHonours] = useState(null);
