@@ -4,13 +4,13 @@ import {
   getSeasonStats,
   getPLPastMatches,
   getPLLiveScores,
-} from '../components/Api/ApiRequest';
+} from '../Api/ApiRequest';
 import '../style/Home/Home.css';
-import StadiumCap from './HomeComps/StadiumCap';
-import Table from './HomeComps/Table';
-import PastMatchTable from './HomeComps/PastMatchTable';
-import LiveMatch from './HomeComps/LiveMatch';
-import NextLiveEvents from './HomeComps/NextLiveEvents';
+import StadiumCap from '../components/HomeComponents/Charts/StadiumCap';
+import Table from '../components/HomeComponents/Charts/Table';
+import PastMatchTable from '../components/HomeComponents/Components/PastMatchTable';
+import LiveMatch from '../components/HomeComponents/Components/LiveMatch';
+import NextLiveEvents from '../components/HomeComponents/Components/NextLiveEvents';
 
 export function Home() {
   const [stadiumCapacity, setStadiumCapacity] = useState([]);

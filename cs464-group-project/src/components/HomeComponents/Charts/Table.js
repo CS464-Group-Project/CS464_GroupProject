@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../style/Home/Table.css';
+import '../../../style/Home/Table.css';
 
 const Table = ({ ranking }) => {
   // Function to get team class

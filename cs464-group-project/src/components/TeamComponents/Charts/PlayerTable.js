@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../style/Team.css';
+import '../../../style/Team.css';
 
 import {
   Table,

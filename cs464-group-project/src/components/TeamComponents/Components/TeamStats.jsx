@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getLookUpTable } from '../Api/ApiRequest';
-import { GoalsChart } from '../charts/GoalsChart';
+import { getLookUpTable } from '../../../Api/ApiRequest';
+import { GoalsChart } from '../Charts/GoalsChart';
 
 export function TeamStats({ teamID }) {
   const location = useLocation();

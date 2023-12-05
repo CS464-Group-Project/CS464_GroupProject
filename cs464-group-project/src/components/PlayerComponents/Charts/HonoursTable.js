@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../style/Player.css';
+import '../../../style/Player.css';
 
 export const HonoursTable = ({ honours }) => {
   if (honours) {

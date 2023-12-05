@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getNextLiveEvents } from '../../components/Api/ApiRequest';
-import '../../style/Home/HomeComps.css'; // Import your CSS file
+import { getNextLiveEvents } from '../../../Api/ApiRequest';
+import '../../../style/Home/HomeComps.css'; // Import your CSS file
 
 function NextLiveEvents() {
   const [nextEvent, setNextEvent] = useState(null);

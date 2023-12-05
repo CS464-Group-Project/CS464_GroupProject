@@ -1,9 +1,9 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getPreviousTeamMatches } from '../Api/ApiRequest';
-import { PreviousMatches } from '../charts/PreviousSchedule';
-import '../../style/Team.css';
+import { getPreviousTeamMatches } from '../../../Api/ApiRequest';
+import { PreviousMatches } from '../Charts/PreviousSchedule';
+import '../../../style/Team.css';
 
 export function TeamsPreviousMatches({ teamID }) {
   const location = useLocation();

@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  getAllTeamNames,
-  getAllPlayersByTeam,
-} from '../../components/Api/ApiRequest';
+import { getAllTeamNames, getAllPlayersByTeam } from '../../Api/ApiRequest';
 import { Link } from 'react-router-dom';
 import '../../style/Player.css';
 
