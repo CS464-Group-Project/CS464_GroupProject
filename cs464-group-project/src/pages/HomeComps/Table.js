@@ -1,7 +1,12 @@
 import React from 'react';
 import '../../style/Home/Table.css';
+import { getPLTeamDetails } from '../../components/Api/ApiRequest';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-const Table = ({ ranking }) => {
+function Table({ ranking }) {
+  const navigate = useNavigate();
+  const [displayTeams, setDisplayTeams] = useState([]);
   // Function to get team class
   const getTeamClass = (index) => {
     if (index < 4) {
@@ -15,6 +20,16 @@ const Table = ({ ranking }) => {
     }
     if (index > 16) {
       return 'relegation';
+    }
+  };
+
+  const routeToTeam = async (teamID) => {
+    try {
+      const data = await getPLTeamDetails(teamID);
+      setDisplayTeams(data.teams);
+      navigate(`/individualteam`, { state: { team: data.teams[0] } });
+    } catch (err) {
+      console.error('Error getting League information', err);
     }
   };
 
@@ -60,7 +75,7 @@ const Table = ({ ranking }) => {
             // Assign different class name for top 4 teams, 5th team, bottom 3
             <tr key={team.id} className={`cell-left ${getTeamClass(index)}`}>
               <td>{team.rank}</td>
-              <td className='team-cell'>
+              <td className='team-cell' onClick={() => routeToTeam(team.id)}>
                 <img
                   src={team.logo}
                   alt={`${team.name} Logo`}
@@ -77,6 +92,6 @@ const Table = ({ ranking }) => {
       </table>
     </div>
   );
-};
+}
 
 export default Table;
