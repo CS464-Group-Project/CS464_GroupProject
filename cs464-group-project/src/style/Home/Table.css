@@ -8,7 +8,6 @@
   border: 1px solid black;
   border-bottom: none;
   width: 100%;
-  overflow-x: auto;
 }
 
 .team-ranking th,
@@ -23,16 +22,47 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  justify-content: left;
 }
 
 .team-cell-name {
   text-align: left;
+  position: relative;
+}
+
+.team-cell-name::before {
+  box-sizing: content-box;
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #000;
+  transform: scaleX(0);
+  transform-origin: 0% 100%;
+  transition: transform, 0.3s ease;
+}
+
+.team-cell-name:hover::before {
+  transform: scaleX(1);
 }
 
 .team-logo {
   max-width: 30px;
   max-height: 30px;
+}
+
+tbody .team-logo {
+  transition: transform 0.3s ease-in-out;
+}
+
+tbody .team-cell {
+  cursor: pointer;
+}
+
+tbody .team-logo:hover {
+  transform: scale(1.2);
 }
 
 .team-ranking th {
